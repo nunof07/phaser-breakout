@@ -1,0 +1,25 @@
+{
+    "esversion": 6,
+    "bitwise": true,
+    "curly": true,
+    "eqeqeq": true,
+    "forin": true,
+    "freeze": true,
+    "latedef": true,
+    "maxcomplexity": 5,
+    "maxdepth": 4,
+    "maxparams": 4,
+    "noarg": true,
+    "nocomma": true,
+    "nonbsp": true,
+    "nonew": true,
+    "singleGroups": true,
+    "strict": "implied",
+    "undef": true,
+    "unused": true,
+    "varstmt": true,
+    "plusplus": true,
+
+    "browser": false,
+    "node": true
+}
