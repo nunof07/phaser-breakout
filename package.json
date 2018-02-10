@@ -1,0 +1,19 @@
+{
+  "name": "phaser-breakout",
+  "version": "1.0.0",
+  "description": "Breakout game made with Phaser 3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nunof07/phaser-breakout.git"
+  },
+  "author": "Nuno Freitas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nunof07/phaser-breakout/issues"
+  },
+  "homepage": "https://github.com/nunof07/phaser-breakout#readme"
+}
