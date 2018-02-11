@@ -4,8 +4,12 @@
   "description": "Breakout game made with Phaser 3",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "info": "npm-scripts-info",
     "commit": "git add -A && git-cz"
+  },
+  "scripts-info": {
+    "info": "Display help information about available scripts",
+    "commit": "Stage and commit all current changes using Commitizen"
   },
   "repository": {
     "type": "git",
@@ -19,7 +23,8 @@
   "homepage": "https://github.com/nunof07/phaser-breakout#readme",
   "devDependencies": {
     "commitizen": "^2.9.6",
-    "cz-conventional-changelog": "^2.1.0"
+    "cz-conventional-changelog": "^2.1.0",
+    "npm-scripts-info": "^0.3.6"
   },
   "config": {
     "commitizen": {
