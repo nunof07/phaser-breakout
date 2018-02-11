@@ -9,4 +9,10 @@
 [![Files](https://tokei.rs/b1/github/nunof07/phaser-breakout?category=files)](https://github.com/Aaronepower/tokei)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Breakout game made with Phaser 3
+Breakout game made with Phaser 3.
+
+## Setup for development
+
+- Clone repository.
+- Run `npm install` in project folder.
+- Run `npm run info` to see available scripts.
