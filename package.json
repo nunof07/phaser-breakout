@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/nunof07/phaser-breakout#readme",
   "devDependencies": {
+    "awesome-typescript-loader": "^3.4.1",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
@@ -35,6 +36,7 @@
     "html-webpack-plugin": "^2.30.1",
     "html-webpack-template": "^6.1.0",
     "npm-scripts-info": "^0.3.6",
+    "typescript": "^2.7.1",
     "uglifyjs-webpack-plugin": "^1.1.8",
     "webpack": "^3.11.0",
     "webpack-dev-server": "^2.11.1",
@@ -44,5 +46,8 @@
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "hard-source-webpack-plugin": "^0.5.18"
   }
 }

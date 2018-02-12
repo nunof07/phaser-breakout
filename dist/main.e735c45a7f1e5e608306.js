@@ -1,1 +1,0 @@
-webpackJsonp([0],{lVK7:function(l,o){console.log("Hello World")}},["lVK7"]);

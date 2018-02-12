@@ -1,0 +1,1 @@
+webpackJsonp([0],{"6sO2":function(t,s,e){"use strict";Object.defineProperty(s,"__esModule",{value:!0}),new(e("7tQr").a)("Hello TypeScript").print()},"7tQr":function(t,s,e){"use strict";s.a=class{constructor(t){this.msg=t}print(){return console.log(this.msg),this}}}},["6sO2"]);
