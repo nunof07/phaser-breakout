@@ -35,6 +35,7 @@
     "html-webpack-plugin": "^2.30.1",
     "html-webpack-template": "^6.1.0",
     "npm-scripts-info": "^0.3.6",
+    "uglifyjs-webpack-plugin": "^1.1.8",
     "webpack": "^3.11.0",
     "webpack-dev-server": "^2.11.1",
     "webpack-merge": "^4.1.1"
