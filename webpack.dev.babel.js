@@ -9,6 +9,7 @@ export default merge(common, {
         overlay: true,
         hot: true,
     },
+    devtool: 'inline-source-map',
     plugins: [
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),

@@ -8,10 +8,13 @@ export default merge(common, {
     output: {
         filename: '[name].[chunkhash].js',
     },
+    devtool: 'source-map',
     plugins: [
         new CleanWebpackPlugin(['dist']),
         new webpack.HashedModuleIdsPlugin(),
-        new UglifyJsPlugin(),
+        new UglifyJsPlugin({
+            sourceMap: true,
+        }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         }),
