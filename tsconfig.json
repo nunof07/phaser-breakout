@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "es2017",
+        "target": "esnext",
         "moduleResolution": "node",
         "baseUrl": ".",
         "sourceMap": true,
@@ -27,6 +27,16 @@
     "awesomeTypescriptLoaderOptions": {
         "useCache": true,
         "forceIsolatedModules": true,
-        "reportFiles": ["src/**/*.ts"]
+        "reportFiles": ["src/**/*.ts"],
+        "useBabel": true,
+        "babelOptions": {
+            "babelrc": false,
+            "presets": [
+                ["env"]
+            ],
+            "plugins": [
+                ["transform-runtime"]
+            ]
+        }
     }
 }
