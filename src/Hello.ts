@@ -1,3 +1,6 @@
+/**
+ * Print "Hello! " followed by a message.
+ */
 export class Hello {
     private readonly msg: string;
 
@@ -6,7 +9,8 @@ export class Hello {
     }
 
     public print(): this {
-        console.log('Hello! ' + this.msg);
+        // tslint:disable-next-line:no-console
+        console.log(`Hello! ${this.msg}`);
 
         return this;
     }

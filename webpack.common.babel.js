@@ -2,8 +2,8 @@ import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import HtmlWebpackTemplate from 'html-webpack-template';
-import { CheckerPlugin } from 'awesome-typescript-loader';
 import { TsConfigPathsPlugin } from 'awesome-typescript-loader';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
 
 export default {
@@ -15,8 +15,9 @@ export default {
     module: {
         loaders: [
             {
-                test: /\.tsx?$/,
+                test: /\.ts$/,
                 include: path.resolve(__dirname, 'src'),
+                exclude: /node_modules/,
                 loader: 'awesome-typescript-loader',
             },
         ],
@@ -28,7 +29,11 @@ export default {
         ]
     },
     plugins: [
-        new CheckerPlugin(),
+        new ForkTsCheckerWebpackPlugin({
+            tslint: true,
+            watch: './src',
+            workers: ForkTsCheckerWebpackPlugin.TWO_CPUS_FREE,
+        }),
         new HardSourceWebpackPlugin(),
         new HtmlWebpackPlugin({
             title: 'Breakout',

@@ -1,0 +1,94 @@
+{
+    "extends": [
+        "tslint-microsoft-contrib",
+        "tslint-eslint-rules",
+        "tslint-immutable",
+        "tslint-no-subclass"
+    ],
+    "rules": {
+        "indent": [true, "spaces", 4],
+        "linebreak-style": [true, "LF"],
+        "interface-name": [true, "never-prefix"],
+        "strict-boolean-expressions": [true, "allow-undefined-union"],
+        "no-unused-variable": true,
+        "function-name": [
+            true,
+            {
+
+                "method-regex": "^([a-z][\\w\\d]+)|(\\[Symbol\\.[a-z][\\w\\d]+\\])$", // original: "^[a-z][\\w\\d]+$"
+
+                // unchanged
+                "private-method-regex": "^[a-z][\\w\\d]+$",
+                "protected-method-regex": "^[a-z][\\w\\d]+$",
+                "static-method-regex": "^[A-Z_\\d]+$",
+                "function-regex": "^[a-z][\\w\\d]+$"
+            }
+        ],
+        "no-backbone-get-set-outside-model": false,
+        "unified-signatures": false,
+        "ordered-imports": [true, { "grouped-imports": true }],
+        "space-within-parens": [true, 0],
+        "arrow-parens": true,
+        "cyclomatic-complexity": [true, 5],
+        "max-file-line-count": [true, 300],
+        "no-parameter-reassignment": true,
+        "no-submodule-imports": [
+            true,
+            "@main"
+        ],
+        "no-implicit-dependencies": false, // disable because custom local path mappings are erroneously flagged
+        "no-duplicate-imports": false,
+        "trailing-comma": [true, {"multiline": "always", "singleline": "never"}],
+
+        // replace deprecated rules with newer versions
+        "no-duplicate-case": false,
+        "no-duplicate-switch-case": true,
+        "no-stateless-class": false,
+        "no-unnecessary-class": true,
+        "no-var-self": false,
+        "no-this-assignment": true,
+        "valid-typeof": false,
+        "typeof-compare": false, // compiler already includes this check
+
+        // tslint-eslint-rules
+        "no-empty-character-class": true,
+        "no-ex-assign": true,
+        "no-extra-boolean-cast": true,
+        "no-inner-declarations": [true, "both"],
+        "no-unexpected-multiline": true,
+        "valid-jsdoc": [false],
+        "no-multi-spaces": [
+            true,
+            {
+              "exceptions": { "PropertyAssignment": false }
+            }
+        ],
+        "handle-callback-err": [true, "^(err|error)$"],
+        "array-bracket-spacing": [true, "never"],
+        "block-spacing": [true, "always"],
+        "brace-style": [true, "1tbs"],
+        // "ter-computed-property-spacing": [true, "never"],
+        "ter-func-call-spacing": [true, "never"],
+        "object-curly-spacing": [true, "always"],
+        // "sort-imports": [true, { "ignore-case": true }],
+        // "ter-no-tabs": true,
+        "ter-prefer-arrow-callback": [true],
+        "ter-arrow-spacing": [true],
+
+        // tslint-immutable
+        "readonly-keyword": false,
+        "readonly-array": true,
+        "no-let": [true, "ignore-local"],
+        "no-object-mutation": false,
+        "no-delete": true,
+        "no-mixed-interface": false,
+        "no-this": false,
+        "no-class": false,
+        "no-expression-statement": false,
+        "no-if-statement": false,
+        "no-loop-statement": false,
+
+        // tslint-no-subclass
+        "no-subclass": true
+    }
+}

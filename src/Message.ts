@@ -1,3 +1,6 @@
+/**
+ * Print a message.
+ */
 export class Message {
     private readonly msg: string;
 
@@ -6,6 +9,7 @@ export class Message {
     }
 
     public print(): this {
+        // tslint:disable-next-line:no-console
         console.log(this.msg);
 
         return this;

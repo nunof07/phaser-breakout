@@ -17,6 +17,9 @@
             "@src/*": ["src/*"]
         }
     },
+    "files": [
+        "./src/index.ts"
+    ],
     "include": [
         "src/**/*"
     ],
@@ -26,6 +29,7 @@
     ],
     "awesomeTypescriptLoaderOptions": {
         "useCache": true,
+        "transpileOnly": true,
         "forceIsolatedModules": true,
         "reportFiles": ["src/**/*.ts"],
         "useBabel": true,

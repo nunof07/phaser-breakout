@@ -7,13 +7,15 @@
     "info": "npm-scripts-info",
     "commit": "git add -A && git-cz",
     "build": "webpack --config webpack.prod.babel.js",
-    "start": "webpack-dev-server --open --config webpack.dev.babel.js"
+    "start": "webpack-dev-server --open --config webpack.dev.babel.js",
+    "lint": "tslint --config tslint.json --project tsconfig.json --format stylish src/**/*.ts"
   },
   "scripts-info": {
     "info": "Display help information about available scripts",
     "commit": "Stage and commit all current changes using Commitizen",
     "build": "Build all deliverables",
-    "start": "Start server and watch for changes"
+    "start": "Start server and watch for changes",
+    "lint": "Analyze source code for errors"
   },
   "repository": {
     "type": "git",
@@ -31,14 +33,21 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
+    "clean-terminal-webpack-plugin": "^1.0.1",
     "clean-webpack-plugin": "^0.1.18",
     "commitizen": "^2.9.6",
     "cz-conventional-changelog": "^2.1.0",
+    "fork-ts-checker-webpack-plugin": "^0.3.0",
     "hard-source-webpack-plugin": "^0.5.18",
     "html-webpack-plugin": "^2.30.1",
     "html-webpack-template": "^6.1.0",
     "license-banner-webpack-plugin": "^1.0.0",
     "npm-scripts-info": "^0.3.6",
+    "tslint": "^5.9.1",
+    "tslint-eslint-rules": "^5.0.0",
+    "tslint-immutable": "^4.5.1",
+    "tslint-microsoft-contrib": "^5.0.3",
+    "tslint-no-subclass": "^0.2.1",
     "typescript": "^2.7.1",
     "uglifyjs-webpack-plugin": "^1.1.8",
     "webpack": "^3.11.0",
