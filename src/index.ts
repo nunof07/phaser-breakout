@@ -4,5 +4,8 @@ import { Message } from '@src/Message';
 /**
  * Main entry point.
  */
-new Message('Hello TypeScript').print();
-new Hello('Bye2').print();
+// tslint:disable-next-line:no-console
+console.log(
+    new Message('Hello TypeScript').print(),
+    new Hello('Bye2').print(),
+);

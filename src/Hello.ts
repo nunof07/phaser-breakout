@@ -8,10 +8,7 @@ export class Hello {
         this.msg = msg;
     }
 
-    public print(): this {
-        // tslint:disable-next-line:no-console
-        console.log(`Hello! ${this.msg}`);
-
-        return this;
+    public print(): string {
+        return `Hello! ${this.msg}`;
     }
 }

@@ -8,14 +8,18 @@
     "commit": "git add -A && git-cz",
     "build": "webpack --config webpack.prod.babel.js",
     "start": "webpack-dev-server --open --config webpack.dev.babel.js",
-    "lint": "tslint --config tslint.json --project tsconfig.json --format stylish src/**/*.ts"
+    "lint": "tslint --config tslint.json --project tsconfig.json --format stylish src/**/*.ts",
+    "test": "mocha-webpack",
+    "test:watch": "mocha-webpack --watch"
   },
   "scripts-info": {
     "info": "Display help information about available scripts",
     "commit": "Stage and commit all current changes using Commitizen",
     "build": "Build all deliverables",
     "start": "Start server and watch for changes",
-    "lint": "Analyze source code for errors"
+    "lint": "Analyze source code for errors",
+    "test": "Run the tests",
+    "test:watch": "Run the tests and watch for changes"
   },
   "repository": {
     "type": "git",
@@ -28,11 +32,14 @@
   },
   "homepage": "https://github.com/nunof07/phaser-breakout#readme",
   "devDependencies": {
+    "@types/chai": "^4.1.2",
+    "@types/mocha": "^2.2.48",
     "awesome-typescript-loader": "^3.4.1",
     "babel-core": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
     "clean-terminal-webpack-plugin": "^1.0.1",
     "clean-webpack-plugin": "^0.1.18",
     "commitizen": "^2.9.6",
@@ -42,6 +49,8 @@
     "html-webpack-plugin": "^2.30.1",
     "html-webpack-template": "^6.1.0",
     "license-banner-webpack-plugin": "^1.0.0",
+    "mocha": "^5.0.1",
+    "mocha-webpack": "^1.0.1",
     "npm-scripts-info": "^0.3.6",
     "tslint": "^5.9.1",
     "tslint-eslint-rules": "^5.0.0",
@@ -52,7 +61,8 @@
     "uglifyjs-webpack-plugin": "^1.1.8",
     "webpack": "^3.11.0",
     "webpack-dev-server": "^2.11.1",
-    "webpack-merge": "^4.1.1"
+    "webpack-merge": "^4.1.1",
+    "webpack-node-externals": "^1.6.0"
   },
   "config": {
     "commitizen": {
