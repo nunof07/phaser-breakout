@@ -67,7 +67,7 @@
     "mocha-webpack": "^1.0.1",
     "npm-scripts-info": "^0.3.6",
     "nyc": "^11.4.1",
-    "semantic-release": "^12.4.1",
+    "semantic-release": "^14.0.3",
     "tslint": "^5.9.1",
     "tslint-eslint-rules": "^5.0.0",
     "tslint-immutable": "^4.5.1",
