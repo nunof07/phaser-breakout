@@ -5,11 +5,16 @@ cache:
     - ~/.npm
 node_js:
  - "node"
+before_install:
+  # package-lock.json was introduced in npm@5
+  - '[[ $(node -v) =~ ^v9.*$ ]] || npm install -g npm@latest' # skipped when using node 9
+  - npm install -g greenkeeper-lockfile@1
 before_script:
   - npm prune
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build --debug
+  - greenkeeper-lockfile-update
 script:
   - npm run test:coverage
   - npm run ci:bithound
@@ -19,3 +24,4 @@ after_success:
   - npm run ci:semantic-release
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT --debug
+  - greenkeeper-lockfile-upload
