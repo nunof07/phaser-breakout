@@ -87,28 +87,5 @@
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
     }
-  },
-  "release": {
-    "verifyConditions": [
-      "@semantic-release/changelog",
-      "@semantic-release/git",
-      "@semantic-release/github"
-    ],
-    "publish": [
-      {
-        "path": "@semantic-release/changelog",
-        "changelogFile": "changelog.md"
-      },
-      {
-        "path": "@semantic-release/git",
-        "assets": [
-          "package.json",
-          "changelog.md",
-          "dist"
-        ],
-        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
-      },
-      "@semantic-release/github"
-    ]
   }
 }
