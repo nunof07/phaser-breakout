@@ -11,4 +11,8 @@ export class Hello {
     public print(): string {
         return `Hello! ${this.msg}`;
     }
+
+    public source(): string {
+        return this.msg;
+    }
 }

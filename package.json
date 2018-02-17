@@ -10,7 +10,8 @@
     "start": "webpack-dev-server --open --config webpack.dev.babel.js",
     "lint": "tslint --config tslint.json --project tsconfig.json --format stylish src/**/*.ts",
     "test": "mocha-webpack",
-    "test:watch": "mocha-webpack --watch"
+    "test:watch": "mocha-webpack --watch",
+    "coverage": "cross-env NODE_ENV=coverage nyc mocha-webpack \"src/**/*.ts\" \"test/**/*.ts\""
   },
   "scripts-info": {
     "info": "Display help information about available scripts",
@@ -19,7 +20,8 @@
     "start": "Start server and watch for changes",
     "lint": "Analyze source code for errors",
     "test": "Run the tests",
-    "test:watch": "Run the tests and watch for changes"
+    "test:watch": "Run the tests and watch for changes",
+    "coverage": "Run the tests and report coverage"
   },
   "repository": {
     "type": "git",
@@ -43,15 +45,18 @@
     "clean-terminal-webpack-plugin": "^1.0.1",
     "clean-webpack-plugin": "^0.1.18",
     "commitizen": "^2.9.6",
+    "cross-env": "^5.1.3",
     "cz-conventional-changelog": "^2.1.0",
     "fork-ts-checker-webpack-plugin": "^0.3.0",
     "hard-source-webpack-plugin": "^0.5.18",
     "html-webpack-plugin": "^2.30.1",
     "html-webpack-template": "^6.1.0",
+    "istanbul-instrumenter-loader": "^3.0.0",
     "license-banner-webpack-plugin": "^1.0.0",
     "mocha": "^5.0.1",
     "mocha-webpack": "^1.0.1",
     "npm-scripts-info": "^0.3.6",
+    "nyc": "^11.4.1",
     "tslint": "^5.9.1",
     "tslint-eslint-rules": "^5.0.0",
     "tslint-immutable": "^4.5.1",

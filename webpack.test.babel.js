@@ -2,6 +2,13 @@ import path from 'path';
 import nodeExternals from 'webpack-node-externals';
 import { TsConfigPathsPlugin } from 'awesome-typescript-loader';
 
+const isCoverage = process.env.NODE_ENV === 'coverage';
+const coverageLoaders = isCoverage ? [{
+    test: /\.ts$/,
+    include: path.resolve(__dirname, 'src'),
+    loader: 'istanbul-instrumenter-loader'
+}] : [];
+
 export default {
     output: {
         // use absolute paths in sourcemaps (important for debugging via IDE)
@@ -12,7 +19,7 @@ export default {
     externals: [nodeExternals()],
     devtool: 'inline-cheap-module-source-map',
     module: {
-        loaders: [
+        loaders: coverageLoaders.concat([
             {
                 test: /\.ts$/,
                 include: [
@@ -22,7 +29,7 @@ export default {
                 exclude: /node_modules/,
                 loader: 'awesome-typescript-loader',
             },
-        ],
+        ]),
     },
     resolve: {
         extensions: ['.ts', '.js'],
