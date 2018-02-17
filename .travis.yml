@@ -21,6 +21,9 @@ script:
   - npm run build
 after_success:
   - npm run ci:codecov
+  # fetch all tags (semantic-release needs this so it can check last release using git)
+  - git config --replace-all remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
+  - git fetch --tags
   - npm run ci:semantic-release
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT --debug

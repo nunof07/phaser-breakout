@@ -4,7 +4,7 @@
       "@semantic-release/git",
       "@semantic-release/github"
     ],
-    "getLastRelease": "@semantic-release/git",
+    "getLastRelease": "last-release-git",
     "publish": [
         {
             "path": "@semantic-release/npm",
