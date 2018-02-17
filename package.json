@@ -62,7 +62,6 @@
     "html-webpack-plugin": "^2.30.1",
     "html-webpack-template": "^6.1.0",
     "istanbul-instrumenter-loader": "^3.0.0",
-    "last-release-git": "0.0.3",
     "license-banner-webpack-plugin": "^1.0.0",
     "mocha": "^5.0.1",
     "mocha-webpack": "^1.0.1",
