@@ -11,9 +11,10 @@
     "lint": "tslint --config tslint.json --project tsconfig.json --format stylish src/**/*.ts",
     "test": "mocha-webpack",
     "test:watch": "mocha-webpack --watch",
-    "coverage": "cross-env NODE_ENV=coverage nyc mocha-webpack \"src/**/*.ts\" \"test/**/*.ts\"",
-    "coverage:codecov": "codecov",
-    "semantic-release": "semantic-release"
+    "test:coverage": "cross-env NODE_ENV=coverage nyc mocha-webpack \"src/**/*.ts\" \"test/**/*.ts\"",
+    "ci:codecov": "codecov",
+    "ci:semantic-release": "semantic-release",
+    "ci:bithound": "bithound check git@github.com:nunof07/phaser-breakout.git"
   },
   "scripts-info": {
     "info": "Display help information about available scripts",
@@ -23,9 +24,10 @@
     "lint": "Analyze source code for errors",
     "test": "Run the tests",
     "test:watch": "Run the tests and watch for changes",
-    "coverage": "Run the tests and report coverage",
-    "coverage:codecov": "Upload test coverage to Codecov",
-    "semantic-release": "Publish release - meant to be run from CI"
+    "test:coverage": "Run the tests and report coverage",
+    "ci:codecov": "Upload test coverage to Codecov",
+    "ci:semantic-release": "Publish release",
+    "ci:bithound": "Checks bitHound for failing files or dependencies"
   },
   "repository": {
     "type": "git",
@@ -46,6 +48,7 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
+    "bithound": "^1.7.0",
     "chai": "^4.1.2",
     "clean-terminal-webpack-plugin": "^1.0.1",
     "clean-webpack-plugin": "^0.1.18",

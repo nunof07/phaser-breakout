@@ -7,8 +7,9 @@ node_js:
 before_script:
   - npm prune
 script:
-  - npm run coverage
+  - npm run test:coverage
+  - npm run ci:bithound
   - npm run build
 after_success:
-  - npm run coverage:codecov
-  - npm run semantic-release
+  - npm run ci:codecov
+  - npm run ci:semantic-release

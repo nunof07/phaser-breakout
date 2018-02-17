@@ -5,6 +5,7 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 [![codecov](https://codecov.io/gh/nunof07/phaser-breakout/branch/master/graph/badge.svg)](https://codecov.io/gh/nunof07/phaser-breakout)
+[![bitHound Overall Score](https://www.bithound.io/github/nunof07/phaser-breakout/badges/score.svg)](https://www.bithound.io/github/nunof07/phaser-breakout)
 
 [![Dependencies](https://david-dm.org/nunof07/phaser-breakout.svg)](https://david-dm.org/nunof07/phaser-breakout)
 [![Development Dependencies](https://david-dm.org/nunof07/phaser-breakout/dev-status.svg)](https://david-dm.org/nunof07/phaser-breakout?type=dev)
@@ -19,4 +20,5 @@ Breakout game made with Phaser 3.
 
 - Clone repository.
 - Run `npm install` in project folder.
-- Run `npm run info` to see available scripts.
+- Run `npm run info` to see all available scripts.
+- While developing open two terminals and run `npm start` and `npm run test:watch`.
