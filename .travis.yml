@@ -9,3 +9,5 @@ before_script:
 script:
   - npm run coverage
   - npm run build
+after_success:
+  - npm run coverage:codecov

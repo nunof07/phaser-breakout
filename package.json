@@ -11,7 +11,8 @@
     "lint": "tslint --config tslint.json --project tsconfig.json --format stylish src/**/*.ts",
     "test": "mocha-webpack",
     "test:watch": "mocha-webpack --watch",
-    "coverage": "cross-env NODE_ENV=coverage nyc mocha-webpack \"src/**/*.ts\" \"test/**/*.ts\""
+    "coverage": "cross-env NODE_ENV=coverage nyc mocha-webpack \"src/**/*.ts\" \"test/**/*.ts\"",
+    "coverage:codecov": "codecov"
   },
   "scripts-info": {
     "info": "Display help information about available scripts",
@@ -21,7 +22,8 @@
     "lint": "Analyze source code for errors",
     "test": "Run the tests",
     "test:watch": "Run the tests and watch for changes",
-    "coverage": "Run the tests and report coverage"
+    "coverage": "Run the tests and report coverage",
+    "coverage:codecov": "Upload test coverage to Codecov"
   },
   "repository": {
     "type": "git",
@@ -44,6 +46,7 @@
     "chai": "^4.1.2",
     "clean-terminal-webpack-plugin": "^1.0.1",
     "clean-webpack-plugin": "^0.1.18",
+    "codecov": "^3.0.0",
     "commitizen": "^2.9.6",
     "cross-env": "^5.1.3",
     "cz-conventional-changelog": "^2.1.0",
