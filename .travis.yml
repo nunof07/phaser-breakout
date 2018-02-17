@@ -6,6 +6,9 @@ node_js:
  - "node"
 before_script:
   - npm prune
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build --debug
 script:
   - npm run test:coverage
   - npm run ci:bithound
@@ -13,3 +16,5 @@ script:
 after_success:
   - npm run ci:codecov
   - npm run ci:semantic-release
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT --debug

@@ -5,6 +5,8 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 [![codecov](https://codecov.io/gh/nunof07/phaser-breakout/branch/master/graph/badge.svg)](https://codecov.io/gh/nunof07/phaser-breakout)
+[![Maintainability](https://api.codeclimate.com/v1/badges/2a8090c04b076da60754/maintainability)](https://codeclimate.com/github/nunof07/phaser-breakout/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/2a8090c04b076da60754/test_coverage)](https://codeclimate.com/github/nunof07/phaser-breakout/test_coverage)
 [![bitHound Overall Score](https://www.bithound.io/github/nunof07/phaser-breakout/badges/score.svg)](https://www.bithound.io/github/nunof07/phaser-breakout)
 
 [![Dependencies](https://david-dm.org/nunof07/phaser-breakout.svg)](https://david-dm.org/nunof07/phaser-breakout)
