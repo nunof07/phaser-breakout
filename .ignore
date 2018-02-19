@@ -1,0 +1,3 @@
+# ignore files for tokei (LoC badge)
+dist
+package-lock.json
