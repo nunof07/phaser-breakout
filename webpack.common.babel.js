@@ -7,18 +7,28 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
 
 export default {
-    entry: './src/index.ts',
+    entry: {
+        main: './src/index.ts',
+        vendor: [
+            'phaser',
+        ],
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].js',
     },
     module: {
-        loaders: [
+        rules: [
+            // GLSL shaders (required by Phaser)
+            {
+                test: [/\.vert$/, /\.frag$/],
+                use: 'raw-loader'
+            },
             {
                 test: /\.ts$/,
                 include: path.resolve(__dirname, 'src'),
                 exclude: /node_modules/,
-                loader: 'awesome-typescript-loader',
+                use: 'awesome-typescript-loader',
             },
         ],
     },
@@ -48,8 +58,12 @@ export default {
             appMountId: 'game',
             mobile: true,
         }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'manifest',
-        }),
+        new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' }),
+        new webpack.optimize.CommonsChunkPlugin({ name: 'manifest' }),
+        // vars used by Phaser
+        new webpack.DefinePlugin({
+            'CANVAS_RENDERER': JSON.stringify(true),
+            'WEBGL_RENDERER': JSON.stringify(true)
+        })
     ],
 };

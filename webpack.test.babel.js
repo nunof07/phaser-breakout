@@ -6,7 +6,7 @@ const isCoverage = process.env.NODE_ENV === 'coverage';
 const coverageLoaders = isCoverage ? [{
     test: /\.ts$/,
     include: path.resolve(__dirname, 'src'),
-    loader: 'istanbul-instrumenter-loader'
+    use: 'istanbul-instrumenter-loader'
 }] : [];
 
 export default {
@@ -19,7 +19,7 @@ export default {
     externals: [nodeExternals()],
     devtool: 'inline-cheap-module-source-map',
     module: {
-        loaders: coverageLoaders.concat([
+        rules: coverageLoaders.concat([
             {
                 test: /\.ts$/,
                 include: [
@@ -27,7 +27,7 @@ export default {
                     path.resolve(__dirname, 'test'),
                 ],
                 exclude: /node_modules/,
-                loader: 'awesome-typescript-loader',
+                use: 'awesome-typescript-loader',
             },
         ]),
     },
