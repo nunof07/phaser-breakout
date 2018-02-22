@@ -58,6 +58,7 @@ export default {
             appMountId: 'game',
             mobile: true,
         }),
+        new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' }),
         new webpack.optimize.CommonsChunkPlugin({ name: 'manifest' }),
         // vars used by Phaser
