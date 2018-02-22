@@ -13,6 +13,7 @@
         "noUnusedParameters": true,
         "strictFunctionTypes": true,
         "strictNullChecks": true,
+        "skipLibCheck": true,
         "paths": {
             "@src/*": ["src/*"]
         }
