@@ -16,6 +16,4 @@ global.document = window.document;
 global.navigator = {
     userAgent: 'node.js',
 };
-global.window.CANVAS_RENDERER = true;
-global.window.WEBGL_RENDERER = true;
 copyProps(window, global);

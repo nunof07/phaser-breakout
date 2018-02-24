@@ -11,7 +11,7 @@
     "lint": "tslint --config tslint.json --project tsconfig.json --format stylish src/**/*.ts",
     "test": "mocha-webpack",
     "test:watch": "mocha-webpack --watch",
-    "test:coverage": "cross-env NODE_ENV=coverage nyc mocha-webpack \"src/**/*.ts\" \"test/**/*.ts\"",
+    "test:coverage": "cross-env NODE_ENV=coverage nyc mocha-webpack \"test/**/*.ts\"",
     "ci:codecov": "codecov",
     "ci:semantic-release": "semantic-release",
     "ci:bithound": "bithound check git@github.com:nunof07/phaser-breakout.git"

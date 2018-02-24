@@ -6,7 +6,7 @@ const isCoverage = process.env.NODE_ENV === 'coverage';
 const coverageLoaders = isCoverage ? [{
     test: /\.ts$/,
     include: path.resolve(__dirname, 'src'),
-    use: 'istanbul-instrumenter-loader'
+    use: 'istanbul-instrumenter-loader',
 }] : [];
 
 export default {
