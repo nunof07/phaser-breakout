@@ -13,6 +13,7 @@
         "noUnusedParameters": true,
         "strictFunctionTypes": true,
         "strictNullChecks": true,
+        "skipLibCheck": true,
         "paths": {
             "@src/*": ["src/*"]
         }
@@ -25,6 +26,7 @@
         "test/**/*"
     ],
     "exclude": [
+        "*.d.ts",
         "dist",
         "node_modules"
     ],
