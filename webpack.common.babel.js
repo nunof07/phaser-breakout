@@ -57,6 +57,7 @@ export default {
             template: HtmlWebpackTemplate,
             appMountId: 'game',
             mobile: true,
+            headHtmlSnippet: '<style>html,body{height:100%;margin:0;}</style>',
         }),
         new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' }),
