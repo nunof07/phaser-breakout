@@ -79,7 +79,7 @@
     "tslint-no-subclass": "^0.2.1",
     "typescript": "^2.7.1",
     "uglifyjs-webpack-plugin": "^1.1.8",
-    "webpack": "^3.11.0",
+    "webpack": "^4.0.0",
     "webpack-dev-server": "^2.11.1",
     "webpack-merge": "^4.1.1",
     "webpack-node-externals": "^1.6.0"
