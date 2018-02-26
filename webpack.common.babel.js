@@ -5,6 +5,7 @@ import HtmlWebpackTemplate from 'html-webpack-template';
 import { TsConfigPathsPlugin } from 'awesome-typescript-loader';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 export default {
     entry: {
@@ -59,6 +60,7 @@ export default {
             mobile: true,
             headHtmlSnippet: '<style>html,body{height:100%;margin:0;}</style>',
         }),
+        new CopyWebpackPlugin(['assets' ], { cache: true }),
         new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' }),
         new webpack.optimize.CommonsChunkPlugin({ name: 'manifest' }),

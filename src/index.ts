@@ -10,5 +10,9 @@ new Phaser.Game({
     parent: 'game',
     width: 800,
     height: 600,
+    pixelArt: true,
     scene: HelloWorldScene,
+    physics: {
+        default: 'arcade',
+    },
 });
