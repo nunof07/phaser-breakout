@@ -1,18 +1,10 @@
-import { Hello } from '@src/Hello';
 import { expect } from 'chai';
 
 /**
- * {@link Hello} unit tests.
+ * Hello World unit test.
  */
 describe('Hello', () => {
-    describe('#constructor()', () => {
-        it('should not throw', () => {
-            expect(() => new Hello('hello')).to.not.throw();
-        });
-    });
-    describe('#print()', () => {
-        it('should return string', () => {
-            expect(new Hello('hello').print()).to.equal('Hello! hello');
-        });
+    it('should be true', () => {
+        expect('hello').to.equal('hello');
     });
 });

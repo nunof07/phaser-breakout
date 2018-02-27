@@ -15,7 +15,10 @@
         "strictNullChecks": true,
         "skipLibCheck": true,
         "paths": {
-            "@src/*": ["src/*"]
+            "@src/*": ["src/*"],
+            "@core/*": ["src/core/*"],
+            "@display/*": ["src/display/*"],
+            "@systems/*": ["src/systems/*"]
         }
     },
     "files": [
