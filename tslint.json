@@ -34,7 +34,10 @@
         "no-parameter-reassignment": true,
         "no-submodule-imports": [
             true,
-            "@main"
+            "@src",
+            "@core",
+            "@display",
+            "@systems"
         ],
         "no-implicit-dependencies": false, // disable because custom local path mappings are erroneously flagged
         "no-duplicate-imports": false,

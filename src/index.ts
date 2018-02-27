@@ -1,14 +1,18 @@
-import { HelloWorldScene } from '@src/HelloWorldScene';
-import Phaser from 'phaser';
+import { startGame } from '@core/startGame';
+import { Breakout } from '@src/Breakout';
+import { config } from '@src/config';
 
 /**
  * Main entry point.
  */
-// tslint:disable-next-line:no-unused-expression
-new Phaser.Game({
+startGame({
     type: Phaser.AUTO,
-    parent: 'game',
-    width: 800,
-    height: 600,
-    scene: HelloWorldScene,
+    parent: config.game.container,
+    width: config.game.width,
+    height: config.game.height,
+    pixelArt: true,
+    scene: Breakout,
+    physics: {
+        default: 'arcade',
+    },
 });
