@@ -8,6 +8,9 @@ export const config = {
         width: 800,
         height: 600,
     },
+    graphics: {
+        width: 2,
+    },
     pixel: {
         key: 'pixel',
         url: 'images/transparent_pixel.png',
