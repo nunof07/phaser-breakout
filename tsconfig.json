@@ -16,8 +16,10 @@
         "skipLibCheck": true,
         "paths": {
             "@src/*": ["src/*"],
+            "@config/*": ["src/config/*"],
             "@core/*": ["src/core/*"],
             "@display/*": ["src/display/*"],
+            "@input/*": ["src/input/*"],
             "@systems/*": ["src/systems/*"]
         }
     },

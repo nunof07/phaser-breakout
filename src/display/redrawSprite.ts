@@ -1,3 +1,5 @@
+import { startX } from '@display/startX';
+import { startY } from '@display/startY';
 import Phaser from 'phaser';
 
 /**
@@ -6,8 +8,6 @@ import Phaser from 'phaser';
  * @param sprite Sprite.
  */
 export function redrawSprite(graphics: Phaser.GameObjects.Graphics, sprite: Phaser.Physics.Arcade.Sprite): void {
-    const startX: number = sprite.x - (sprite.displayWidth - (sprite.displayWidth - sprite.displayOriginX));
-    const startY: number = sprite.y - (sprite.displayHeight - (sprite.displayHeight - sprite.displayOriginY));
     graphics.clear();
-    graphics.strokeRect(startX, startY, sprite.displayWidth, sprite.displayHeight);
+    graphics.strokeRect(startX(sprite), startY(sprite), sprite.displayWidth, sprite.displayHeight);
 }

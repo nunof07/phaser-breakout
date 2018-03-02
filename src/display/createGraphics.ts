@@ -1,3 +1,4 @@
+import { config } from '@src/config';
 import Phaser from 'phaser';
 
 /**
@@ -7,7 +8,7 @@ import Phaser from 'phaser';
 export function createGraphics(
     factory: Phaser.GameObjects.GameObjectFactory,
     color: number,
-    width: number = 2,
+    width: number = config.graphics.width,
 ): Phaser.GameObjects.Graphics {
     return factory.graphics({
         lineStyle: {

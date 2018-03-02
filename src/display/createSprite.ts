@@ -1,5 +1,5 @@
-import { Position } from '@core/Position';
-import { Size } from '@core/Size';
+import { Position } from '@display/Position';
+import { Size } from '@display/Size';
 import { config } from '@src/config';
 import Phaser from 'phaser';
 
