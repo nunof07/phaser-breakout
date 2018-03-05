@@ -10,20 +10,32 @@ export const config = {
     },
     graphics: {
         width: 2,
+        texture: {
+            key: 'pixel',
+            url: 'images/transparent_pixel.png',
+        },
     },
-    pixel: {
-        key: 'pixel',
-        url: 'images/transparent_pixel.png',
-    },
-    player: {
+    paddle: {
         position: {
             x: 400,
-            y: 600 - 15 * 1.5,
+            y: 600 - 8 * 1.5,
         },
         size: {
-            width: 160,
-            height: 30,
+            width: 96,
+            height: 16,
         },
         color: 0xAA0000,
+    },
+    ball: {
+        position: {
+            x: 400,
+            y: 300,
+        },
+        size: {
+            width: 16,
+            height: 16,
+        },
+        color: 0x00AA00,
+        bounce: 1,
     },
 };
