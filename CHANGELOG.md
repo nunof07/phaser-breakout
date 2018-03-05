@@ -1,3 +1,11 @@
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/nunof07/phaser-breakout/compare/v0.1.0...v0.2.0) (2018-03-05)
+
+
+### Features
+
+* **ball:** add ball system and refactor code ([8446f0d](https://github.com/nunof07/phaser-breakout/commit/8446f0d))
+
 <a name="0.1.0"></a>
 # [0.1.0](https://github.com/nunof07/phaser-breakout/compare/v0.0.1...v0.1.0) (2018-02-27)
 

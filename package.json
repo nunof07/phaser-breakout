@@ -1,6 +1,6 @@
 {
   "name": "phaser-breakout",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Breakout game made with Phaser 3",
   "main": "index.js",
   "scripts": {
