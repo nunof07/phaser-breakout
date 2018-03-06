@@ -1,9 +1,9 @@
 import { GraphicsConfig } from '@config/GraphicsConfig';
 import { SpriteConfig } from '@config/SpriteConfig';
+import { Coordinates } from '@display/Coordinates';
 import { createGraphics } from '@display/createGraphics';
 import { createSprite } from '@display/createSprite';
 import { GraphicSprite } from '@display/GraphicSprite';
-import { Position } from '@display/Position';
 import { positionEqual } from '@display/positionEqual';
 import { redrawSprite } from '@display/redrawSprite';
 import { spritePosition } from '@display/spritePosition';
@@ -17,7 +17,7 @@ export class BaseGraphicSprite implements GraphicSprite {
     private readonly graphics: GraphicsConfig;
     private graphicsObj: Phaser.GameObjects.Graphics;
     private spriteObj: Phaser.Physics.Arcade.Sprite;
-    private previousPosition: Position;
+    private previousPosition: Coordinates;
 
     constructor(sprite: SpriteConfig, graphics: GraphicsConfig) {
         this.config = sprite;

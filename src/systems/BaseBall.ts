@@ -1,6 +1,6 @@
 import { BallConfig } from '@config/BallConfig';
+import { Coordinates } from '@display/Coordinates';
 import { GraphicSprite } from '@display/GraphicSprite';
-import { Position } from '@display/Position';
 import { followPointerMovementX } from '@input/followPointerMovementX';
 import { Ball } from '@systems/Ball';
 import Phaser from 'phaser';
@@ -27,7 +27,7 @@ export class BaseBall implements Ball {
         return this;
     }
 
-    public launch(velocity: Position): this {
+    public launch(velocity: Coordinates): this {
         if (!this.isInPlay()) {
             this.graphics.sprite().setVelocity(velocity.x, velocity.y);
             this.inPlay = true;
@@ -36,7 +36,7 @@ export class BaseBall implements Ball {
         return this;
     }
 
-    public reset(position: Position): this {
+    public reset(position: Coordinates): this {
         this.graphics.sprite().setVelocity(0, 0);
         this.graphics.sprite().setPosition(position.x, position.y);
         this.inPlay = false;

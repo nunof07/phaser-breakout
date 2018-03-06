@@ -1,11 +1,11 @@
 import { System } from '@core/System';
-import { Position } from '@display/Position';
+import { Coordinates } from '@display/Coordinates';
 
 /**
  * Controls the ball.
  */
 export interface Ball extends System {
-    launch(velocity: Position): this;
-    reset(position: Position): this;
+    launch(velocity: Coordinates): this;
+    reset(position: Coordinates): this;
     isInPlay(): boolean;
 }

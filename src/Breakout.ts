@@ -1,7 +1,9 @@
 import { System } from '@core/System';
 import { config } from '@src/config';
+import { Ball } from '@systems/Ball';
 import { createBall } from '@systems/createBall';
 import { createPaddle } from '@systems/createPaddle';
+import { Physics } from '@systems/Physics';
 import Phaser from 'phaser';
 
 /**
@@ -15,9 +17,11 @@ export class Breakout extends Phaser.Scene {
     }
 
     public create(): void {
+        const ball: Ball = createBall(config.ball, config.graphics);
         this.systems = [
             createPaddle(config.paddle, config.graphics),
-            createBall(config.ball, config.graphics),
+            ball,
+            new Physics(config.physics, ball),
         ];
         this.systems.forEach((system: System) => {
             system.setup(this);

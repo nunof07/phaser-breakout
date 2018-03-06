@@ -1,4 +1,4 @@
-import { Position } from '@display/Position';
+import { Coordinates } from '@display/Coordinates';
 import { positionEqual } from '@display/positionEqual';
 import { expect } from 'chai';
 
@@ -7,7 +7,7 @@ import { expect } from 'chai';
  */
 describe('positionEqual', () => {
     it('same position references should return true', () => {
-        const position: Position = { x: 1, y : 1 };
+        const position: Coordinates = { x: 1, y : 1 };
         expect(
             positionEqual(position, position),
         ).to.equal(true, 'expected same position to return true');
