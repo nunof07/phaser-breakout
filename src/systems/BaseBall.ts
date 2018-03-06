@@ -1,6 +1,7 @@
 import { BallConfig } from '@config/BallConfig';
 import { GraphicSprite } from '@display/GraphicSprite';
 import { Position } from '@display/Position';
+import { followPointerMovementX } from '@input/followPointerMovementX';
 import { Ball } from '@systems/Ball';
 import Phaser from 'phaser';
 
@@ -21,6 +22,7 @@ export class BaseBall implements Ball {
         this.graphics.setup(scene);
         this.graphics.sprite().setCollideWorldBounds(true);
         this.graphics.sprite().setBounce(this.config.bounce, this.config.bounce);
+        followPointerMovementX(scene.input, this.graphics.sprite(), () => !this.inPlay);
 
         return this;
     }

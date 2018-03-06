@@ -29,7 +29,7 @@ export const config = {
     ball: {
         position: {
             x: 400,
-            y: 300,
+            y: 600 - 8 * 1.5 - 8 - 8 - 2,
         },
         size: {
             width: 16,
