@@ -39,9 +39,10 @@ const ball = {
 };
 const physics = {
     launchVelocity: {
-        x: 200,
-        y: -500,
+        x: 0,
+        y: -512,
     },
+    collideVelocity: 8,
 };
 export const config = {
     game,

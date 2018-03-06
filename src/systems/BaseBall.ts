@@ -27,6 +27,10 @@ export class BaseBall implements Ball {
         return this;
     }
 
+    public sprite(): Phaser.Physics.Arcade.Sprite {
+        return this.graphics.sprite();
+    }
+
     public launch(velocity: Coordinates): this {
         if (!this.isInPlay()) {
             this.graphics.sprite().setVelocity(velocity.x, velocity.y);

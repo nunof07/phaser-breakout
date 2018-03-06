@@ -1,11 +1,10 @@
-import { System } from '@core/System';
 import { GraphicSprite } from '@display/GraphicSprite';
 import { followPointerMovementX } from '@input/followPointerMovementX';
 
 /**
  * Paddle.
  */
-export class Paddle implements System {
+export class Paddle implements GraphicSprite {
     private readonly graphics: GraphicSprite;
 
     constructor(graphics: GraphicSprite) {
@@ -18,6 +17,10 @@ export class Paddle implements System {
         followPointerMovementX(scene.input, this.graphics.sprite());
 
         return this;
+    }
+
+    public sprite(): Phaser.Physics.Arcade.Sprite {
+        return this.graphics.sprite();
     }
 
     public update(): this {
