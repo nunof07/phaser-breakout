@@ -44,4 +44,8 @@ export class BaseGraphicSprite implements GraphicSprite {
     public sprite(): Phaser.Physics.Arcade.Sprite {
         return this.spriteObj;
     }
+
+    public borderWidth(): number {
+        return this.graphics.width;
+    }
 }

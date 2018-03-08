@@ -23,6 +23,10 @@ export class Paddle implements GraphicSprite {
         return this.graphics.sprite();
     }
 
+    public borderWidth(): number {
+        return this.graphics.borderWidth();
+    }
+
     public update(): this {
         this.graphics.update();
 

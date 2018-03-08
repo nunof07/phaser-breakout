@@ -27,11 +27,6 @@ export class BasePhysics implements Physics {
             this.paddle.sprite(),
             () => this.collide(this.ball.sprite(), this.paddle.sprite()),
         );
-        scene.input.on('pointerup', () => {
-            if (!this.ball.isInPlay()) {
-                this.ball.launch(this.config.launchVelocity);
-            }
-        });
 
         return this;
     }

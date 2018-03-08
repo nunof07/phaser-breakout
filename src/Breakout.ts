@@ -5,6 +5,7 @@ import { Ball } from '@systems/Ball';
 import { BasePhysics } from '@systems/BasePhysics';
 import { createBall } from '@systems/createBall';
 import { createPaddle } from '@systems/createPaddle';
+import { Referee } from '@systems/Referee';
 import Phaser from 'phaser';
 
 /**
@@ -24,6 +25,7 @@ export class Breakout extends Phaser.Scene {
             paddle,
             ball,
             new BasePhysics(config.physics, ball, paddle),
+            new Referee(config.game, config.physics, ball, paddle),
         ];
         this.systems.forEach((system: System) => {
             system.setup(this);

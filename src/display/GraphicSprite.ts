@@ -6,4 +6,5 @@ import Phaser from 'phaser';
  */
 export interface GraphicSprite extends System {
     sprite(): Phaser.Physics.Arcade.Sprite;
+    borderWidth(): number;
 }

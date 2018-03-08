@@ -39,7 +39,7 @@ const ball = {
 };
 const physics = {
     launchVelocity: {
-        x: 0,
+        x: 128,
         y: -512,
     },
     collideVelocity: 8,

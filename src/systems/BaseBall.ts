@@ -31,6 +31,10 @@ export class BaseBall implements Ball {
         return this.graphics.sprite();
     }
 
+    public borderWidth(): number {
+        return this.graphics.borderWidth();
+    }
+
     public launch(velocity: Coordinates): this {
         if (!this.isInPlay()) {
             this.graphics.sprite().setVelocity(velocity.x, velocity.y);
