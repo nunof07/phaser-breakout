@@ -1,6 +1,7 @@
 import { PhysicsConfig } from '@config/PhysicsConfig';
 import { GraphicSprite } from '@display/GraphicSprite';
 import { addCollider } from '@physics/addCollider';
+import { setBoundsCollision } from '@physics/setBoundsCollision';
 import { Ball } from '@systems/Ball';
 import { Physics } from '@systems/Physics';
 
@@ -19,6 +20,7 @@ export class BasePhysics implements Physics {
     }
 
     public setup(scene: Phaser.Scene): this {
+        setBoundsCollision(scene.physics.world, true, true, true, false);
         addCollider(
             scene.physics.add,
             this.ball.sprite(),
