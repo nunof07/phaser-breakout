@@ -44,7 +44,7 @@ export default {
         new ForkTsCheckerWebpackPlugin({
             tslint: true,
             watch: './src',
-            workers: process.env.NODE_ENV === 'travis' ? 1 : ForkTsCheckerWebpackPlugin.TWO_CPUS_FREE,
+            workers: process.env.NODE_ENV === 'travis' ? 2 : ForkTsCheckerWebpackPlugin.TWO_CPUS_FREE,
         }),
         new HardSourceWebpackPlugin(),
         new HtmlWebpackPlugin({
