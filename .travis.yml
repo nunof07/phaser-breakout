@@ -17,7 +17,7 @@ before_script:
   - greenkeeper-lockfile-update
 script:
   - npm run test:coverage
-  - npm run build
+  - npm run ci:build
 after_success:
   - npm run ci:codecov
   # fetch all tags (semantic-release needs this so it can check last release using git)
