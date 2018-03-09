@@ -12,7 +12,6 @@ export default {
         main: './src/index.ts',
         vendor: [
             'phaser',
-            'ramda',
         ],
     },
     output: {
