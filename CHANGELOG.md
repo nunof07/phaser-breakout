@@ -1,3 +1,19 @@
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/nunof07/phaser-breakout/compare/v0.2.0...v0.3.0) (2018-03-09)
+
+
+### Bug Fixes
+
+* **physics:** disable floor collisions ([141dba8](https://github.com/nunof07/phaser-breakout/commit/141dba8))
+
+
+### Features
+
+* **ball:** follow pointer when not in play ([12357c1](https://github.com/nunof07/phaser-breakout/commit/12357c1))
+* **physics:** collide ball with paddle ([096e80e](https://github.com/nunof07/phaser-breakout/commit/096e80e))
+* **physics:** launch ball ([c270213](https://github.com/nunof07/phaser-breakout/commit/c270213))
+* **referee:** create referee and reset ball ([be766fb](https://github.com/nunof07/phaser-breakout/commit/be766fb))
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/nunof07/phaser-breakout/compare/v0.1.0...v0.2.0) (2018-03-05)
 
