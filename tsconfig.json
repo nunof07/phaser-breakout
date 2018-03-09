@@ -19,6 +19,7 @@
             "@config/*": ["src/config/*"],
             "@core/*": ["src/core/*"],
             "@display/*": ["src/display/*"],
+            "@physics/*": ["src/physics/*"],
             "@input/*": ["src/input/*"],
             "@systems/*": ["src/systems/*"]
         }

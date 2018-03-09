@@ -1,7 +1,7 @@
 /**
- * Position coordinates.
+ * Coordinates.
  */
-export interface Position {
+export interface Coordinates {
     readonly x: number;
     readonly y: number;
 }

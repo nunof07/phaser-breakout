@@ -1,4 +1,4 @@
-import { Position } from '@display/Position';
+import { Coordinates } from '@display/Coordinates';
 import { Size } from '@display/Size';
 import Phaser from 'phaser';
 
@@ -11,7 +11,7 @@ import Phaser from 'phaser';
  */
 export function createSprite(
     factory: Phaser.Physics.Arcade.Factory,
-    position: Position,
+    position: Coordinates,
     size: Size,
     texture: string,
 ): Phaser.Physics.Arcade.Sprite {

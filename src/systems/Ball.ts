@@ -1,11 +1,11 @@
-import { System } from '@core/System';
-import { Position } from '@display/Position';
+import { Coordinates } from '@display/Coordinates';
+import { GraphicSprite } from '@display/GraphicSprite';
 
 /**
  * Controls the ball.
  */
-export interface Ball extends System {
-    launch(velocity: Position): this;
-    reset(position: Position): this;
+export interface Ball extends GraphicSprite {
+    launch(velocity: Coordinates): this;
+    reset(position: Coordinates): this;
     isInPlay(): boolean;
 }
