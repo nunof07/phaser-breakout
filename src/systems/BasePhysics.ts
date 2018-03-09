@@ -20,7 +20,7 @@ export class BasePhysics implements Physics {
     }
 
     public setup(scene: Phaser.Scene): this {
-        setBoundsCollision(scene.physics.world, true, true, true, false);
+        setBoundsCollision(scene.physics.world, { left: true, right: true, top: true, bottom: false });
         addCollider(
             scene.physics.add,
             this.ball.sprite(),
