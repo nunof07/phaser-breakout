@@ -6,9 +6,10 @@ cache:
 node_js:
  - "node"
 before_install:
-  # package-lock.json was introduced in npm@5
-  - '[[ $(node -v) =~ ^v9.*$ ]] || npm install -g npm@latest' # skipped when using node 9
+  - npm install -g npm@latest
   - npm install -g greenkeeper-lockfile@1
+install:
+  - npm ci
 before_script:
   - npm prune
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
@@ -17,7 +18,7 @@ before_script:
   - greenkeeper-lockfile-update
 script:
   - npm run test:coverage
-  - npm run build
+  - npm run ci:build
 after_success:
   - npm run ci:codecov
   # fetch all tags (semantic-release needs this so it can check last release using git)

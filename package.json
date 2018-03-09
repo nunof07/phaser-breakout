@@ -1,6 +1,6 @@
 {
   "name": "phaser-breakout",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Breakout game made with Phaser 3",
   "main": "index.js",
   "scripts": {
@@ -12,9 +12,9 @@
     "test": "mocha-webpack",
     "test:watch": "mocha-webpack --watch",
     "test:coverage": "cross-env NODE_ENV=coverage nyc mocha-webpack \"test/**/*.ts\"",
+    "ci:build": "cross-env NODE_ENV=travis npm run build",
     "ci:codecov": "codecov",
-    "ci:semantic-release": "semantic-release",
-    "ci:bithound": "bithound check git@github.com:nunof07/phaser-breakout.git"
+    "ci:semantic-release": "semantic-release"
   },
   "scripts-info": {
     "info": "Display help information about available scripts",
@@ -25,9 +25,9 @@
     "test": "Run the tests",
     "test:watch": "Run the tests and watch for changes",
     "test:coverage": "Run the tests and report coverage",
+    "ci:build": "Build all deliverables (Travis)",
     "ci:codecov": "Upload test coverage to Codecov",
-    "ci:semantic-release": "Publish release",
-    "ci:bithound": "Checks bitHound for failing files or dependencies"
+    "ci:semantic-release": "Publish release"
   },
   "repository": {
     "type": "git",
@@ -40,18 +40,16 @@
   },
   "homepage": "https://github.com/nunof07/phaser-breakout#readme",
   "devDependencies": {
-    "@semantic-release/changelog": "^1.0.1",
+    "@semantic-release/changelog": "^2.0.0",
     "@semantic-release/git": "^4.0.0",
     "@types/chai": "^4.1.2",
     "@types/mocha": "^2.2.48",
     "@types/node": "^9.4.6",
-    "@types/ramda": "^0.25.19",
     "awesome-typescript-loader": "^4.0.0",
     "babel-core": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
-    "bithound": "^1.7.0",
     "canvas-prebuilt": "^1.6.5-prerelease.1",
     "chai": "^4.1.2",
     "clean-terminal-webpack-plugin": "^1.0.1",
@@ -89,8 +87,7 @@
   },
   "dependencies": {
     "babel-runtime": "^6.26.0",
-    "phaser": "^3.1.2",
-    "ramda": "^0.25.0"
+    "phaser": "^3.1.2"
   },
   "config": {
     "commitizen": {

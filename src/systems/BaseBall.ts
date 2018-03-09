@@ -1,6 +1,7 @@
 import { BallConfig } from '@config/BallConfig';
+import { Coordinates } from '@display/Coordinates';
 import { GraphicSprite } from '@display/GraphicSprite';
-import { Position } from '@display/Position';
+import { followPointerMovementX } from '@input/followPointerMovementX';
 import { Ball } from '@systems/Ball';
 import Phaser from 'phaser';
 
@@ -21,11 +22,20 @@ export class BaseBall implements Ball {
         this.graphics.setup(scene);
         this.graphics.sprite().setCollideWorldBounds(true);
         this.graphics.sprite().setBounce(this.config.bounce, this.config.bounce);
+        followPointerMovementX(scene.input, this.graphics.sprite(), () => !this.inPlay);
 
         return this;
     }
 
-    public launch(velocity: Position): this {
+    public sprite(): Phaser.Physics.Arcade.Sprite {
+        return this.graphics.sprite();
+    }
+
+    public borderWidth(): number {
+        return this.graphics.borderWidth();
+    }
+
+    public launch(velocity: Coordinates): this {
         if (!this.isInPlay()) {
             this.graphics.sprite().setVelocity(velocity.x, velocity.y);
             this.inPlay = true;
@@ -34,7 +44,7 @@ export class BaseBall implements Ball {
         return this;
     }
 
-    public reset(position: Position): this {
+    public reset(position: Coordinates): this {
         this.graphics.sprite().setVelocity(0, 0);
         this.graphics.sprite().setPosition(position.x, position.y);
         this.inPlay = false;

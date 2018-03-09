@@ -12,7 +12,6 @@ export default {
         main: './src/index.ts',
         vendor: [
             'phaser',
-            'ramda',
         ],
     },
     output: {
@@ -44,7 +43,7 @@ export default {
         new ForkTsCheckerWebpackPlugin({
             tslint: true,
             watch: './src',
-            workers: ForkTsCheckerWebpackPlugin.TWO_CPUS_FREE,
+            workers: process.env.NODE_ENV === 'travis' ? 2 : ForkTsCheckerWebpackPlugin.TWO_CPUS_FREE,
         }),
         new HardSourceWebpackPlugin(),
         new HtmlWebpackPlugin({
