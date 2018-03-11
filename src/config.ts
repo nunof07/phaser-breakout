@@ -23,7 +23,7 @@ const paddle = {
         width: 96,
         height: 16,
     },
-    color: 0xAA0000,
+    color: 0xAAAAAA,
 };
 const ball = {
     position: {
@@ -34,7 +34,7 @@ const ball = {
         width: 16,
         height: 16,
     },
-    color: 0x00AA00,
+    color: 0xAAAA00,
     bounce: 1,
 };
 const physics = {
@@ -44,10 +44,22 @@ const physics = {
     },
     collideVelocity: 8,
 };
+const brick = {
+    position: {
+        x: game.width / 4,
+        y: game.height / 2,
+    },
+    size: {
+        width: 32,
+        height: 32,
+    },
+    color: 0xAA0000,
+};
 export const config = {
     game,
     graphics,
     paddle,
     ball,
     physics,
+    brick,
 };

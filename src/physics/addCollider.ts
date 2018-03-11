@@ -9,16 +9,17 @@ import Phaser from 'phaser';
  */
 export function addCollider(
     factory: Phaser.Physics.Arcade.Factory,
-    sprite1: Phaser.Physics.Arcade.Sprite,
-    sprite2: Phaser.Physics.Arcade.Sprite,
-    hit: (sprite1: Phaser.Physics.Arcade.Sprite, sprite2: Phaser.Physics.Arcade.Sprite) => void,
+    sprite1: Phaser.Physics.Arcade.Sprite | Phaser.Physics.Arcade.Group | Phaser.Physics.Arcade.StaticGroup,
+    sprite2: Phaser.Physics.Arcade.Sprite | Phaser.Physics.Arcade.Group | Phaser.Physics.Arcade.StaticGroup,
+    hit?: (sprite1: Phaser.Physics.Arcade.Sprite, sprite2: Phaser.Physics.Arcade.Sprite) => void,
 ): void {
     factory.collider(
         // tslint:disable-next-line:no-any
         <Phaser.Physics.Arcade.Body><any>sprite1,
         // tslint:disable-next-line:no-any
         <Phaser.Physics.Arcade.Body><any>sprite2,
-        hit,
+        // tslint:disable-next-line:no-empty
+        hit ? hit : ((): void => {}),
         () => true,
         {},
     );

@@ -3,6 +3,7 @@ import { GraphicSprite } from '@display/GraphicSprite';
 import { addCollider } from '@physics/addCollider';
 import { setBoundsCollision } from '@physics/setBoundsCollision';
 import { Ball } from '@systems/Ball';
+import { Bricks } from '@systems/Bricks';
 import { Physics } from '@systems/Physics';
 
 /**
@@ -11,12 +12,14 @@ import { Physics } from '@systems/Physics';
 export class BasePhysics implements Physics {
     private readonly ball: Ball;
     private readonly paddle: GraphicSprite;
+    private readonly bricks: Bricks;
     private readonly config: PhysicsConfig;
 
-    constructor(config: PhysicsConfig, ball: Ball, paddle: GraphicSprite) {
+    constructor(config: PhysicsConfig, ball: Ball, paddle: GraphicSprite, bricks: Bricks) {
         this.config = config;
         this.ball = ball;
         this.paddle = paddle;
+        this.bricks = bricks;
     }
 
     public setup(scene: Phaser.Scene): this {
@@ -27,6 +30,7 @@ export class BasePhysics implements Physics {
             this.paddle.sprite(),
             () => this.collide(this.ball.sprite(), this.paddle.sprite()),
         );
+        addCollider(scene.physics.add, this.ball.sprite(), this.bricks.group());
 
         return this;
     }
