@@ -26,11 +26,11 @@ export class BasePhysics implements Physics {
         setBoundsCollision(scene.physics.world, { left: true, right: true, top: true, bottom: false });
         addCollider(
             scene.physics.add,
-            this.ball.sprite(),
-            this.paddle.sprite(),
+            this.ball,
+            this.paddle,
             () => this.collide(this.ball.sprite(), this.paddle.sprite()),
         );
-        addCollider(scene.physics.add, this.ball.sprite(), this.bricks.group());
+        addCollider(scene.physics.add, this.ball, this.bricks.group());
 
         return this;
     }

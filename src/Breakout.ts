@@ -27,9 +27,9 @@ export class Breakout extends Phaser.Scene {
         this.systems = [
             paddle,
             ball,
+            bricks,
             new BasePhysics(config.physics, ball, paddle, bricks),
             new Referee(config.game, config.physics, ball, paddle),
-            bricks,
         ];
         this.systems.forEach((system: System) => {
             system.setup(this);

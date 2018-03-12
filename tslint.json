@@ -42,6 +42,7 @@
         "no-implicit-dependencies": false, // disable because custom local path mappings are erroneously flagged
         "no-duplicate-imports": false,
         "trailing-comma": [true, {"multiline": "always", "singleline": "never"}],
+        "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"],
         "import-name": [true, { "phaser": "Phaser" }],
 
         // replace deprecated rules with newer versions

@@ -6,6 +6,7 @@ const game = {
     container: 'game',
     width: 800,
     height: 600,
+    debug: false,
 };
 const graphics = {
     width: 2,

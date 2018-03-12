@@ -14,5 +14,8 @@ startGame({
     scene: Breakout,
     physics: {
         default: 'arcade',
+        arcade: {
+            debug: config.game.debug,
+        },
     },
 });

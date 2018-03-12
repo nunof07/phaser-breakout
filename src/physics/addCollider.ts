@@ -1,3 +1,5 @@
+import { GraphicSprite } from '@display/GraphicSprite';
+import { sprites } from '@display/sprites';
 import Phaser from 'phaser';
 
 /**
@@ -9,15 +11,15 @@ import Phaser from 'phaser';
  */
 export function addCollider(
     factory: Phaser.Physics.Arcade.Factory,
-    sprite1: Phaser.Physics.Arcade.Sprite | Phaser.Physics.Arcade.Group | Phaser.Physics.Arcade.StaticGroup,
-    sprite2: Phaser.Physics.Arcade.Sprite | Phaser.Physics.Arcade.Group | Phaser.Physics.Arcade.StaticGroup,
+    sprite1: GraphicSprite | ReadonlyArray<GraphicSprite>,
+    sprite2: GraphicSprite | ReadonlyArray<GraphicSprite>,
     hit?: (sprite1: Phaser.Physics.Arcade.Sprite, sprite2: Phaser.Physics.Arcade.Sprite) => void,
 ): void {
     factory.collider(
         // tslint:disable-next-line:no-any
-        <Phaser.Physics.Arcade.Body><any>sprite1,
+        <Phaser.Physics.Arcade.Body><any>sprites(sprite1),
         // tslint:disable-next-line:no-any
-        <Phaser.Physics.Arcade.Body><any>sprite2,
+        <Phaser.Physics.Arcade.Body><any>sprites(sprite2),
         // tslint:disable-next-line:no-empty
         hit ? hit : ((): void => {}),
         () => true,

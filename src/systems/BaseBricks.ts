@@ -1,4 +1,5 @@
-import { BaseGraphicSprite } from '@display/BaseGraphicSprite';
+import { BaseComposite } from '@core/BaseComposite';
+import { Brick } from '@systems/Brick';
 import { Bricks } from '@systems/Bricks';
 import Phaser from 'phaser';
 
@@ -6,36 +7,24 @@ import Phaser from 'phaser';
  * Bricks.
  */
 export class BaseBricks implements Bricks {
-    private readonly bricks: ReadonlyArray<BaseGraphicSprite>;
-    private groupObj: Phaser.Physics.Arcade.StaticGroup;
+    private readonly bricks: BaseComposite<Brick>;
 
-    constructor(bricks: ReadonlyArray<BaseGraphicSprite>) {
-        this.bricks = bricks;
+    constructor(bricks: ReadonlyArray<Brick>) {
+        this.bricks = new BaseComposite(bricks);
     }
 
-    public group(): Phaser.Physics.Arcade.StaticGroup {
-        return this.groupObj;
+    public group(): ReadonlyArray<Brick> {
+        return this.bricks.systems();
     }
 
     public setup(scene: Phaser.Scene): this {
-        this.bricks.forEach((brick: BaseGraphicSprite) => {
-            brick.setup(scene);
-        });
-        this.groupObj = scene.physics.add.staticGroup();
-        //     this.bricks.map((brick: BaseGraphicSprite) => brick.sprite()),
-        //     { gridAlign: { width: 10, height: 6, cellWidth: 64, cellHeight: 32, x: 112, y: 100 } },
-        // );
-        //this.groupObj.addMultiple(this.bricks.map((brick: BaseGraphicSprite) => brick.sprite()));
-        //Phaser.Actions.PlaceOnRectangle(this.groupObj.getChildren(), new Phaser.Geom.Rectangle(84, 84, 616, 416));
-        //this.groupObj.refresh();
+        this.bricks.setup(scene);
 
         return this;
     }
 
     public update(): this {
-        this.bricks.forEach((brick: BaseGraphicSprite) => {
-            brick.update();
-        });
+        this.bricks.update();
 
         return this;
     }

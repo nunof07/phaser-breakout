@@ -1,9 +1,9 @@
 import { System } from '@core/System';
-import Phaser from 'phaser';
+import { Brick } from '@systems/Brick';
 
 /**
  * Bricks;
  */
 export interface Bricks extends System {
-    group(): Phaser.Physics.Arcade.StaticGroup;
+    group(): ReadonlyArray<Brick>;
 }
