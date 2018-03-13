@@ -23,7 +23,7 @@ export class Breakout extends Phaser.Scene {
     public create(): void {
         const ball: Ball = createBall(config.ball, config.graphics);
         const paddle: GraphicSprite = createPaddle(config.paddle, config.graphics);
-        const bricks: Bricks = createBricks(config.brick, config.graphics);
+        const bricks: Bricks = createBricks(config.bricks, config.brick, config.graphics);
         this.systems = [
             paddle,
             ball,

@@ -56,6 +56,12 @@ const brick = {
     },
     color: 0xAA0000,
 };
+const bricks = {
+    startX: brick.size.width * 3,
+    startY: brick.size.height * 3,
+    columns: (game.width - brick.size.width * 3 * 2) / brick.size.width,
+    rows: (game.height * 0.5 - brick.size.height * 2) / brick.size.height,
+};
 export const config = {
     game,
     graphics,
@@ -63,4 +69,5 @@ export const config = {
     ball,
     physics,
     brick,
+    bricks,
 };
