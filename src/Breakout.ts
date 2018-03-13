@@ -1,13 +1,13 @@
-import { System } from '@core/System';
 import { GraphicSprite } from '@display/GraphicSprite';
 import { config } from '@src/config';
-import { Ball } from '@systems/Ball';
-import { BasePhysics } from '@systems/BasePhysics';
-import { Bricks } from '@systems/Bricks';
-import { createBall } from '@systems/createBall';
-import { createBricks } from '@systems/createBricks';
-import { createPaddle } from '@systems/createPaddle';
-import { Referee } from '@systems/Referee';
+import { Ball } from '@systems/ball/Ball';
+import { createBall } from '@systems/ball/createBall';
+import { Bricks } from '@systems/bricks/Bricks';
+import { createBricks } from '@systems/bricks/createBricks';
+import { createPaddle } from '@systems/paddle/createPaddle';
+import { BasePhysics } from '@systems/physics/BasePhysics';
+import { Referee } from '@systems/referee/Referee';
+import { System } from '@systems/System';
 import Phaser from 'phaser';
 
 /**

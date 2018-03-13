@@ -1,4 +1,4 @@
-import { System } from '@core/System';
+import { System } from '@systems/System';
 
 /**
  * Multiple systems.

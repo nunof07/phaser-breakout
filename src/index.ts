@@ -1,4 +1,4 @@
-import { startGame } from '@core/startGame';
+import { startGame } from '@game/startGame';
 import { Breakout } from '@src/Breakout';
 import { config } from '@src/config';
 

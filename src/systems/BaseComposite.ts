@@ -1,5 +1,5 @@
-import { Composite } from '@core/Composite';
-import { System } from '@core/System';
+import { Composite } from '@systems/Composite';
+import { System } from '@systems/System';
 
 /**
  * Composite system.

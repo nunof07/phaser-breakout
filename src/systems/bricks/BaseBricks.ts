@@ -1,6 +1,6 @@
-import { BaseComposite } from '@core/BaseComposite';
-import { Brick } from '@systems/Brick';
-import { Bricks } from '@systems/Bricks';
+import { BaseComposite } from '@systems/BaseComposite';
+import { Brick } from '@systems/bricks/Brick';
+import { Bricks } from '@systems/bricks/Bricks';
 import Phaser from 'phaser';
 
 /**

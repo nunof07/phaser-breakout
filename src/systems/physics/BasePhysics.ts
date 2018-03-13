@@ -2,9 +2,9 @@ import { PhysicsConfig } from '@config/PhysicsConfig';
 import { GraphicSprite } from '@display/GraphicSprite';
 import { addCollider } from '@physics/addCollider';
 import { setBoundsCollision } from '@physics/setBoundsCollision';
-import { Ball } from '@systems/Ball';
-import { Bricks } from '@systems/Bricks';
-import { Physics } from '@systems/Physics';
+import { Ball } from '@systems/ball/Ball';
+import { Bricks } from '@systems/bricks/Bricks';
+import { Physics } from '@systems/physics/Physics';
 
 /**
  * Physics.

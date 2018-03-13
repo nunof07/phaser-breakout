@@ -2,7 +2,7 @@ import { BallConfig } from '@config/BallConfig';
 import { Coordinates } from '@display/Coordinates';
 import { GraphicSprite } from '@display/GraphicSprite';
 import { followPointerMovementX } from '@input/followPointerMovementX';
-import { Ball } from '@systems/Ball';
+import { Ball } from '@systems/ball/Ball';
 import Phaser from 'phaser';
 
 /**

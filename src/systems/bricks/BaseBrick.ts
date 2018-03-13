@@ -1,5 +1,5 @@
 import { GraphicSprite } from '@display/GraphicSprite';
-import { Brick } from '@systems/Brick';
+import { Brick } from '@systems/bricks/Brick';
 
 /**
  * Brick.

@@ -1,9 +1,9 @@
 import { GameConfig } from '@config/GameConfig';
 import { PhysicsConfig } from '@config/PhysicsConfig';
-import { System } from '@core/System';
 import { GraphicSprite } from '@display/GraphicSprite';
-import { Ball } from '@systems/Ball';
-import { ballOnSpritePosition } from '@systems/ballOnSpritePosition';
+import { Ball } from '@systems/ball/Ball';
+import { ballOnSpritePosition } from '@systems/ball/ballOnSpritePosition';
+import { System } from '@systems/System';
 
 /**
  * Referee.

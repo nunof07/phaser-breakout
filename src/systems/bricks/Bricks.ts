@@ -1,5 +1,5 @@
-import { System } from '@core/System';
-import { Brick } from '@systems/Brick';
+import { Brick } from '@systems/bricks/Brick';
+import { System } from '@systems/System';
 
 /**
  * Bricks;

@@ -1,9 +1,9 @@
 import { GraphicsConfig } from '@config/GraphicsConfig';
 import { SpriteConfig } from '@config/SpriteConfig';
 import { BaseGraphicSprite } from '@display/BaseGraphicSprite';
-import { BaseBrick } from '@systems/BaseBrick';
-import { BaseBricks } from '@systems/BaseBricks';
-import { Bricks } from '@systems/Bricks';
+import { BaseBrick } from '@systems/bricks/BaseBrick';
+import { BaseBricks } from '@systems/bricks/BaseBricks';
+import { Bricks } from '@systems/bricks/Bricks';
 
 /**
  * Create the bricks.
