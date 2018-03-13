@@ -48,4 +48,13 @@ export class BaseGraphicSprite implements GraphicSprite {
     public borderWidth(): number {
         return this.graphics.width;
     }
+
+    public destroy(): this {
+        this.graphicsObj.clear();
+        this.graphicsObj.destroy();
+        this.spriteObj.disableBody(true, true);
+        this.spriteObj.destroy();
+
+        return this;
+    }
 }

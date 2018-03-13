@@ -5,4 +5,5 @@ import { GraphicSprite } from '@display/GraphicSprite';
  */
 export interface Brick extends GraphicSprite {
     hitpoints(): number;
+    hit(): this;
 }

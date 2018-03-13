@@ -61,4 +61,10 @@ export class BaseBall implements Ball {
     public isInPlay(): boolean {
         return this.inPlay;
     }
+
+    public destroy(): this {
+        this.graphics.destroy();
+
+        return this;
+    }
 }

@@ -3,6 +3,7 @@ import { GraphicSprite } from '@display/GraphicSprite';
 import { addCollider } from '@physics/addCollider';
 import { setBoundsCollision } from '@physics/setBoundsCollision';
 import { Ball } from '@systems/ball/Ball';
+import { Brick } from '@systems/bricks/Brick';
 import { Bricks } from '@systems/bricks/Bricks';
 import { Physics } from '@systems/physics/Physics';
 
@@ -30,13 +31,24 @@ export class BasePhysics implements Physics {
             this.paddle,
             () => this.collide(this.ball.sprite(), this.paddle.sprite()),
         );
-        addCollider(scene.physics.add, this.ball, this.bricks.group());
+        this.bricks.group().forEach(
+            (brick: Brick) => {
+                addCollider(scene.physics.add, this.ball, brick, () => this.hit(this.ball, brick));
+            },
+            this,
+        );
 
         return this;
     }
 
     public collide(ball: Phaser.Physics.Arcade.Sprite, paddle: Phaser.Physics.Arcade.Sprite): this {
         ball.setVelocityX((ball.x - paddle.x) * this.config.collideVelocity);
+
+        return this;
+    }
+
+    public hit(_ball: Ball, brick: Brick): this {
+        brick.hit();
 
         return this;
     }
