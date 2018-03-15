@@ -20,7 +20,7 @@
                 // unchanged
                 "private-method-regex": "^[a-z][\\w\\d]+$",
                 "protected-method-regex": "^[a-z][\\w\\d]+$",
-                "static-method-regex": "^[A-Z_\\d]+$",
+                "static-method-regex": "^[A-Z][a-zA-Z_\\d]+$",
                 "function-regex": "^[a-z][\\w\\d]+$"
             }
         ],
