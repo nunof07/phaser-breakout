@@ -1,3 +1,20 @@
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/nunof07/phaser-breakout/compare/v0.3.0...v0.4.0) (2018-03-19)
+
+
+### Bug Fixes
+
+* **bricks:** fix bricks grid start position ([1422eab](https://github.com/nunof07/phaser-breakout/commit/1422eab))
+* **bricks:** fix build and add ramda ([cfedd21](https://github.com/nunof07/phaser-breakout/commit/cfedd21))
+
+
+### Features
+
+* **bricks:** add multiple bricks and collide with ball ([9b2b5a3](https://github.com/nunof07/phaser-breakout/commit/9b2b5a3))
+* **bricks:** create ([546390b](https://github.com/nunof07/phaser-breakout/commit/546390b))
+* **bricks:** destroy bricks ([f674fec](https://github.com/nunof07/phaser-breakout/commit/f674fec))
+* **bricks:** display grid of bricks ([84d853c](https://github.com/nunof07/phaser-breakout/commit/84d853c))
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/nunof07/phaser-breakout/compare/v0.2.0...v0.3.0) (2018-03-09)
 
