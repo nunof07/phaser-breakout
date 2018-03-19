@@ -13,5 +13,5 @@ export const createBrickN = curry((bricks: BricksConfig, sprite: SpriteConfig, g
     const row: number = Math.floor(n / bricks.columns);
     const column: number = n % bricks.columns;
 
-    return createBrick(bricks, sprite, graphics, row, column);
+    return createBrick({ bricks, sprite, graphics, row, column });
 });

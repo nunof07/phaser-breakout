@@ -1,9 +1,7 @@
-import { GraphicSprite } from '@display/GraphicSprite';
 import { config } from '@src/config';
-import { Ball } from '@systems/ball/Ball';
 import { createBall } from '@systems/ball/createBall';
-import { Bricks } from '@systems/bricks/Bricks';
 import { createBricks } from '@systems/bricks/createBricks';
+import { GameEntities } from '@systems/GameEntities';
 import { createPaddle } from '@systems/paddle/createPaddle';
 import { BasePhysics } from '@systems/physics/BasePhysics';
 import { Referee } from '@systems/referee/Referee';
@@ -21,15 +19,17 @@ export class Breakout extends Phaser.Scene {
     }
 
     public create(): void {
-        const ball: Ball = createBall(config.ball, config.graphics);
-        const paddle: GraphicSprite = createPaddle(config.paddle, config.graphics);
-        const bricks: Bricks = createBricks(config.bricks, config.brick, config.graphics);
+        const entities: GameEntities = {
+            ball: createBall(config.ball, config.graphics),
+            paddle: createPaddle(config.paddle, config.graphics),
+            bricks: createBricks(config.bricks, config.brick, config.graphics),
+        };
         this.systems = [
-            paddle,
-            ball,
-            bricks,
-            new BasePhysics(config.physics, ball, paddle, bricks),
-            new Referee(config.game, config.physics, ball, paddle),
+            entities.paddle,
+            entities.ball,
+            entities.bricks,
+            new BasePhysics(config.physics, entities),
+            new Referee(config.game, config.physics, entities),
         ];
         this.systems.forEach((system: System) => {
             system.setup(this);

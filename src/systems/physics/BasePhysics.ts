@@ -1,39 +1,34 @@
 import { PhysicsConfig } from '@config/PhysicsConfig';
-import { GraphicSprite } from '@display/GraphicSprite';
 import { addCollider } from '@physics/addCollider';
 import { setBoundsCollision } from '@physics/setBoundsCollision';
 import { Ball } from '@systems/ball/Ball';
 import { Brick } from '@systems/bricks/Brick';
-import { Bricks } from '@systems/bricks/Bricks';
+import { GameEntities } from '@systems/GameEntities';
 import { Physics } from '@systems/physics/Physics';
 
 /**
  * Physics.
  */
 export class BasePhysics implements Physics {
-    private readonly ball: Ball;
-    private readonly paddle: GraphicSprite;
-    private readonly bricks: Bricks;
+    private readonly entities: GameEntities;
     private readonly config: PhysicsConfig;
 
-    constructor(config: PhysicsConfig, ball: Ball, paddle: GraphicSprite, bricks: Bricks) {
+    constructor(config: PhysicsConfig, entities: GameEntities) {
         this.config = config;
-        this.ball = ball;
-        this.paddle = paddle;
-        this.bricks = bricks;
+        this.entities = entities;
     }
 
     public setup(scene: Phaser.Scene): this {
         setBoundsCollision(scene.physics.world, { left: true, right: true, top: true, bottom: false });
         addCollider(
             scene.physics.add,
-            this.ball,
-            this.paddle,
-            () => this.collide(this.ball.sprite(), this.paddle.sprite()),
+            this.entities.ball,
+            this.entities.paddle,
+            () => this.collide(this.entities.ball.sprite(), this.entities.paddle.sprite()),
         );
-        this.bricks.group().forEach(
+        this.entities.bricks.group().forEach(
             (brick: Brick) => {
-                addCollider(scene.physics.add, this.ball, brick, () => this.hit(this.ball, brick));
+                addCollider(scene.physics.add, this.entities.ball, brick, () => this.hit(this.entities.ball, brick));
             },
             this,
         );
