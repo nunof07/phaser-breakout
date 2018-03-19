@@ -1,8 +1,8 @@
 import { BallConfig } from '@config/BallConfig';
 import { GraphicsConfig } from '@config/GraphicsConfig';
 import { BaseGraphicSprite } from '@display/BaseGraphicSprite';
-import { Ball } from '@systems/Ball';
-import { BaseBall } from '@systems/BaseBall';
+import { Ball } from '@systems/ball/Ball';
+import { BaseBall } from '@systems/ball/BaseBall';
 
 /**
  * Create a ball.

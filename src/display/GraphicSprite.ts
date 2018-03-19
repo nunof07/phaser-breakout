@@ -1,4 +1,4 @@
-import { System } from '@core/System';
+import { System } from '@systems/System';
 import Phaser from 'phaser';
 
 /**
@@ -7,4 +7,5 @@ import Phaser from 'phaser';
 export interface GraphicSprite extends System {
     sprite(): Phaser.Physics.Arcade.Sprite;
     borderWidth(): number;
+    destroy(): this;
 }

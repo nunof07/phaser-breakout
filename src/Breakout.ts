@@ -1,40 +1,41 @@
-import { System } from '@core/System';
-import { GraphicSprite } from '@display/GraphicSprite';
 import { config } from '@src/config';
-import { Ball } from '@systems/Ball';
-import { BasePhysics } from '@systems/BasePhysics';
-import { createBall } from '@systems/createBall';
-import { createPaddle } from '@systems/createPaddle';
-import { Referee } from '@systems/Referee';
+import { createBall } from '@systems/ball/createBall';
+import { BaseComposite } from '@systems/BaseComposite';
+import { createBricks } from '@systems/bricks/createBricks';
+import { GameEntities } from '@systems/GameEntities';
+import { createPaddle } from '@systems/paddle/createPaddle';
+import { BasePhysics } from '@systems/physics/BasePhysics';
+import { Referee } from '@systems/referee/Referee';
+import { System } from '@systems/System';
 import Phaser from 'phaser';
 
 /**
  * Breakout game.
  */
 export class Breakout extends Phaser.Scene {
-    private systems: ReadonlyArray<System>;
+    private systems: BaseComposite<System>;
 
     public preload(): void {
         this.load.image(config.graphics.texture.key, config.graphics.texture.url);
     }
 
     public create(): void {
-        const ball: Ball = createBall(config.ball, config.graphics);
-        const paddle: GraphicSprite = createPaddle(config.paddle, config.graphics);
-        this.systems = [
-            paddle,
-            ball,
-            new BasePhysics(config.physics, ball, paddle),
-            new Referee(config.game, config.physics, ball, paddle),
-        ];
-        this.systems.forEach((system: System) => {
-            system.setup(this);
-        });
+        const entities: GameEntities = {
+            ball: createBall(config.ball, config.graphics),
+            paddle: createPaddle(config.paddle, config.graphics),
+            bricks: createBricks(config.bricks, config.brick, config.graphics),
+        };
+        this.systems = new BaseComposite([
+            entities.paddle,
+            entities.ball,
+            entities.bricks,
+            new BasePhysics(config.physics, entities),
+            new Referee(config.game, config.physics, entities),
+        ]);
+        this.systems.setup(this);
     }
 
     public update(): void {
-        this.systems.forEach((system: System) => {
-            system.update();
-        });
+        this.systems.update();
     }
 }

@@ -2,7 +2,7 @@ import { GraphicsConfig } from '@config/GraphicsConfig';
 import { SpriteConfig } from '@config/SpriteConfig';
 import { BaseGraphicSprite } from '@display/BaseGraphicSprite';
 import { GraphicSprite } from '@display/GraphicSprite';
-import { Paddle } from '@systems/Paddle';
+import { Paddle } from '@systems/paddle/Paddle';
 
 /**
  * Create a paddle.

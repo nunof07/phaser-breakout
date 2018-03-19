@@ -32,4 +32,10 @@ export class Paddle implements GraphicSprite {
 
         return this;
     }
+
+    public destroy(): this {
+        this.graphics.destroy();
+
+        return this;
+    }
 }
