@@ -1,6 +1,4 @@
-import { BricksConfig } from '@config/BricksConfig';
-import { GraphicsConfig } from '@config/GraphicsConfig';
-import { SpriteConfig } from '@config/SpriteConfig';
+import { BrickConfig } from '@config/BrickConfig';
 import { BaseGraphicSprite } from '@display/BaseGraphicSprite';
 import { BaseBrick } from '@systems/bricks/BaseBrick';
 import { Brick } from '@systems/bricks/Brick';
@@ -13,18 +11,18 @@ import { Brick } from '@systems/bricks/Brick';
  * @param row Row index in grid.
  * @param column Column index in grid.
  */
-export function createBrick(bricks: BricksConfig, sprite: SpriteConfig, graphics: GraphicsConfig, row: number, column: number): Brick {
+export function createBrick(brick: BrickConfig): Brick {
     return new BaseBrick(
         new BaseGraphicSprite(
             {
                 position: {
-                    x: bricks.startX + column * sprite.size.width,
-                    y: bricks.startY + row * sprite.size.height,
+                    x: brick.bricks.startX + brick.column * brick.sprite.size.width,
+                    y: brick.bricks.startY + brick.row * brick.sprite.size.height,
                 },
-                color: sprite.color,
-                size: sprite.size,
+                color: brick.sprite.color,
+                size: brick.sprite.size,
             },
-            graphics,
+            brick.graphics,
         ),
     );
 }
