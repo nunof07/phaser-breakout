@@ -22,7 +22,7 @@ export class BaseBall implements Ball {
         this.graphics.setup(scene);
         this.graphics.sprite().setCollideWorldBounds(true);
         this.graphics.sprite().setBounce(this.config.bounce, this.config.bounce);
-        followPointerMovementX(scene.input, this.graphics.sprite(), () => !this.inPlay);
+        followPointerMovementX(scene.input, this.graphics.sprite(), true, () => !this.inPlay);
 
         return this;
     }
