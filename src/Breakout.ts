@@ -23,7 +23,7 @@ export class Breakout extends Phaser.Scene {
         const entities: GameEntities = {
             ball: createBall(config.ball, config.graphics),
             paddle: createPaddle(config.paddle, config.graphics),
-            bricks: createBricks(config.bricks, config.brick, config.graphics),
+            bricks: createBricks(this, config.bricks, config.brick, config.graphics),
         };
         this.systems = new BaseComposite([
             entities.paddle,

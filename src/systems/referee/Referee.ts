@@ -24,6 +24,13 @@ export class Referee implements System {
                 this.entities.ball.launch(this.physics.launchVelocity);
             }
         });
+        scene.time.addEvent({
+            delay: this.physics.bricksDelay,
+            loop: true,
+            callback: (): void => {
+                this.entities.bricks.lower();
+            },
+        });
 
         return this;
     }

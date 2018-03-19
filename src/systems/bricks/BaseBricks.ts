@@ -8,9 +8,11 @@ import Phaser from 'phaser';
  */
 export class BaseBricks implements Bricks {
     private readonly bricks: BaseComposite<Brick>;
+    private readonly scene: Phaser.Scene;
 
-    constructor(bricks: ReadonlyArray<Brick>) {
+    constructor(bricks: ReadonlyArray<Brick>, scene: Phaser.Scene) {
         this.bricks = new BaseComposite(bricks);
+        this.scene = scene;
     }
 
     public group(): ReadonlyArray<Brick> {
@@ -25,6 +27,22 @@ export class BaseBricks implements Bricks {
 
     public update(): this {
         this.bricks.update();
+
+        return this;
+    }
+
+    public lower(): this {
+        this.bricks.systems().forEach(
+            (brick: Brick): void => {
+                this.scene.tweens.add({
+                    targets: brick.sprite(),
+                    y: brick.sprite().y + brick.sprite().displayHeight,
+                    ease: 'linear',
+                    duration: 250,
+                });
+            },
+            this,
+        );
 
         return this;
     }

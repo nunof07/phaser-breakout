@@ -44,6 +44,7 @@ const physics = {
         y: -512,
     },
     collideVelocity: 8,
+    bricksDelay: 10000,
 };
 const brick = {
     position: {

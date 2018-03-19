@@ -6,4 +6,5 @@ import { System } from '@systems/System';
  */
 export interface Bricks extends System {
     group(): ReadonlyArray<Brick>;
+    lower(): this;
 }
