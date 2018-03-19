@@ -1,5 +1,6 @@
 import { config } from '@src/config';
 import { createBall } from '@systems/ball/createBall';
+import { BaseComposite } from '@systems/BaseComposite';
 import { createBricks } from '@systems/bricks/createBricks';
 import { GameEntities } from '@systems/GameEntities';
 import { createPaddle } from '@systems/paddle/createPaddle';
@@ -12,7 +13,7 @@ import Phaser from 'phaser';
  * Breakout game.
  */
 export class Breakout extends Phaser.Scene {
-    private systems: ReadonlyArray<System>;
+    private systems: BaseComposite<System>;
 
     public preload(): void {
         this.load.image(config.graphics.texture.key, config.graphics.texture.url);
@@ -24,21 +25,17 @@ export class Breakout extends Phaser.Scene {
             paddle: createPaddle(config.paddle, config.graphics),
             bricks: createBricks(config.bricks, config.brick, config.graphics),
         };
-        this.systems = [
+        this.systems = new BaseComposite([
             entities.paddle,
             entities.ball,
             entities.bricks,
             new BasePhysics(config.physics, entities),
             new Referee(config.game, config.physics, entities),
-        ];
-        this.systems.forEach((system: System) => {
-            system.setup(this);
-        });
+        ]);
+        this.systems.setup(this);
     }
 
     public update(): void {
-        this.systems.forEach((system: System) => {
-            system.update();
-        });
+        this.systems.update();
     }
 }
