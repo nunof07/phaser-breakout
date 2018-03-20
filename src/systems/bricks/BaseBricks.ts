@@ -1,20 +1,22 @@
 import { BricksConfig } from '@config/BricksConfig';
-import { BaseComposite } from '@systems/BaseComposite';
 import { Brick } from '@systems/bricks/Brick';
 import { Bricks } from '@systems/bricks/Bricks';
+import { lowerBrick } from '@systems/bricks/lowerBrick';
+import { Composite } from '@systems/Composite';
 import Phaser from 'phaser';
+import { curry } from 'ramda';
 
 /**
  * Bricks.
  */
 export class BaseBricks implements Bricks {
-    private readonly bricks: BaseComposite<Brick>;
+    private readonly bricks: Composite<Brick>;
     private readonly scene: Phaser.Scene;
     private readonly config: BricksConfig;
 
-    constructor(config: BricksConfig, bricks: ReadonlyArray<Brick>, scene: Phaser.Scene) {
+    constructor(config: BricksConfig, bricks: Composite<Brick>, scene: Phaser.Scene) {
         this.config = config;
-        this.bricks = new BaseComposite(bricks);
+        this.bricks = bricks;
         this.scene = scene;
     }
 
@@ -36,15 +38,7 @@ export class BaseBricks implements Bricks {
 
     public lower(): this {
         this.bricks.systems().forEach(
-            (brick: Brick): void => {
-                this.scene.tweens.add({
-                    targets: brick.sprite(),
-                    y: brick.sprite().y + brick.sprite().displayHeight,
-                    ease: this.config.lower.ease,
-                    duration: this.config.lower.duration,
-                });
-            },
-            this,
+            curry(lowerBrick)(this.scene.tweens, this.config.lower),
         );
 
         return this;

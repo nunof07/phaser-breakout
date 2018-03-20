@@ -1,6 +1,7 @@
 import { BricksConfig } from '@config/BricksConfig';
 import { GraphicsConfig } from '@config/GraphicsConfig';
 import { SpriteConfig } from '@config/SpriteConfig';
+import { BaseComposite } from '@systems/BaseComposite';
 import { BaseBricks } from '@systems/bricks/BaseBricks';
 import { Bricks } from '@systems/bricks/Bricks';
 import { createBrickN } from '@systems/bricks/createBrickN';
@@ -19,9 +20,11 @@ export function createBricks(
 ): Bricks {
     return new BaseBricks(
         bricks,
-        times(
-            createBrickN(bricks, sprite, graphics),
-            bricks.rows * bricks.columns,
+        new BaseComposite(
+            times(
+                createBrickN(bricks, sprite, graphics),
+                bricks.rows * bricks.columns,
+            ),
         ),
         scene,
     );
