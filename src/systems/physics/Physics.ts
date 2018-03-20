@@ -8,5 +8,5 @@ import Phaser from 'phaser';
  */
 export interface Physics extends System {
     collide(ball: Phaser.Physics.Arcade.Sprite, paddle: Phaser.Physics.Arcade.Sprite): this;
-    hit(ball: Ball, brick: Brick): this;
+    setupBrick(brick: Brick): this;
 }

@@ -6,5 +6,8 @@ import { Coordinates } from '@display/Coordinates';
 export interface PhysicsConfig {
     readonly launchVelocity: Coordinates;
     readonly collideVelocity: number;
-    readonly bricksDelay: number;
+    readonly bricksWave: {
+        readonly delay: number;
+        readonly count: number;
+    };
 }

@@ -38,14 +38,6 @@ const ball = {
     color: 0xAAAA00,
     bounce: 1,
 };
-const physics = {
-    launchVelocity: {
-        x: 128,
-        y: -512,
-    },
-    collideVelocity: 8,
-    bricksDelay: 10000,
-};
 const brick = {
     position: {
         x: game.width / 4,
@@ -65,6 +57,17 @@ const bricks = {
     lower: {
         ease: 'linear',
         duration: 250,
+    },
+};
+const physics = {
+    launchVelocity: {
+        x: 128,
+        y: -512,
+    },
+    collideVelocity: 8,
+    bricksWave: {
+        delay: 10000,
+        count: bricks.columns,
     },
 };
 export const config = {
