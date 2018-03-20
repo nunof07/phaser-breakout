@@ -62,6 +62,10 @@ const bricks = {
     startY: brick.size.height * 3.5,
     columns: Math.floor((game.width - brick.size.width * 3 * 2) / brick.size.width),
     rows: Math.floor((game.height * 0.5 - brick.size.height * 2) / brick.size.height),
+    lower: {
+        ease: 'linear',
+        duration: 250,
+    },
 };
 export const config = {
     game,

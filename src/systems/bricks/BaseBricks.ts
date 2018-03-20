@@ -1,3 +1,4 @@
+import { BricksConfig } from '@config/BricksConfig';
 import { BaseComposite } from '@systems/BaseComposite';
 import { Brick } from '@systems/bricks/Brick';
 import { Bricks } from '@systems/bricks/Bricks';
@@ -9,8 +10,10 @@ import Phaser from 'phaser';
 export class BaseBricks implements Bricks {
     private readonly bricks: BaseComposite<Brick>;
     private readonly scene: Phaser.Scene;
+    private readonly config: BricksConfig;
 
-    constructor(bricks: ReadonlyArray<Brick>, scene: Phaser.Scene) {
+    constructor(config: BricksConfig, bricks: ReadonlyArray<Brick>, scene: Phaser.Scene) {
+        this.config = config;
         this.bricks = new BaseComposite(bricks);
         this.scene = scene;
     }
@@ -37,8 +40,8 @@ export class BaseBricks implements Bricks {
                 this.scene.tweens.add({
                     targets: brick.sprite(),
                     y: brick.sprite().y + brick.sprite().displayHeight,
-                    ease: 'linear',
-                    duration: 250,
+                    ease: this.config.lower.ease,
+                    duration: this.config.lower.duration,
                 });
             },
             this,

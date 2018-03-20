@@ -6,4 +6,8 @@ export interface BricksConfig {
     readonly startY: number;
     readonly columns: number;
     readonly rows: number;
+    readonly lower: {
+        readonly ease: string;
+        readonly duration: number;
+    };
 }

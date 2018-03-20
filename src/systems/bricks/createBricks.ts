@@ -18,6 +18,7 @@ export function createBricks(
     graphics: GraphicsConfig,
 ): Bricks {
     return new BaseBricks(
+        bricks,
         times(
             createBrickN(bricks, sprite, graphics),
             bricks.rows * bricks.columns,
