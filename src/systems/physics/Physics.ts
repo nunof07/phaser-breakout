@@ -1,4 +1,3 @@
-import { Ball } from '@systems/ball/Ball';
 import { Brick } from '@systems/bricks/Brick';
 import { System } from '@systems/System';
 import Phaser from 'phaser';

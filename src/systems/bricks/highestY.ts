@@ -6,7 +6,7 @@ import { Brick } from '@systems/bricks/Brick';
  * @param defaultValue Default value if no bricks.
  */
 export function highestY(bricks: ReadonlyArray<Brick>, defaultValue: number): number {
-    return !bricks.length
+    return bricks.length === 0
         ? defaultValue
         : bricks.reduce((prev: Brick, curr: Brick) => prev.sprite().y < curr.sprite().y ? prev : curr)
             .sprite().y;
