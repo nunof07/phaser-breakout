@@ -13,6 +13,7 @@ export default {
         vendor: [
             'phaser',
             'ramda',
+            'random-js',
         ],
     },
     output: {

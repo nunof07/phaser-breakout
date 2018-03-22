@@ -8,6 +8,5 @@ export interface PhysicsConfig {
     readonly collideVelocity: number;
     readonly bricksWave: {
         readonly delay: number;
-        readonly count: number;
     };
 }

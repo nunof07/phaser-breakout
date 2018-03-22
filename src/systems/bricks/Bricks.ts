@@ -8,6 +8,6 @@ import { System } from '@systems/System';
 export interface Bricks extends System {
     group(): ReadonlyArray<Brick>;
     lower(scene: Phaser.Scene): this;
-    add(count: number, physics: Physics): this;
+    addRow(physics: Physics): this;
     hit(brick: Brick): this;
 }

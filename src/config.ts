@@ -67,7 +67,6 @@ const physics = {
     collideVelocity: 8,
     bricksWave: {
         delay: 10000,
-        count: bricks.columns,
     },
 };
 export const config = {
