@@ -1,3 +1,4 @@
+import { BricksWaveConfig } from '@config/BricksWaveConfig';
 import { Coordinates } from '@display/Coordinates';
 
 /**
@@ -6,7 +7,5 @@ import { Coordinates } from '@display/Coordinates';
 export interface PhysicsConfig {
     readonly launchVelocity: Coordinates;
     readonly collideVelocity: number;
-    readonly bricksWave: {
-        readonly delay: number;
-    };
+    readonly bricksWave: BricksWaveConfig;
 }

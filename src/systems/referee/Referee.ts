@@ -32,7 +32,7 @@ export class Referee implements System {
             loop: true,
             callback: (): void => {
                 this.entities.bricks
-                    .addRow(this.physics)
+                    .addRow(this.physics, this.physicsConfig.bricksWave)
                     .lower(scene);
             },
         });

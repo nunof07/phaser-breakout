@@ -1,4 +1,5 @@
 import { BrickConfig } from '@config/BrickConfig';
+import { BricksWaveConfig } from '@config/BricksWaveConfig';
 import { Brick } from '@systems/bricks/Brick';
 import { Bricks } from '@systems/bricks/Bricks';
 import { lowerBrick } from '@systems/bricks/lowerBrick';
@@ -14,10 +15,12 @@ import { curry } from 'ramda';
 export class BaseBricks implements Bricks {
     private readonly bricks: MutableComposite<Brick>;
     private readonly config: BrickConfig;
+    private iteration: number;
 
     constructor(config: BrickConfig, bricks: MutableComposite<Brick>) {
         this.config = config;
         this.bricks = bricks;
+        this.iteration = 1;
     }
 
     public group(): ReadonlyArray<Brick> {
@@ -53,8 +56,9 @@ export class BaseBricks implements Bricks {
         return this;
     }
 
-    public addRow(physics: Physics): this {
-        const newBricks: ReadonlyArray<Brick> = nextWaveBricks(this.config, this.bricks.systems());
+    public addRow(physics: Physics, wave: BricksWaveConfig): this {
+        this.iteration = this.iteration + 1;
+        const newBricks: ReadonlyArray<Brick> = nextWaveBricks(wave, this.iteration, this.config, this.bricks.systems());
         newBricks.forEach(
             (brick: Brick) => {
                 this.bricks.add(brick);

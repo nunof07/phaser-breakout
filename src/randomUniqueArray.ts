@@ -14,4 +14,5 @@ export function randomUniqueArray(
     max: number,
     engine: Random.Engine = Random.engines.mt19937().autoSeed(),
 ): ReadonlyArray<number> {
-    return Random.sample(engine, range(min, max), length);
+    return Random.sample(engine, range(min, max), Math.min(max, length));
+}
