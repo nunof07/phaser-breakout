@@ -50,10 +50,9 @@ const brick = {
     color: 0xAA0000,
 };
 const bricks = {
-    startX: brick.size.width * 3.5,
-    startY: brick.size.height * 3.5,
-    columns: Math.floor((game.width - brick.size.width * 3 * 2) / brick.size.width),
-    rows: Math.floor((game.height * 0.5 - brick.size.height * 2) / brick.size.height),
+    startX: brick.size.width * 0.5,
+    startY: brick.size.height * 1.5,
+    columns: Math.floor(game.width / brick.size.width),
     lower: {
         ease: 'linear',
         duration: 250,
