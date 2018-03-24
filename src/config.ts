@@ -44,7 +44,7 @@ const brick = {
         y: game.height / 2,
     },
     size: {
-        width: 32,
+        width: 50,
         height: 32,
     },
     color: 0xAA0000,
