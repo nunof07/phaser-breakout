@@ -68,6 +68,7 @@ const physics = {
         delay: 10000,
         maxDifficultyIteration: 100,
         maxMinColumnsFactor: 0.7,
+        hitpointsRangeFactor: 0.5,
     },
 };
 export const config = {

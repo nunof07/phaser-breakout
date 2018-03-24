@@ -3,14 +3,18 @@ import { BricksConfig } from '@config/BricksConfig';
 import { BricksWaveConfig } from '@config/BricksWaveConfig';
 import { randomUniqueArray } from '@src/randomUniqueArray';
 import { Brick } from '@systems/bricks/Brick';
-import { createBrickN } from '@systems/bricks/createBrickN';
+import { brickConfig } from '@systems/bricks/brickConfig';
+import { createBrick } from '@systems/bricks/createBrick';
 import { nextWaveConfig } from '@systems/bricks/nextWaveConfig';
 import { nextWaveCount } from '@systems/bricks/nextWaveCount';
+import { nextWaveHitpoints } from '@systems/bricks/nextWaveHitpoints';
 import { times } from 'ramda';
 import * as Random from 'random-js';
 
 /**
  * Create bricks for next wave.
+ * @param wave Wave config.
+ * @param iteration Iteration.
  * @param config Current config.
  * @param bricks Current bricks.
  */
@@ -26,7 +30,10 @@ export function nextWaveBricks(
     const randomColumns: ReadonlyArray<number> = randomUniqueArray(nextCount, 0, config.bricks.columns, engine);
 
     return times(
-        (n: number): Brick => createBrickN(nextConfig, config.sprite, config.graphics, randomColumns[n]),
+        (n: number): Brick => createBrick(
+            brickConfig(nextConfig, config.sprite, config.graphics, randomColumns[n]),
+            nextWaveHitpoints(wave, iteration, engine),
+        ),
         randomColumns.length,
     );
 }

@@ -5,13 +5,10 @@ import { Brick } from '@systems/bricks/Brick';
 
 /**
  * Create a brick.
- * @param bricks Bricks config.
- * @param sprite Sprite config.
- * @param graphics Graphics config.
- * @param row Row index in grid.
- * @param column Column index in grid.
+ * @param brick Brick config.
+ * @param hitpoints Brick hitpoints.
  */
-export function createBrick(brick: BrickConfig): Brick {
+export function createBrick(brick: BrickConfig, hitpoints?: number): Brick {
     return new BaseBrick(
         new BaseGraphicSprite(
             {
@@ -24,5 +21,6 @@ export function createBrick(brick: BrickConfig): Brick {
             },
             brick.graphics,
         ),
+        hitpoints,
     );
 }
