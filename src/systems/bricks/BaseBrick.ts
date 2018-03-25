@@ -1,14 +1,15 @@
-import { GraphicSprite } from '@display/GraphicSprite';
+import { gameObject } from '@display/gameObject';
+import { TextGraphicSprite } from '@display/TextGraphicSprite';
 import { Brick } from '@systems/bricks/Brick';
 
 /**
  * Brick.
  */
 export class BaseBrick implements Brick {
-    private readonly graphics: GraphicSprite;
+    private readonly graphics: TextGraphicSprite;
     private hp: number;
 
-    constructor(graphics: GraphicSprite, hitpoints: number = 1) {
+    constructor(graphics: TextGraphicSprite, hitpoints: number = 1) {
         this.graphics = graphics;
         this.hp = hitpoints;
     }
@@ -20,6 +21,7 @@ export class BaseBrick implements Brick {
     public hit(): this {
         if (this.hp > 0) {
             this.hp -= 1;
+            this.graphics.updateText(this.hp.toString());
 
             if (this.hp <= 0) {
                 this.destroy();
@@ -27,6 +29,10 @@ export class BaseBrick implements Brick {
         }
 
         return this;
+    }
+
+    public objects(): ReadonlyArray<Phaser.GameObjects.GameObject> {
+        return [gameObject(this.sprite()), this.graphics.text()];
     }
 
     public sprite(): Phaser.Physics.Arcade.Sprite {
@@ -39,6 +45,7 @@ export class BaseBrick implements Brick {
 
     public setup(scene: Phaser.Scene): this {
         this.graphics.setup(scene);
+        this.graphics.updateText(this.hp.toString());
         this.graphics.sprite().setImmovable(true);
 
         return this;

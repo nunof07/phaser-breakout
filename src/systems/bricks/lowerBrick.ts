@@ -12,7 +12,7 @@ export function lowerBrick(
     brick: Brick,
 ): Phaser.Tweens.Tween {
     return tweens.add({
-        targets: brick.sprite(),
+        targets: brick.objects(),
         y: brick.sprite().y + brick.sprite().displayHeight,
         ease: config.ease,
         duration: config.duration,

@@ -1,5 +1,4 @@
 import { BrickConfig } from '@config/BrickConfig';
-import { BricksConfig } from '@config/BricksConfig';
 import { BricksWaveConfig } from '@config/BricksWaveConfig';
 import { randomUniqueArray } from '@src/randomUniqueArray';
 import { Brick } from '@systems/bricks/Brick';
@@ -24,14 +23,19 @@ export function nextWaveBricks(
     config: BrickConfig,
     bricks: ReadonlyArray<Brick>,
 ): ReadonlyArray<Brick> {
-    const nextConfig: BricksConfig = nextWaveConfig(config, bricks);
     const engine: Random.Engine = Random.engines.mt19937().autoSeed();
     const nextCount: number = nextWaveCount(wave, iteration, config, engine);
     const randomColumns: ReadonlyArray<number> = randomUniqueArray(nextCount, 0, config.bricks.columns, engine);
+    const brick: BrickConfig = {
+        bricks: nextWaveConfig(config, bricks),
+        sprite: config.sprite,
+        graphics: config.graphics,
+        text: config.text,
+    };
 
     return times(
         (n: number): Brick => createBrick(
-            brickConfig(nextConfig, config.sprite, config.graphics, randomColumns[n]),
+            brickConfig(brick, randomColumns[n]),
             nextWaveHitpoints(wave, iteration, engine),
         ),
         randomColumns.length,

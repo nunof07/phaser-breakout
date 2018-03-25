@@ -15,6 +15,10 @@ const graphics = {
         url: 'images/transparent_pixel.png',
     },
 };
+const text = {
+    fontFamily: 'Arial',
+    fontSize: 12,
+};
 const paddle = {
     position: {
         x: game.width / 2,
@@ -74,6 +78,7 @@ const physics = {
 export const config = {
     game,
     graphics,
+    text,
     paddle,
     ball,
     physics,

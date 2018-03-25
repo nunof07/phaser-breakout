@@ -1,18 +1,17 @@
 import { BrickConfig } from '@config/BrickConfig';
-import { BricksConfig } from '@config/BricksConfig';
-import { GraphicsConfig } from '@config/GraphicsConfig';
-import { SpriteConfig } from '@config/SpriteConfig';
+import { compose, lensProp, set } from 'ramda';
 
 /**
  * Create brick config
- * @param bricks Bricks config.
- * @param sprite Sprite config.
- * @param graphics Graphics config.
+ * @param brick Brick config.
  * @param n Brick index.
  */
-export function brickConfig(bricks: BricksConfig, sprite: SpriteConfig, graphics: GraphicsConfig, n: number): BrickConfig {
-    const row: number = Math.floor(n / bricks.columns);
-    const column: number = n % bricks.columns;
+export function brickConfig(brick: BrickConfig, n: number): BrickConfig {
+    const row: number = Math.floor(n / brick.bricks.columns);
+    const column: number = n % brick.bricks.columns;
+    const setRow: (brick: BrickConfig) => BrickConfig = set(lensProp('row'), row);
+    const setColumn: (brick: BrickConfig) => BrickConfig = set(lensProp('column'), column);
+    const setRowAndColumn: (brick: BrickConfig) => BrickConfig = compose(setRow, setColumn);
 
-    return { bricks, sprite, graphics, row, column };
+    return setRowAndColumn(brick);
 }

@@ -18,16 +18,22 @@ export class BaseGraphicSprite implements GraphicSprite {
     private graphicsObj: Phaser.GameObjects.Graphics;
     private spriteObj: Phaser.Physics.Arcade.Sprite;
     private previousPosition: Coordinates;
+    private isSetup: boolean;
 
     constructor(sprite: SpriteConfig, graphics: GraphicsConfig) {
         this.config = sprite;
         this.graphics = graphics;
         this.previousPosition = { x: -1, y: -1 };
+        this.isSetup = false;
     }
 
     public setup(scene: Phaser.Scene): this {
+        if (this.isSetup) {
+            return this;
+        }
         this.graphicsObj = createGraphics(scene.add, this.config.color, this.graphics.width);
         this.spriteObj = createSprite(scene.physics.add, this.config.position, this.config.size, this.graphics.texture.key);
+        this.isSetup = true;
 
         return this;
     }

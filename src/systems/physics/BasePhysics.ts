@@ -28,12 +28,7 @@ export class BasePhysics implements Physics {
             this.entities.paddle,
             () => this.collide(this.entities.ball.sprite(), this.entities.paddle.sprite()),
         );
-        this.entities.bricks.group().forEach(
-            (brick: Brick) => {
-                this.setupBrick(brick);
-            },
-            this,
-        );
+        this.entities.bricks.group().forEach((brick: Brick) => this.setupBrick(brick), this);
 
         return this;
     }
