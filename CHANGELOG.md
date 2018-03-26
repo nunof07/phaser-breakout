@@ -1,3 +1,11 @@
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/nunof07/phaser-breakout/compare/v0.4.0...v0.5.0) (2018-03-19)
+
+
+### Features
+
+* **input:** clamp ball on paddle position to game width ([2a5544b](https://github.com/nunof07/phaser-breakout/commit/2a5544b))
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/nunof07/phaser-breakout/compare/v0.3.0...v0.4.0) (2018-03-19)
 
