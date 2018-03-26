@@ -1,3 +1,11 @@
+<a name="0.7.0"></a>
+# [0.7.0](https://github.com/nunof07/phaser-breakout/compare/v0.6.0...v0.7.0) (2018-03-26)
+
+
+### Features
+
+* pause wave timer when ball not in play ([d114175](https://github.com/nunof07/phaser-breakout/commit/d114175))
+
 <a name="0.6.0"></a>
 # [0.6.0](https://github.com/nunof07/phaser-breakout/compare/v0.5.0...v0.6.0) (2018-03-26)
 
