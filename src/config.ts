@@ -15,6 +15,10 @@ const graphics = {
         url: 'images/transparent_pixel.png',
     },
 };
+const text = {
+    fontFamily: 'Arial, Helvetica, sans-serif',
+    fontSize: 12,
+};
 const paddle = {
     position: {
         x: game.width / 2,
@@ -38,33 +42,43 @@ const ball = {
     color: 0xAAAA00,
     bounce: 1,
 };
-const physics = {
-    launchVelocity: {
-        x: 128,
-        y: -512,
-    },
-    collideVelocity: 8,
-};
 const brick = {
     position: {
         x: game.width / 4,
         y: game.height / 2,
     },
     size: {
-        width: 32,
+        width: 50,
         height: 32,
     },
     color: 0xAA0000,
 };
 const bricks = {
-    startX: brick.size.width * 3.5,
-    startY: brick.size.height * 3.5,
-    columns: Math.floor((game.width - brick.size.width * 3 * 2) / brick.size.width),
-    rows: Math.floor((game.height * 0.5 - brick.size.height * 2) / brick.size.height),
+    startX: brick.size.width * 0.5,
+    startY: brick.size.height * 1.5,
+    columns: Math.floor(game.width / brick.size.width),
+    lower: {
+        ease: 'linear',
+        duration: 250,
+    },
+};
+const physics = {
+    launchVelocity: {
+        x: 128,
+        y: -512,
+    },
+    collideVelocity: 8,
+    bricksWave: {
+        delay: 10000,
+        maxDifficultyIteration: 100,
+        maxMinColumnsFactor: 0.7,
+        hitpointsRangeFactor: 0.5,
+    },
 };
 export const config = {
     game,
     graphics,
+    text,
     paddle,
     ball,
     physics,

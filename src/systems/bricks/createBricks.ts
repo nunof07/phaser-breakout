@@ -1,20 +1,15 @@
-import { BricksConfig } from '@config/BricksConfig';
-import { GraphicsConfig } from '@config/GraphicsConfig';
-import { SpriteConfig } from '@config/SpriteConfig';
+import { BrickConfig } from '@config/BrickConfig';
+import { BricksWaveConfig } from '@config/BricksWaveConfig';
+import { BaseMutableComposite } from '@systems/BaseMutableComposite';
 import { BaseBricks } from '@systems/bricks/BaseBricks';
 import { Bricks } from '@systems/bricks/Bricks';
-import { createBrickN } from '@systems/bricks/createBrickN';
-import { times } from 'ramda';
+import { nextWaveBricks } from '@systems/bricks/nextWaveBricks';
 
 /**
  * Create the bricks.
- * @param physics Arcade physics.
+ * @param wave Wave config.
+ * @param brick Brick config.
  */
-export function createBricks(bricks: BricksConfig, sprite: SpriteConfig, graphics: GraphicsConfig): Bricks {
-    return new BaseBricks(
-        times(
-            createBrickN(bricks, sprite, graphics),
-            bricks.rows * bricks.columns,
-        ),
-    );
+export function createBricks(wave: BricksWaveConfig, brick: BrickConfig): Bricks {
+    return new BaseBricks(brick, new BaseMutableComposite(nextWaveBricks(wave, 1, brick, [])));
 }

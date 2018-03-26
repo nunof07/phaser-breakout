@@ -46,12 +46,13 @@
     "@types/mocha": "^2.2.48",
     "@types/node": "^9.4.7",
     "@types/ramda": "^0.25.20",
+    "@types/random-js": "^1.0.30",
     "awesome-typescript-loader": "^4.0.1",
     "babel-core": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
-    "canvas-prebuilt": "^1.6.5-prerelease.1",
+    "canvas-prebuilt": "^2.0.0-alpha.5",
     "chai": "^4.1.2",
     "clean-terminal-webpack-plugin": "^1.0.1",
     "clean-webpack-plugin": "^0.1.19",
@@ -89,7 +90,8 @@
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "phaser": "^3.1.2",
-    "ramda": "^0.25.0"
+    "ramda": "^0.25.0",
+    "random-js": "^1.0.8"
   },
   "config": {
     "commitizen": {
