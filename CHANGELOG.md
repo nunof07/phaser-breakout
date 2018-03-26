@@ -1,3 +1,24 @@
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/nunof07/phaser-breakout/compare/v0.5.0...v0.6.0) (2018-03-26)
+
+
+### Bug Fixes
+
+* **build:** lint issues ([62196f6](https://github.com/nunof07/phaser-breakout/commit/62196f6))
+* **font:** add Helvetica, sans-serif fallback ([fa695a7](https://github.com/nunof07/phaser-breakout/commit/fa695a7))
+
+
+### Features
+
+* **brick:** change brick size ([79b44ab](https://github.com/nunof07/phaser-breakout/commit/79b44ab))
+* **brick:** display hitpoints ([c2918e5](https://github.com/nunof07/phaser-breakout/commit/c2918e5))
+* **bricks:** add new bricks in random positions ([c0a72ec](https://github.com/nunof07/phaser-breakout/commit/c0a72ec))
+* **bricks:** continuously add new waves of bricks ([9254a11](https://github.com/nunof07/phaser-breakout/commit/9254a11))
+* **bricks:** increase hitpoints randomly as time goes on ([d4b3409](https://github.com/nunof07/phaser-breakout/commit/d4b3409))
+* **bricks:** increase probability of larger number of new bricks with time ([6f46eee](https://github.com/nunof07/phaser-breakout/commit/6f46eee))
+* **bricks:** move bricks down in intervals ([67603b9](https://github.com/nunof07/phaser-breakout/commit/67603b9))
+* **bricks:** start with random row of bricks ([065e03a](https://github.com/nunof07/phaser-breakout/commit/065e03a))
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/nunof07/phaser-breakout/compare/v0.4.0...v0.5.0) (2018-03-19)
 
