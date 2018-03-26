@@ -1,3 +1,4 @@
+import { BaseMutableComposite } from '@systems/BaseMutableComposite';
 import { Composite } from '@systems/Composite';
 import { System } from '@systems/System';
 
@@ -5,28 +6,24 @@ import { System } from '@systems/System';
  * Composite system.
  */
 export class ReadonlyComposite<T extends System> implements Composite<T> {
-    private readonly collection: ReadonlyArray<T>;
+    private readonly collection: Composite<T>;
 
     constructor(systems: ReadonlyArray<T>) {
-        this.collection = systems;
+        this.collection = new BaseMutableComposite(systems);
     }
 
     public systems(): ReadonlyArray<T> {
-        return this.collection;
+        return this.collection.systems();
     }
 
     public setup(scene: Phaser.Scene): this {
-        this.collection.forEach((system: System) => {
-            system.setup(scene);
-        });
+        this.collection.setup(scene);
 
         return this;
     }
 
     public update(): this {
-        this.collection.forEach((system: System) => {
-            system.update();
-        });
+        this.collection.update();
 
         return this;
     }
