@@ -9,13 +9,13 @@ before_install:
   - npm install -g npm@latest
   - npm install -g greenkeeper-lockfile@1
 install:
+  - greenkeeper-lockfile-update
   - npm ci
 before_script:
   - npm prune
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build --debug
-  - greenkeeper-lockfile-update
 script:
   - npm run test:coverage
   - npm run ci:build
