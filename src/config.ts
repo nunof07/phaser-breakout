@@ -16,7 +16,7 @@ const graphics = {
     },
 };
 const text = {
-    fontFamily: 'Arial',
+    fontFamily: 'Arial, Helvetica, sans-serif',
     fontSize: 12,
 };
 const paddle = {
