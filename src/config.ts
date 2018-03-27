@@ -62,6 +62,15 @@ const bricks = {
         duration: 250,
     },
 };
+const gameOver = {
+    title: 'GAME OVER',
+    text: {
+        fontFamily: text.fontFamily,
+        fontSize: 36,
+        color: '#ffffff',
+    },
+    countdown: 3,
+};
 const physics = {
     launchVelocity: {
         x: 128,
@@ -74,6 +83,7 @@ const physics = {
         maxMinColumnsFactor: 0.7,
         hitpointsRangeFactor: 0.5,
     },
+    gameOverBrickLine: game.height - brick.size.height * 1.5,
 };
 export const config = {
     game,
@@ -84,4 +94,5 @@ export const config = {
     physics,
     brick,
     bricks,
+    gameOver,
 };

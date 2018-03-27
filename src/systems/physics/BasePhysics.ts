@@ -11,11 +11,11 @@ import Phaser from 'phaser';
  */
 export class BasePhysics implements Physics {
     private readonly entities: GameEntities;
-    private readonly config: PhysicsConfig;
+    private readonly congfigObj: PhysicsConfig;
     private readonly scene: Phaser.Scene;
 
     constructor(config: PhysicsConfig, entities: GameEntities, scene: Phaser.Scene) {
-        this.config = config;
+        this.congfigObj = config;
         this.entities = entities;
         this.scene = scene;
     }
@@ -33,6 +33,10 @@ export class BasePhysics implements Physics {
         return this;
     }
 
+    public config(): PhysicsConfig {
+        return this.congfigObj;
+    }
+
     public setupBrick(brick: Brick): this {
         brick.setup(this.scene);
         addCollider(this.scene.physics.add, this.entities.ball, brick, () => this.entities.bricks.hit(brick));
@@ -41,7 +45,7 @@ export class BasePhysics implements Physics {
     }
 
     public collide(ball: Phaser.Physics.Arcade.Sprite, paddle: Phaser.Physics.Arcade.Sprite): this {
-        ball.setVelocityX((ball.x - paddle.x) * this.config.collideVelocity);
+        ball.setVelocityX((ball.x - paddle.x) * this.congfigObj.collideVelocity);
 
         return this;
     }

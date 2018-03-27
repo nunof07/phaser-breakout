@@ -56,8 +56,9 @@ export class BaseBricks implements Bricks {
         return this;
     }
 
-    public addRow(physics: Physics, wave: BricksWaveConfig): this {
+    public addRow(physics: Physics): this {
         this.iteration = this.iteration + 1;
+        const wave: BricksWaveConfig = physics.config().bricksWave;
         const newBricks: ReadonlyArray<Brick> = nextWaveBricks(wave, this.iteration, this.config, this.bricks.systems());
         newBricks.forEach(
             (brick: Brick) => {
@@ -66,6 +67,16 @@ export class BaseBricks implements Bricks {
             },
             this,
         );
+
+        return this;
+    }
+
+    public reset(): this {
+        this.bricks.systems().forEach((brick: Brick) => {
+            this.bricks.remove(brick);
+            brick.destroy();
+        });
+        this.iteration = 0;
 
         return this;
     }
