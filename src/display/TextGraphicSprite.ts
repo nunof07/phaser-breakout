@@ -47,6 +47,8 @@ export class TextGraphicSprite implements GraphicSprite, Text {
     }
 
     public update(): this {
+        this.text().x = this.sprite().x;
+        this.text().y = this.sprite().y;
         this.gs.update();
 
         return this;

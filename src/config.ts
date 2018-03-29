@@ -41,6 +41,11 @@ const ball = {
     },
     color: 0xAAAA00,
     bounce: 1,
+    startHitpoints: 1,
+    text: {
+        fontFamily: text.fontFamily,
+        fontSize: 8,
+    },
 };
 const brick = {
     position: {
