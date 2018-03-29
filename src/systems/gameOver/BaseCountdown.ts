@@ -50,7 +50,9 @@ export class BaseCountdown implements Countdown {
             delay: 1000,
             loop: false,
             repeat: this.gameOverConfig.countdown + 1,
-            callback: (): void => this.tick(),
+            callback: (): void => {
+                this.tick();
+            },
         };
     }
 

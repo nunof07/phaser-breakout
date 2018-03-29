@@ -2,7 +2,7 @@ import { GameConfig } from '@config/GameConfig';
 import { ballOnSpritePosition } from '@systems/ball/ballOnSpritePosition';
 import { lowestY } from '@systems/bricks/lowestY';
 import { GameEntities } from '@systems/GameEntities';
-import { GameOver } from '@systems/GameOver';
+import { GameOver } from '@systems/gameOver/GameOver';
 import { Physics } from '@systems/physics/Physics';
 import { System } from '@systems/System';
 import Phaser from 'phaser';
@@ -25,7 +25,9 @@ export class Referee implements System {
     }
 
     public setup(scene: Phaser.Scene): this {
-        scene.input.on('pointerup', () => this.resumePlay());
+        scene.input.on('pointerup', () => {
+            this.resumePlay();
+        });
         this.lowerBricksTimer = scene.time.addEvent(this.lowerBrickEvent(scene));
 
         return this;
@@ -52,7 +54,9 @@ export class Referee implements System {
         if (!this.entities.ball.isInPlay()) {
             if (this.gameOver.isActive()) {
                 this.entities.bricks.reset().addRow(this.physics);
-                this.gameOver.hide(() => this.launchBall());
+                this.gameOver.hide(() => {
+                    this.launchBall();
+                });
             } else {
                 this.launchBall();
             }
