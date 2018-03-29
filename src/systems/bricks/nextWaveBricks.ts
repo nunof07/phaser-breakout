@@ -36,11 +36,14 @@ export function nextWaveBricks(
     };
 
     return times(
-        (n: number): Brick => createBrick(
-            brickConfig(brick, randomColumns[n]),
-            nextWaveHitpoints(wave, iteration, engine),
-            nextWavePowerup(wave, iteration, engine),
-        ),
+        (n: number): Brick => {
+            const cfg: BrickConfig = brickConfig(brick, randomColumns[n]);
+            const hitpoints: number = nextWaveHitpoints(wave, iteration, engine);
+            const powerup: boolean = nextWavePowerup(wave, iteration, engine);
+            const hitpointsPowerup: number = powerup ? Math.round(wave.powerup.hitpointFactor * hitpoints) : hitpoints;
+
+            return createBrick(cfg, hitpointsPowerup, powerup);
+        },
         randomColumns.length,
     );
 }

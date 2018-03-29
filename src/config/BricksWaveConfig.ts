@@ -9,5 +9,6 @@ export interface BricksWaveConfig {
     readonly powerup: {
         readonly minIteration: number;
         readonly factor: number;
+        readonly hitpointFactor: number;
     };
 }
