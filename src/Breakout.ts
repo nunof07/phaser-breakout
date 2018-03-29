@@ -3,6 +3,7 @@ import { config } from '@src/config';
 import { createBall } from '@systems/ball/createBall';
 import { createBricks } from '@systems/bricks/createBricks';
 import { GameEntities } from '@systems/GameEntities';
+import { BaseGameOver } from '@systems/gameOver/BaseGameOver';
 import { createPaddle } from '@systems/paddle/createPaddle';
 import { BasePhysics } from '@systems/physics/BasePhysics';
 import { ReadonlyComposite } from '@systems/ReadonlyComposite';
@@ -27,12 +28,14 @@ export class Breakout extends Phaser.Scene {
             bricks: createBricks(config.physics.bricksWave, brickConfig()),
         };
         const physics: BasePhysics = new BasePhysics(config.physics, entities, this);
+        const gameOver: BaseGameOver = new BaseGameOver(config.gameOver);
         this.systems = new ReadonlyComposite([
             entities.paddle,
             entities.ball,
             entities.bricks,
             physics,
-            new Referee(config.game, config.physics, entities, physics),
+            gameOver,
+            new Referee(config.game, entities, physics, gameOver),
         ]);
         this.systems.setup(this);
     }

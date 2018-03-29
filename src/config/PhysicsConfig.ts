@@ -8,4 +8,5 @@ export interface PhysicsConfig {
     readonly launchVelocity: Coordinates;
     readonly collideVelocity: number;
     readonly bricksWave: BricksWaveConfig;
+    readonly gameOverBrickLine: number;
 }
