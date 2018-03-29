@@ -1,3 +1,11 @@
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/nunof07/phaser-breakout/compare/v0.7.0...v0.8.0) (2018-03-29)
+
+
+### Features
+
+* **game-over:** show game over screen and countdown to new game ([e517d90](https://github.com/nunof07/phaser-breakout/commit/e517d90))
+
 <a name="0.7.0"></a>
 # [0.7.0](https://github.com/nunof07/phaser-breakout/compare/v0.6.0...v0.7.0) (2018-03-26)
 
