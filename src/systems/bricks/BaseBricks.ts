@@ -1,5 +1,6 @@
 import { BrickConfig } from '@config/BrickConfig';
 import { BricksWaveConfig } from '@config/BricksWaveConfig';
+import { Ball } from '@systems/ball/Ball';
 import { Brick } from '@systems/bricks/Brick';
 import { Bricks } from '@systems/bricks/Bricks';
 import { lowerBrick } from '@systems/bricks/lowerBrick';
@@ -39,8 +40,8 @@ export class BaseBricks implements Bricks {
         return this;
     }
 
-    public hit(brick: Brick): this {
-        brick.hit();
+    public hit(ball: Ball, brick: Brick): this {
+        brick.hit(ball);
 
         if (brick.hitpoints() <= 0) {
             this.bricks.remove(brick);

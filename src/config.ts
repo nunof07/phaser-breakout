@@ -57,6 +57,7 @@ const brick = {
         height: 32,
     },
     color: 0xAA0000,
+    powerupColor: 0x00AA00,
 };
 const bricks = {
     startX: brick.size.width * 0.5,
@@ -87,6 +88,10 @@ const physics = {
         maxDifficultyIteration: 100,
         maxMinColumnsFactor: 0.7,
         hitpointsRangeFactor: 0.5,
+        powerup: {
+            minIteration: 3,
+            factor: 1 / 3,
+        },
     },
     gameOverBrickLine: game.height - brick.size.height * 1.5,
 };

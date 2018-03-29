@@ -6,4 +6,8 @@ export interface BricksWaveConfig {
     readonly maxDifficultyIteration: number;
     readonly maxMinColumnsFactor: number;
     readonly hitpointsRangeFactor: number;
+    readonly powerup: {
+        readonly minIteration: number;
+        readonly factor: number;
+    };
 }
