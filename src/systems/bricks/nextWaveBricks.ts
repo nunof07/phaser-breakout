@@ -38,11 +38,10 @@ export function nextWaveBricks(
     return times(
         (n: number): Brick => {
             const cfg: BrickConfig = brickConfig(brick, randomColumns[n]);
-            const hitpoints: number = nextWaveHitpoints(wave, iteration, engine);
             const powerup: boolean = nextWavePowerup(wave, iteration, engine);
-            const hitpointsPowerup: number = powerup ? Math.round(wave.powerup.hitpointFactor * hitpoints) : hitpoints;
+            const hitpoints: number = nextWaveHitpoints(wave, iteration, powerup, engine);
 
-            return createBrick(cfg, hitpointsPowerup, powerup);
+            return createBrick(cfg, hitpoints, powerup);
         },
         randomColumns.length,
     );

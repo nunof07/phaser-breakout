@@ -84,7 +84,7 @@ const physics = {
     },
     collideVelocity: 8,
     bricksWave: {
-        delay: 10000,
+        delay: 1000,
         maxDifficultyIteration: 100,
         maxMinColumnsFactor: 0.7,
         hitpointsRangeFactor: 0.5,

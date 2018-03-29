@@ -27,7 +27,7 @@ export class BaseBrick implements Brick {
                 ball.updateHitpoints(ball.hitpoints() + this.hp);
                 this.hp = 0;
             } else {
-                this.hp -= 1;
+                this.hp -= ball.hitpoints();
             }
             this.graphics.updateText(this.hp.toString());
 
