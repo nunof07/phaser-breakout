@@ -25,14 +25,9 @@ export class BaseBrick implements Brick {
         if (this.hp > 0) {
             if (this.isPowerup) {
                 ball.updateHitpoints(ball.hitpoints() + this.hp);
-                this.hp = 0;
+                this.updateHp(0);
             } else {
-                this.hp -= ball.hitpoints();
-            }
-            this.graphics.updateText(this.hp.toString());
-
-            if (this.hp <= 0) {
-                this.destroy();
+                this.updateHp(this.hp - ball.hitpoints());
             }
         }
 
@@ -68,6 +63,17 @@ export class BaseBrick implements Brick {
     public destroy(): this {
         this.hp = 0;
         this.graphics.destroy();
+
+        return this;
+    }
+
+    private updateHp(hitpoints: number): this {
+        this.hp = hitpoints;
+        this.graphics.updateText(this.hp.toString());
+
+        if (this.hp <= 0) {
+            this.destroy();
+        }
 
         return this;
     }

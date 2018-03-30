@@ -84,14 +84,14 @@ const physics = {
     },
     collideVelocity: 8,
     bricksWave: {
-        delay: 1000,
+        delay: 4000,
         maxDifficultyIteration: 100,
         maxMinColumnsFactor: 0.7,
         hitpointsRangeFactor: 0.5,
         powerup: {
             minIteration: 3,
-            factor: 1 / 3,
-            hitpointFactor: 0.2,
+            factor: 1 / 6,
+            hitpointFactor: 0.15,
         },
     },
     gameOverBrickLine: game.height - brick.size.height * 1.5,
