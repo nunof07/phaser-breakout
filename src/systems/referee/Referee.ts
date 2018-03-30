@@ -16,6 +16,7 @@ export class Referee implements System {
     private readonly physics: Physics;
     private readonly gameOver: GameOver;
     private lowerBricksTimer: Phaser.Time.TimerEvent;
+    private isStopped: boolean;
 
     constructor(game: GameConfig, entities: GameEntities, physics: Physics, gameOver: GameOver) {
         this.game = game;
@@ -34,9 +35,13 @@ export class Referee implements System {
     }
 
     public update(): this {
+        if (this.isBallTouchingFloor()) {
+            this.entities.ball.updateHitpoints(this.entities.ball.hitpoints() - 1);
+            this.stopPlay();
+        }
+
         if (this.isGameOver()) {
-            this.lowerBricksTimer.paused = true;
-            this.entities.ball.reset(ballOnSpritePosition(this.entities.ball, this.entities.paddle));
+            this.stopPlay();
             this.gameOver.show();
         }
 
@@ -44,15 +49,33 @@ export class Referee implements System {
     }
 
     private isGameOver(): boolean {
-        const ballTouchesFloor: boolean = (this.entities.ball.sprite().y > this.game.height);
-        const brickTouchesFloor: boolean = (lowestY(this.entities.bricks.group(), -1) >= this.physics.config().gameOverBrickLine);
+        return this.isBrickTouchingFloor() || this.entities.ball.hitpoints() <= 0;
+    }
 
-        return ballTouchesFloor || brickTouchesFloor;
+    private isBallTouchingFloor(): boolean {
+        return (this.entities.ball.sprite().y > this.game.height);
+    }
+
+    private isBrickTouchingFloor(): boolean {
+        return (lowestY(this.entities.bricks.group(), -1) >= this.physics.config().gameOverBrickLine);
+    }
+
+    private stopPlay(): this {
+        if (!this.isStopped) {
+            this.lowerBricksTimer.paused = true;
+            this.entities.ball.reset(ballOnSpritePosition(this.entities.ball, this.entities.paddle));
+            this.isStopped = true;
+        }
+
+        return this;
     }
 
     private resumePlay(): void {
         if (!this.entities.ball.isInPlay()) {
+            this.isStopped = false;
+
             if (this.gameOver.isActive()) {
+                this.entities.ball.resetHitpoints();
                 this.entities.bricks.reset().addRow(this.physics);
                 this.gameOver.hide(() => {
                     this.launchBall();
@@ -63,9 +86,11 @@ export class Referee implements System {
         }
     }
 
-    private launchBall(): void {
+    private launchBall(): this {
         this.lowerBricksTimer.paused = false;
         this.entities.ball.launch(this.physics.config().launchVelocity);
+
+        return this;
     }
 
     private lowerBrickEvent(scene: Phaser.Scene): object {

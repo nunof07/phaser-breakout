@@ -1,5 +1,6 @@
 import { gameObject } from '@display/gameObject';
 import { TextGraphicSprite } from '@display/TextGraphicSprite';
+import { Ball } from '@systems/ball/Ball';
 import { Brick } from '@systems/bricks/Brick';
 
 /**
@@ -7,24 +8,26 @@ import { Brick } from '@systems/bricks/Brick';
  */
 export class BaseBrick implements Brick {
     private readonly graphics: TextGraphicSprite;
+    private readonly isPowerup: boolean;
     private hp: number;
 
-    constructor(graphics: TextGraphicSprite, hitpoints: number = 1) {
+    constructor(graphics: TextGraphicSprite, hitpoints: number = 1, isPowerup: boolean = false) {
         this.graphics = graphics;
         this.hp = hitpoints;
+        this.isPowerup = isPowerup;
     }
 
     public hitpoints(): number {
         return this.hp;
     }
 
-    public hit(): this {
+    public hit(ball: Ball): this {
         if (this.hp > 0) {
-            this.hp -= 1;
-            this.graphics.updateText(this.hp.toString());
-
-            if (this.hp <= 0) {
-                this.destroy();
+            if (this.isPowerup) {
+                ball.updateHitpoints(ball.hitpoints() + this.hp);
+                this.updateHp(0);
+            } else {
+                this.updateHp(this.hp - ball.hitpoints());
             }
         }
 
@@ -60,6 +63,17 @@ export class BaseBrick implements Brick {
     public destroy(): this {
         this.hp = 0;
         this.graphics.destroy();
+
+        return this;
+    }
+
+    private updateHp(hitpoints: number): this {
+        this.hp = hitpoints;
+        this.graphics.updateText(this.hp.toString());
+
+        if (this.hp <= 0) {
+            this.destroy();
+        }
 
         return this;
     }

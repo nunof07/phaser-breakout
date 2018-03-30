@@ -11,5 +11,6 @@ export function brickConfig(): BrickConfig {
         sprite: config.brick,
         graphics: config.graphics,
         text: textConfig(config.text, config.brick.color),
+        powerupColor: config.brick.powerupColor,
     };
 }

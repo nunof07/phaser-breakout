@@ -7,6 +7,7 @@ import { createBrick } from '@systems/bricks/createBrick';
 import { nextWaveConfig } from '@systems/bricks/nextWaveConfig';
 import { nextWaveCount } from '@systems/bricks/nextWaveCount';
 import { nextWaveHitpoints } from '@systems/bricks/nextWaveHitpoints';
+import { nextWavePowerup } from '@systems/bricks/nextWavePowerup';
 import { times } from 'ramda';
 import * as Random from 'random-js';
 
@@ -31,13 +32,17 @@ export function nextWaveBricks(
         sprite: config.sprite,
         graphics: config.graphics,
         text: config.text,
+        powerupColor: config.powerupColor,
     };
 
     return times(
-        (n: number): Brick => createBrick(
-            brickConfig(brick, randomColumns[n]),
-            nextWaveHitpoints(wave, iteration, engine),
-        ),
+        (n: number): Brick => {
+            const cfg: BrickConfig = brickConfig(brick, randomColumns[n]);
+            const powerup: boolean = nextWavePowerup(wave, iteration, engine);
+            const hitpoints: number = nextWaveHitpoints(wave, iteration, powerup, engine);
+
+            return createBrick(cfg, hitpoints, powerup);
+        },
         randomColumns.length,
     );
 }

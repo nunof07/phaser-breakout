@@ -39,7 +39,7 @@ export class BasePhysics implements Physics {
 
     public setupBrick(brick: Brick): this {
         brick.setup(this.scene);
-        addCollider(this.scene.physics.add, this.entities.ball, brick, () => this.entities.bricks.hit(brick));
+        addCollider(this.scene.physics.add, this.entities.ball, brick, () => this.entities.bricks.hit(this.entities.ball, brick));
 
         return this;
     }

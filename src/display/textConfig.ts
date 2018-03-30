@@ -7,5 +7,11 @@ import { assoc } from 'ramda';
  * @param color Color.
  */
 export function textConfig(text: { fontSize: number; fontFamily: string }, color: number): TextConfig {
-    return assoc('color', `#${color.toString(16)}`, text);
+    let colorStr: string = color.toString(16);
+
+    while (colorStr.length < 6) {
+        colorStr = `0${colorStr}`;
+    }
+
+    return assoc('color', `#${colorStr}`, text);
 }

@@ -10,6 +10,7 @@ import * as Random from 'random-js';
 export function nextWaveHitpoints(
     wave: BricksWaveConfig,
     iteration: number,
+    powerup: boolean,
     engine: Random.Engine = Random.engines.mt19937().autoSeed(),
 ): number {
     /**
@@ -42,5 +43,11 @@ export function nextWaveHitpoints(
     /**
      * Determine hitpoints randomly between min/max possible hitpoints.
      */
-    return Random.integer(minHp, maxHp)(engine);
+    const hitpoints: number = Random.integer(minHp, maxHp)(engine);
+
+    if (powerup) {
+        return Math.max(1, Math.round(wave.powerup.hitpointFactor * hitpoints));
+    }
+
+    return hitpoints;
 }
