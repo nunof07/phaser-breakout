@@ -1,3 +1,19 @@
+<a name="0.9.0"></a>
+# [0.9.0](https://github.com/nunof07/phaser-breakout/compare/v0.8.0...v0.9.0) (2018-03-30)
+
+
+### Bug Fixes
+
+* **config:** update wave config and refactor brick hit ([4e1cb7f](https://github.com/nunof07/phaser-breakout/commit/4e1cb7f))
+* **powerup:** make hitpoints a factor of normal bricks ([b6f35db](https://github.com/nunof07/phaser-breakout/commit/b6f35db))
+* **powerup:** subtract ball hitpoints when hitting brick ([7fff1f3](https://github.com/nunof07/phaser-breakout/commit/7fff1f3))
+
+
+### Features
+
+* **ball:** add hitpoints to ball ([497a3c3](https://github.com/nunof07/phaser-breakout/commit/497a3c3))
+* **powerup:** add powerup bricks ([5ef93aa](https://github.com/nunof07/phaser-breakout/commit/5ef93aa))
+
 <a name="0.8.0"></a>
 # [0.8.0](https://github.com/nunof07/phaser-breakout/compare/v0.7.0...v0.8.0) (2018-03-29)
 
