@@ -1,3 +1,11 @@
+<a name="0.9.1"></a>
+## [0.9.1](https://github.com/nunof07/phaser-breakout/compare/v0.9.0...v0.9.1) (2018-03-30)
+
+
+### Bug Fixes
+
+* **screen:** center screen ([701c6ac](https://github.com/nunof07/phaser-breakout/commit/701c6ac))
+
 <a name="0.9.0"></a>
 # [0.9.0](https://github.com/nunof07/phaser-breakout/compare/v0.8.0...v0.9.0) (2018-03-30)
 
