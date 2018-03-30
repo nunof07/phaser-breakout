@@ -60,7 +60,7 @@ export default {
             template: HtmlWebpackTemplate,
             appMountId: 'game',
             mobile: true,
-            headHtmlSnippet: '<style>html,body{height:100%;margin:0;}</style>',
+            headHtmlSnippet: '<style>html,body{height:100%;margin:0;}body{background-color:#808080;}#game{height:100%;display:flex;justify-content:center;align-items:center;}</style>',
         }),
         new CopyWebpackPlugin(['assets' ], { cache: true }),
         new webpack.optimize.ModuleConcatenationPlugin(),
