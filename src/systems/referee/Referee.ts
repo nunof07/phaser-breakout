@@ -71,7 +71,7 @@ export class Referee implements System {
     }
 
     private resumePlay(): void {
-        if (!this.entities.ball.isInPlay()) {
+        if (!this.gameOver.hideInProgress() && !this.entities.ball.isInPlay()) {
             this.isStopped = false;
 
             if (this.gameOver.isActive()) {

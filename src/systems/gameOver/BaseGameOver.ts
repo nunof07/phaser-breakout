@@ -14,11 +14,13 @@ export class BaseGameOver implements GameOver, System {
     private readonly countdown: Countdown;
     private text: Phaser.GameObjects.Text;
     private active: boolean;
+    private hideInProgressImp: boolean;
 
     constructor(config: GameOverConfig, countdown: Countdown = new BaseCountdown(config)) {
         this.config = config;
         this.active = false;
         this.countdown = countdown;
+        this.hideInProgressImp = false;
     }
 
     public isActive(): boolean {
@@ -37,13 +39,19 @@ export class BaseGameOver implements GameOver, System {
     public hide(done: () => void): this {
         if (this.active) {
             this.text.visible = false;
+            this.hideInProgressImp = true;
             this.countdown.start(() => {
                 this.active = false;
+                this.hideInProgressImp = false;
                 done();
             });
         }
 
         return this;
+    }
+
+    public hideInProgress(): boolean {
+        return this.hideInProgressImp;
     }
 
     public setup(scene: Phaser.Scene): this {
