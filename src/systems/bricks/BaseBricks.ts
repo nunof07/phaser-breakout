@@ -7,6 +7,7 @@ import { lowerBrick } from '@systems/bricks/lowerBrick';
 import { nextWaveBricks } from '@systems/bricks/nextWaveBricks';
 import { MutableComposite } from '@systems/MutableComposite';
 import { Physics } from '@systems/physics/Physics';
+import { Stats } from '@systems/score/Stats';
 import Phaser from 'phaser';
 import { curry } from 'ramda';
 
@@ -16,12 +17,14 @@ import { curry } from 'ramda';
 export class BaseBricks implements Bricks {
     private readonly bricks: MutableComposite<Brick>;
     private readonly config: BrickConfig;
+    private readonly stats: Stats;
     private iteration: number;
 
-    constructor(config: BrickConfig, bricks: MutableComposite<Brick>) {
+    constructor(config: BrickConfig, bricks: MutableComposite<Brick>, stats: Stats) {
         this.config = config;
         this.bricks = bricks;
         this.iteration = 1;
+        this.stats = stats;
     }
 
     public group(): ReadonlyArray<Brick> {
@@ -41,10 +44,12 @@ export class BaseBricks implements Bricks {
     }
 
     public hit(ball: Ball, brick: Brick): this {
-        brick.hit(ball);
+        this.stats.addPoints(brick, brick.hit(ball));
+        this.stats.addHit(brick);
 
         if (brick.hitpoints() <= 0) {
             this.bricks.remove(brick);
+            this.stats.addBrick(brick);
         }
 
         return this;
@@ -68,6 +73,7 @@ export class BaseBricks implements Bricks {
             },
             this,
         );
+        this.stats.addIteration();
 
         return this;
     }
