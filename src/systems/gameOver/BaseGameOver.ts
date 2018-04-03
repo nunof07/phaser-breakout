@@ -1,8 +1,9 @@
 import { GameOverConfig } from '@config/GameOverConfig';
+import { createText } from '@display/createText';
 import { BaseCountdown } from '@systems/gameOver/BaseCountdown';
 import { Countdown } from '@systems/gameOver/Countdown';
-import { createGameOverText } from '@systems/gameOver/createGameOverText';
 import { GameOver } from '@systems/gameOver/GameOver';
+import { Scoreboard } from '@systems/score/Scoreboard';
 import { System } from '@systems/System';
 import Phaser from 'phaser';
 
@@ -12,15 +13,17 @@ import Phaser from 'phaser';
 export class BaseGameOver implements GameOver, System {
     private readonly config: GameOverConfig;
     private readonly countdown: Countdown;
+    private readonly scoreboard: Scoreboard;
     private text: Phaser.GameObjects.Text;
     private active: boolean;
     private hideInProgressImp: boolean;
 
-    constructor(config: GameOverConfig, countdown: Countdown = new BaseCountdown(config)) {
+    constructor(config: GameOverConfig, scoreboard: Scoreboard, countdown: Countdown = new BaseCountdown(config)) {
         this.config = config;
         this.active = false;
         this.countdown = countdown;
         this.hideInProgressImp = false;
+        this.scoreboard = scoreboard;
     }
 
     public isActive(): boolean {
@@ -31,6 +34,7 @@ export class BaseGameOver implements GameOver, System {
         if (!this.active) {
             this.active = true;
             this.text.visible = true;
+            this.scoreboard.show();
         }
 
         return this;
@@ -40,6 +44,7 @@ export class BaseGameOver implements GameOver, System {
         if (this.active) {
             this.text.visible = false;
             this.hideInProgressImp = true;
+            this.scoreboard.hide();
             this.countdown.start(() => {
                 this.active = false;
                 this.hideInProgressImp = false;
@@ -55,7 +60,17 @@ export class BaseGameOver implements GameOver, System {
     }
 
     public setup(scene: Phaser.Scene): this {
-        this.text = createGameOverText(scene, this.config.title, this.config.text);
+        this.text = createText(
+            scene,
+            {
+                position: this.config.position,
+                center: true,
+                visible: false,
+                depth: 100,
+                text: this.config.title,
+                config: this.config.text,
+            },
+        );
         this.countdown.setup(scene);
 
         return this;

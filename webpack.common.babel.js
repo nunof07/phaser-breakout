@@ -14,6 +14,7 @@ export default {
             'phaser',
             'ramda',
             'random-js',
+            'format-duration',
         ],
     },
     output: {

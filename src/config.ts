@@ -76,6 +76,7 @@ const gameOver = {
         color: '#ffffff',
     },
     countdown: 3,
+    position: { x: game.width * 0.5, y: game.height * 0.4 },
 };
 const physics = {
     launchVelocity: {
@@ -96,6 +97,30 @@ const physics = {
     },
     gameOverBrickLine: game.height - brick.size.height * 1.5,
 };
+const scoreboard = {
+    position: {
+        points: { x: game.width * 0.5, y: gameOver.position.y + 52 },
+        hits: { x: game.width * 0.25, y: gameOver.position.y + 84 },
+        bricks: { x: game.width * 0.25, y: gameOver.position.y + 108 },
+        iteration: { x: game.width * 0.6, y: gameOver.position.y + 84 },
+        duration: { x: game.width * 0.6, y: gameOver.position.y + 108 },
+    },
+    highScore: {
+        fontFamily: text.fontFamily,
+        fontSize: 24,
+        color: '#AAAA00',
+    },
+    details: {
+        fontFamily: text.fontFamily,
+        fontSize: 14,
+        color: '#00AAAA',
+    },
+    points: (value: number) => `High score: ${value}`,
+    hits: (value: number) => `Hits: ${value}`,
+    bricks: (value: number) => `Bricks destroyed: ${value}`,
+    iteration: (value: number) => `Rows: ${value}`,
+    duration: (value: string) => `Time played: ${value}`,
+};
 export const config = {
     game,
     graphics,
@@ -106,4 +131,5 @@ export const config = {
     brick,
     bricks,
     gameOver,
+    scoreboard,
 };

@@ -88,7 +88,7 @@ export class BaseStats implements Stats, System {
         this.durationImp = 0;
         this.bricksImp = 0;
 
-        if (this.timer) {
+        if (this.timer !== undefined) {
             this.timer.reset(this.timerConfig());
         }
 

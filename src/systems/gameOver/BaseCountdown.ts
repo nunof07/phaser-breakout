@@ -1,6 +1,6 @@
 import { GameOverConfig } from '@config/GameOverConfig';
+import { createText } from '@display/createText';
 import { Countdown } from '@systems/gameOver/Countdown';
-import { createGameOverText } from '@systems/gameOver/createGameOverText';
 import Phaser from 'phaser';
 
 /**
@@ -36,7 +36,17 @@ export class BaseCountdown implements Countdown {
     public setup(scene: Phaser.Scene): this {
         this.countdownTimer = scene.time.addEvent(this.config());
         this.countdownTimer.paused = true;
-        this.text = createGameOverText(scene, this.gameOverConfig.countdown.toString(), this.gameOverConfig.text);
+        this.text = createText(
+            scene,
+            {
+                position: this.gameOverConfig.position,
+                center: true,
+                visible: false,
+                depth: 100,
+                text: this.gameOverConfig.countdown.toString(),
+                config: this.gameOverConfig.text,
+            },
+        );
 
         return this;
     }
