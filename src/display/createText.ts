@@ -9,7 +9,7 @@ import Phaser from 'phaser';
 export function createText(scene: Phaser.Scene, text: TextDisplay): Phaser.GameObjects.Text {
     const result: Phaser.GameObjects.Text = scene.add.text(text.position.x, text.position.y, text.text, text.config);
 
-    if (text.center) {
+    if (text.center !== undefined && text.center) {
         result.setOrigin(0.5, 0.5);
     }
 
