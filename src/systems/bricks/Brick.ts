@@ -7,6 +7,7 @@ import Phaser from 'phaser';
  */
 export interface Brick extends GraphicSprite {
     hitpoints(): number;
-    hit(ball: Ball): this;
+    hit(ball: Ball): number;
     objects(): ReadonlyArray<Phaser.GameObjects.GameObject>;
+    isPowerup(): boolean;
 }

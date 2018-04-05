@@ -8,6 +8,8 @@ import { createPaddle } from '@systems/paddle/createPaddle';
 import { BasePhysics } from '@systems/physics/BasePhysics';
 import { ReadonlyComposite } from '@systems/ReadonlyComposite';
 import { Referee } from '@systems/referee/Referee';
+import { BaseScoreboard } from '@systems/score/BaseScoreboard';
+import { BaseStats } from '@systems/score/BaseStats';
 import { System } from '@systems/System';
 import Phaser from 'phaser';
 
@@ -22,13 +24,16 @@ export class Breakout extends Phaser.Scene {
     }
 
     public create(): void {
+        const stats: BaseStats = new BaseStats();
         const entities: GameEntities = {
             ball: createBall(config.ball, config.graphics),
             paddle: createPaddle(config.paddle, config.graphics),
-            bricks: createBricks(config.physics.bricksWave, brickConfig()),
+            bricks: createBricks(config.physics.bricksWave, brickConfig(), stats),
+            stats,
         };
         const physics: BasePhysics = new BasePhysics(config.physics, entities, this);
-        const gameOver: BaseGameOver = new BaseGameOver(config.gameOver);
+        const scoreboard: BaseScoreboard = new BaseScoreboard(config.scoreboard, stats);
+        const gameOver: BaseGameOver = new BaseGameOver(config.gameOver, scoreboard);
         this.systems = new ReadonlyComposite([
             entities.paddle,
             entities.ball,
@@ -36,6 +41,8 @@ export class Breakout extends Phaser.Scene {
             physics,
             gameOver,
             new Referee(config.game, entities, physics, gameOver),
+            stats,
+            scoreboard,
         ]);
         this.systems.setup(this);
     }

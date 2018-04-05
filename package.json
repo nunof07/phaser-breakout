@@ -8,7 +8,7 @@
     "commit": "git add -A && git-cz",
     "build": "webpack --config webpack.prod.babel.js",
     "start": "webpack-dev-server --open --config webpack.dev.babel.js",
-    "lint": "tslint --config tslint.json --project tsconfig.json --format stylish src/**/*.ts",
+    "lint": "tslint --config tslint.json --project tsconfig.json --format stylish src/**/*.ts --exclude src/**/*.d.ts",
     "test": "mocha-webpack",
     "test:watch": "mocha-webpack --watch",
     "test:coverage": "cross-env NODE_ENV=coverage nyc mocha-webpack \"test/**/*.ts\"",
@@ -90,6 +90,7 @@
   },
   "dependencies": {
     "babel-runtime": "^6.26.0",
+    "format-duration": "^1.1.0",
     "phaser": "^3.1.2",
     "ramda": "^0.25.0",
     "random-js": "^1.0.8"

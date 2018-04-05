@@ -65,16 +65,18 @@ export class Referee implements System {
             this.lowerBricksTimer.paused = true;
             this.entities.ball.reset(ballOnSpritePosition(this.entities.ball, this.entities.paddle));
             this.isStopped = true;
+            this.entities.stats.pause();
         }
 
         return this;
     }
 
     private resumePlay(): void {
-        if (!this.entities.ball.isInPlay()) {
+        if (!this.gameOver.hideInProgress() && !this.entities.ball.isInPlay()) {
             this.isStopped = false;
 
             if (this.gameOver.isActive()) {
+                this.entities.stats.reset();
                 this.entities.ball.resetHitpoints();
                 this.entities.bricks.reset().addRow(this.physics);
                 this.gameOver.hide(() => {
@@ -89,6 +91,7 @@ export class Referee implements System {
     private launchBall(): this {
         this.lowerBricksTimer.paused = false;
         this.entities.ball.launch(this.physics.config().launchVelocity);
+        this.entities.stats.resume();
 
         return this;
     }

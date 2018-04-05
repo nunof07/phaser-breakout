@@ -8,30 +8,29 @@ import { Brick } from '@systems/bricks/Brick';
  */
 export class BaseBrick implements Brick {
     private readonly graphics: TextGraphicSprite;
-    private readonly isPowerup: boolean;
+    private readonly isPowerupImp: boolean;
     private hp: number;
 
     constructor(graphics: TextGraphicSprite, hitpoints: number = 1, isPowerup: boolean = false) {
         this.graphics = graphics;
         this.hp = hitpoints;
-        this.isPowerup = isPowerup;
+        this.isPowerupImp = isPowerup;
     }
 
     public hitpoints(): number {
         return this.hp;
     }
 
-    public hit(ball: Ball): this {
-        if (this.hp > 0) {
-            if (this.isPowerup) {
-                ball.updateHitpoints(ball.hitpoints() + this.hp);
-                this.updateHp(0);
-            } else {
-                this.updateHp(this.hp - ball.hitpoints());
-            }
+    public hit(ball: Ball): number {
+        if (this.hp <= 0) {
+            return 0;
         }
 
-        return this;
+        return this.isPowerupImp ? this.applyPowerup(ball) : this.hitByBall(ball);
+    }
+
+    public isPowerup(): boolean {
+        return this.isPowerupImp;
     }
 
     public objects(): ReadonlyArray<Phaser.GameObjects.GameObject> {
@@ -65,6 +64,21 @@ export class BaseBrick implements Brick {
         this.graphics.destroy();
 
         return this;
+    }
+
+    private applyPowerup(ball: Ball): number {
+        const result: number = this.hp;
+        ball.updateHitpoints(ball.hitpoints() + this.hp);
+        this.updateHp(0);
+
+        return result;
+    }
+
+    private hitByBall(ball: Ball): number {
+        const result: number = (ball.hitpoints() > this.hp ? this.hp : ball.hitpoints());
+        this.updateHp(this.hp - ball.hitpoints());
+
+        return result;
     }
 
     private updateHp(hitpoints: number): this {
