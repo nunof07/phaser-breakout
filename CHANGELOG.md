@@ -1,3 +1,17 @@
+<a name="0.10.0"></a>
+# [0.10.0](https://github.com/nunof07/phaser-breakout/compare/v0.9.1...v0.10.0) (2018-04-05)
+
+
+### Bug Fixes
+
+* **gameover:** restart during countdown ([f8bc45c](https://github.com/nunof07/phaser-breakout/commit/f8bc45c))
+
+
+### Features
+
+* **stats:** display highscore in game over screen ([6bdd3e6](https://github.com/nunof07/phaser-breakout/commit/6bdd3e6))
+* **stats:** keep track of stats ([9750053](https://github.com/nunof07/phaser-breakout/commit/9750053))
+
 <a name="0.9.1"></a>
 ## [0.9.1](https://github.com/nunof07/phaser-breakout/compare/v0.9.0...v0.9.1) (2018-03-30)
 
