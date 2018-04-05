@@ -60,11 +60,23 @@ export class BaseScoreboard implements Scoreboard, System {
     }
 
     private updateText(): this {
-        this.points.setText(this.config.points(this.stats.points()).toUpperCase());
-        this.hits.setText(this.config.hits(this.stats.hits()).toUpperCase());
-        this.bricks.setText(this.config.bricks(this.stats.bricks()).toUpperCase());
-        this.iteration.setText(this.config.iteration(this.stats.iteration()).toUpperCase());
-        this.duration.setText(this.config.duration(formatDuration(this.stats.duration() * 1000)).toUpperCase());
+        const stats: ReadonlyArray<number> = [
+            this.stats.points(),
+            this.stats.hits(),
+            this.stats.bricks(),
+            this.stats.iteration(),
+            this.stats.duration(),
+        ];
+        const text: ReadonlyArray<(val: number) => string> = [
+            this.config.points,
+            this.config.hits,
+            this.config.bricks,
+            this.config.iteration,
+            (val: number): string => this.config.duration(formatDuration(val * 1000)),
+        ];
+        this.all.forEach((textObj: Phaser.GameObjects.Text, index: number) => {
+            textObj.setText(text[index](stats[index]).toUpperCase());
+        });
 
         return this;
     }

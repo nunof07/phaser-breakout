@@ -22,22 +22,11 @@ export class BaseBrick implements Brick {
     }
 
     public hit(ball: Ball): number {
-        if (this.hp > 0) {
-            if (this.isPowerupImp) {
-                const result: number = this.hp;
-                ball.updateHitpoints(ball.hitpoints() + this.hp);
-                this.updateHp(0);
-
-                return result;
-            } else {
-                const result: number = (ball.hitpoints() > this.hp ? this.hp : ball.hitpoints());
-                this.updateHp(this.hp - ball.hitpoints());
-
-                return result;
-            }
+        if (this.hp <= 0) {
+            return 0;
         }
 
-        return 0;
+        return this.isPowerupImp ? this.applyPowerup(ball) : this.hitByBall(ball);
     }
 
     public isPowerup(): boolean {
@@ -75,6 +64,21 @@ export class BaseBrick implements Brick {
         this.graphics.destroy();
 
         return this;
+    }
+
+    private applyPowerup(ball: Ball): number {
+        const result: number = this.hp;
+        ball.updateHitpoints(ball.hitpoints() + this.hp);
+        this.updateHp(0);
+
+        return result;
+    }
+
+    private hitByBall(ball: Ball): number {
+        const result: number = (ball.hitpoints() > this.hp ? this.hp : ball.hitpoints());
+        this.updateHp(this.hp - ball.hitpoints());
+
+        return result;
     }
 
     private updateHp(hitpoints: number): this {

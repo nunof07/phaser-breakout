@@ -74,9 +74,10 @@ export class BaseStats implements Stats, System {
     }
 
     public addBrick(brick: Brick): this {
-        if (!brick.isPowerup()) {
-            this.bricksImp = this.bricksImp + 1;
+        if (brick.isPowerup()) {
+            return this;
         }
+        this.bricksImp = this.bricksImp + 1;
 
         return this;
     }
