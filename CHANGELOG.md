@@ -1,3 +1,11 @@
+<a name="0.10.1"></a>
+## [0.10.1](https://github.com/nunof07/phaser-breakout/compare/v0.10.0...v0.10.1) (2018-04-06)
+
+
+### Bug Fixes
+
+* **physics:** update physics values and tweak gameplay ([6c938f3](https://github.com/nunof07/phaser-breakout/commit/6c938f3))
+
 <a name="0.10.0"></a>
 # [0.10.0](https://github.com/nunof07/phaser-breakout/compare/v0.9.1...v0.10.0) (2018-04-05)
 
