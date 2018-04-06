@@ -47,7 +47,7 @@
     "@types/node": "^9.4.7",
     "@types/ramda": "^0.25.20",
     "@types/random-js": "^1.0.30",
-    "awesome-typescript-loader": "^4.0.1",
+    "awesome-typescript-loader": "^5.0.0",
     "babel-core": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
