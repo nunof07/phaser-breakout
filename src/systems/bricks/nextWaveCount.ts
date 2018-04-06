@@ -25,17 +25,25 @@ export function nextWaveCount(
     const iterationFactor: number = Math.min(1, (iteration / maxIteration));
 
     /**
+     * Minimum possible value for start of range.
+     */
+    const minStartRange: number = Math.floor(config.bricks.columns * wave.minColumnsFactor);
+
+    /**
      * Maximum possible value for start of range.
      */
-    const maxStartRange: number = Math.min(
-        Math.floor(iterationFactor * config.bricks.columns * wave.maxMinColumnsFactor),
-        config.bricks.columns,
+    const maxStartRange: number = Math.max(
+        minStartRange,
+        Math.min(
+            Math.floor(iterationFactor * config.bricks.columns * wave.maxMinColumnsFactor),
+            config.bricks.columns,
+        ),
     );
 
     /**
      * Determine start of range.
      */
-    const startRange: number = Random.integer(1, maxStartRange)(engine);
+    const startRange: number = Random.integer(minStartRange, maxStartRange)(engine);
 
     /**
      * Amount of slots left to fill all columns.
