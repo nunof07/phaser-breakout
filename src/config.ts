@@ -25,7 +25,7 @@ const paddle = {
         y: game.height - 8 - graphics.width,
     },
     size: {
-        width: 96,
+        width: 128,
         height: 16,
     },
     color: 0xAAAAAA,
@@ -33,7 +33,7 @@ const paddle = {
 const ball = {
     position: {
         x: game.width / 2,
-        y: paddle.position.y - paddle.size.height / 2 - 8 - graphics.width,
+        y: paddle.position.y - paddle.size.height - graphics.width * 2,
     },
     size: {
         width: 16,
@@ -53,8 +53,8 @@ const brick = {
         y: game.height / 2,
     },
     size: {
-        width: 50,
-        height: 32,
+        width: 40,
+        height: 20,
     },
     color: 0xAA0000,
     powerupColor: 0x00AA00,
@@ -81,18 +81,19 @@ const gameOver = {
 const physics = {
     launchVelocity: {
         x: 128,
-        y: -512,
+        y: -672,
     },
-    collideVelocity: 8,
+    collideVelocity: 10,
     bricksWave: {
         delay: 4000,
         maxDifficultyIteration: 100,
+        minColumnsFactor: 0.25,
         maxMinColumnsFactor: 0.7,
         hitpointsRangeFactor: 0.5,
         powerup: {
             minIteration: 3,
-            factor: 1 / 6,
-            hitpointFactor: 0.15,
+            factor: 1 / 10,
+            hitpointFactor: 0.075,
         },
     },
     gameOverBrickLine: game.height - brick.size.height * 1.5,
