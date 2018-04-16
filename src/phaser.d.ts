@@ -483,79 +483,6 @@ declare function init(): void;
 
 declare type ColorObject = ()=>void;
 
-declare class EventEmitter {
-    /**
-     * Return an array listing the events for which the emitter has registered listeners.
-     */
-    eventNames(): any[];
-
-    /**
-     * Return the listeners registered for a given event.
-     * @param event The event name.
-     */
-    listeners(event: string | symbol): any[];
-
-    /**
-     * Return the number of listeners listening to a given event.
-     * @param event The event name.
-     */
-    listenerCount(event: string | symbol): number;
-
-    /**
-     * Calls each of the listeners registered for a given event.
-     * @param event The event name.
-     */
-    emit(event: string | symbol): Boolean;
-
-    /**
-     * Add a listener for a given event.
-     * @param event The event name.
-     * @param fn The listener function.
-     * @param context The context to invoke the listener with. Default this.
-     */
-    on(event: string | symbol, fn: Function, context?: any): EventEmitter;
-
-    /**
-     * Add a listener for a given event.
-     * @param event The event name.
-     * @param fn The listener function.
-     * @param context The context to invoke the listener with. Default this.
-     */
-    addListener(event: string | symbol, fn: Function, context?: any): EventEmitter;
-
-    /**
-     * Add a one-time listener for a given event.
-     * @param event The event name.
-     * @param fn The listener function.
-     * @param context The context to invoke the listener with. Default this.
-     */
-    once(event: string | symbol, fn: Function, context?: any): EventEmitter;
-
-    /**
-     * Remove the listeners of a given event.
-     * @param event The event name.
-     * @param fn Only remove the listeners that match this function.
-     * @param context Only remove the listeners that have this context.
-     * @param once Only remove one-time listeners.
-     */
-    removeListener(event: string | symbol, fn: Function, context: any, once: boolean): EventEmitter;
-
-    /**
-     * Remove the listeners of a given event.
-     * @param event The event name.
-     * @param fn Only remove the listeners that match this function.
-     * @param context Only remove the listeners that have this context.
-     * @param once Only remove one-time listeners.
-     */
-    off(event: string | symbol, fn: Function, context: any, once: boolean): EventEmitter;
-
-    /**
-     * Remove all listeners, or those of the specified event.
-     * @param event The event name.
-     */
-    removeAllListeners(event?: string | symbol): EventEmitter;
-
-}
 
 declare function GetBitmapTextSize(): void;
 
@@ -49622,7 +49549,79 @@ declare namespace Phaser {
 
     type BaseSoundManager = any;
 
-    type EventEmitter = any;
+    class EventEmitter {
+        /**
+         * Return an array listing the events for which the emitter has registered listeners.
+         */
+        eventNames(): any[];
+    
+        /**
+         * Return the listeners registered for a given event.
+         * @param event The event name.
+         */
+        listeners(event: string | symbol): any[];
+    
+        /**
+         * Return the number of listeners listening to a given event.
+         * @param event The event name.
+         */
+        listenerCount(event: string | symbol): number;
+    
+        /**
+         * Calls each of the listeners registered for a given event.
+         * @param event The event name.
+         */
+        emit(event: string | symbol): Boolean;
+    
+        /**
+         * Add a listener for a given event.
+         * @param event The event name.
+         * @param fn The listener function.
+         * @param context The context to invoke the listener with. Default this.
+         */
+        on(event: string | symbol, fn: Function, context?: any): EventEmitter;
+    
+        /**
+         * Add a listener for a given event.
+         * @param event The event name.
+         * @param fn The listener function.
+         * @param context The context to invoke the listener with. Default this.
+         */
+        addListener(event: string | symbol, fn: Function, context?: any): EventEmitter;
+    
+        /**
+         * Add a one-time listener for a given event.
+         * @param event The event name.
+         * @param fn The listener function.
+         * @param context The context to invoke the listener with. Default this.
+         */
+        once(event: string | symbol, fn: Function, context?: any): EventEmitter;
+    
+        /**
+         * Remove the listeners of a given event.
+         * @param event The event name.
+         * @param fn Only remove the listeners that match this function.
+         * @param context Only remove the listeners that have this context.
+         * @param once Only remove one-time listeners.
+         */
+        removeListener(event: string | symbol, fn: Function, context: any, once: boolean): EventEmitter;
+    
+        /**
+         * Remove the listeners of a given event.
+         * @param event The event name.
+         * @param fn Only remove the listeners that match this function.
+         * @param context Only remove the listeners that have this context.
+         * @param once Only remove one-time listeners.
+         */
+        off(event: string | symbol, fn: Function, context: any, once: boolean): EventEmitter;
+    
+        /**
+         * Remove all listeners, or those of the specified event.
+         * @param event The event name.
+         */
+        removeAllListeners(event?: string | symbol): EventEmitter;
+    
+    }
 
     namespace Texture {
         type Frame = any;

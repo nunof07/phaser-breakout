@@ -4,6 +4,7 @@ import { createBall } from '@systems/ball/createBall';
 import { createBricks } from '@systems/bricks/createBricks';
 import { GameEntities } from '@systems/GameEntities';
 import { BaseGameOver } from '@systems/gameOver/BaseGameOver';
+import { Music } from '@systems/Music';
 import { createPaddle } from '@systems/paddle/createPaddle';
 import { BasePhysics } from '@systems/physics/BasePhysics';
 import { ReadonlyComposite } from '@systems/ReadonlyComposite';
@@ -21,6 +22,7 @@ export class Breakout extends Phaser.Scene {
 
     public preload(): void {
         this.load.image(config.graphics.texture.key, config.graphics.texture.url);
+        this.load.audio(config.audio.music.key, config.audio.music.urls, {});
     }
 
     public create(): void {
@@ -34,15 +36,17 @@ export class Breakout extends Phaser.Scene {
         const physics: BasePhysics = new BasePhysics(config.physics, entities, this);
         const scoreboard: BaseScoreboard = new BaseScoreboard(config.scoreboard, stats);
         const gameOver: BaseGameOver = new BaseGameOver(config.gameOver, scoreboard);
+        const referee: Referee = new Referee(config.game, entities, physics, gameOver);
         this.systems = new ReadonlyComposite([
             entities.paddle,
             entities.ball,
             entities.bricks,
             physics,
             gameOver,
-            new Referee(config.game, entities, physics, gameOver),
+            referee,
             stats,
             scoreboard,
+            new Music(config.audio, referee),
         ]);
         this.systems.setup(this);
     }

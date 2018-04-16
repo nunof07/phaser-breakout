@@ -122,6 +122,13 @@ const scoreboard = {
     iteration: (value: number) => `Rows: ${value}`,
     duration: (value: string) => `Time played: ${value}`,
 };
+const audio = {
+    music: {
+        key: 'music',
+        urls: 'audio/fig-leaf-rag.mp3',
+        volume: 0.6,
+    },
+};
 export const config = {
     game,
     graphics,
@@ -133,4 +140,5 @@ export const config = {
     bricks,
     gameOver,
     scoreboard,
+    audio,
 };
