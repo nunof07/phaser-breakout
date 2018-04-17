@@ -1,9 +1,12 @@
+import { ProgressBar } from '@display/ProgressBar';
+import { Resize } from '@display/Resize';
 import { brickConfig } from '@src/brickConfig';
 import { config } from '@src/config';
 import { createBall } from '@systems/ball/createBall';
 import { createBricks } from '@systems/bricks/createBricks';
 import { GameEntities } from '@systems/GameEntities';
 import { BaseGameOver } from '@systems/gameOver/BaseGameOver';
+import { Music } from '@systems/Music';
 import { createPaddle } from '@systems/paddle/createPaddle';
 import { BasePhysics } from '@systems/physics/BasePhysics';
 import { ReadonlyComposite } from '@systems/ReadonlyComposite';
@@ -20,7 +23,10 @@ export class Breakout extends Phaser.Scene {
     private systems: ReadonlyComposite<System>;
 
     public preload(): void {
+        this.resize();
+        this.startLoading();
         this.load.image(config.graphics.texture.key, config.graphics.texture.url);
+        this.load.audio(config.audio.music.key, config.audio.music.urls, {});
     }
 
     public create(): void {
@@ -34,20 +40,36 @@ export class Breakout extends Phaser.Scene {
         const physics: BasePhysics = new BasePhysics(config.physics, entities, this);
         const scoreboard: BaseScoreboard = new BaseScoreboard(config.scoreboard, stats);
         const gameOver: BaseGameOver = new BaseGameOver(config.gameOver, scoreboard);
+        const referee: Referee = new Referee(config.game, entities, physics, gameOver);
         this.systems = new ReadonlyComposite([
             entities.paddle,
             entities.ball,
             entities.bricks,
             physics,
             gameOver,
-            new Referee(config.game, entities, physics, gameOver),
+            referee,
             stats,
             scoreboard,
+            new Music(config.audio, referee),
         ]);
         this.systems.setup(this);
     }
 
     public update(): void {
         this.systems.update();
+    }
+
+    private startLoading(): this {
+        const bar: ProgressBar = new ProgressBar(config.progressBar);
+        bar.setup(this);
+
+        return this;
+    }
+
+    private resize(): this {
+        const resize: Resize = new Resize();
+        resize.setup(this);
+
+        return this;
     }
 }

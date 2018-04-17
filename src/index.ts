@@ -10,7 +10,6 @@ startGame({
     parent: config.game.container,
     width: config.game.width,
     height: config.game.height,
-    pixelArt: true,
     scene: Breakout,
     physics: {
         default: 'arcade',

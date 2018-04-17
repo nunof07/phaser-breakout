@@ -17,6 +17,10 @@
 
 Breakout game made with Phaser 3.
 
+## Credits
+
+- Music: [Fig Leaf Rag](https://incompetech.com/music/royalty-free/collections.html?collection=8&Search=Search) (Scott Joplin) by Kevin MacLeod. License: [CC-BY 3.0](https://creativecommons.org/licenses/by/3.0/).
+
 ## Setup for development
 
 - Clone repository.
