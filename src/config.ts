@@ -129,6 +129,12 @@ const audio = {
         volume: 0.6,
     },
 };
+const progressBar = {
+    width: game.width / 3,
+    height: 20,
+    borderWidth: 2,
+    color: 0xFFFFFF,
+};
 export const config = {
     game,
     graphics,
@@ -141,4 +147,5 @@ export const config = {
     gameOver,
     scoreboard,
     audio,
+    progressBar,
 };
