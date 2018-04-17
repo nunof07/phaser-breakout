@@ -1,3 +1,18 @@
+<a name="0.11.0"></a>
+# [0.11.0](https://github.com/nunof07/phaser-breakout/compare/v0.10.1...v0.11.0) (2018-04-17)
+
+
+### Bug Fixes
+
+* **music:** compressed file ([4d8994c](https://github.com/nunof07/phaser-breakout/commit/4d8994c))
+
+
+### Features
+
+* **loading:** add progress bar ([3bc384d](https://github.com/nunof07/phaser-breakout/commit/3bc384d))
+* **music:** play and pause music according to game state ([66038a9](https://github.com/nunof07/phaser-breakout/commit/66038a9))
+* **resize:** auto fit screen ([eec25ad](https://github.com/nunof07/phaser-breakout/commit/eec25ad))
+
 <a name="0.10.1"></a>
 ## [0.10.1](https://github.com/nunof07/phaser-breakout/compare/v0.10.0...v0.10.1) (2018-04-06)
 
