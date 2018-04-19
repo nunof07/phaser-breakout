@@ -41,7 +41,7 @@ const ball = {
     },
     color: 0xAAAA00,
     bounce: 1,
-    startHitpoints: 100,
+    startHitpoints: 1,
     loseLifePercentage: 0.25,
     text: {
         fontFamily: text.fontFamily,
@@ -98,6 +98,11 @@ const gameOver = {
     },
     countdown: 3,
     position: { x: game.width * 0.5, y: game.height * 0.4 },
+    background: {
+        color: 0x222222,
+        position: { x: game.width * 0.35, y: game.height * 0.3 },
+        size: { width: game.width * 0.3, height: game.height * 0.3 },
+    },
 };
 const scoreboard = {
     position: {

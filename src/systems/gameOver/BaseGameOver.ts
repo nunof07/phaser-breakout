@@ -17,6 +17,7 @@ export class BaseGameOver implements GameOver, System {
     private text: Phaser.GameObjects.Text;
     private active: boolean;
     private hideInProgressImp: boolean;
+    private background: Phaser.GameObjects.Graphics;
 
     constructor(config: GameOverConfig, scoreboard: Scoreboard, countdown: Countdown = new BaseCountdown(config)) {
         this.config = config;
@@ -33,6 +34,7 @@ export class BaseGameOver implements GameOver, System {
     public show(): this {
         if (!this.active) {
             this.active = true;
+            this.background.visible = true;
             this.text.visible = true;
             this.scoreboard.show();
         }
@@ -45,6 +47,7 @@ export class BaseGameOver implements GameOver, System {
             this.text.visible = false;
             this.hideInProgressImp = true;
             this.scoreboard.hide();
+            this.background.visible = false;
             this.countdown.start(() => {
                 this.active = false;
                 this.hideInProgressImp = false;
@@ -72,6 +75,16 @@ export class BaseGameOver implements GameOver, System {
             },
         );
         this.countdown.setup(scene);
+        this.background = scene.add.graphics({});
+        this.background.fillStyle(this.config.background.color);
+        this.background.fillRect(
+            this.config.background.position.x,
+            this.config.background.position.y,
+            this.config.background.size.width,
+            this.config.background.size.height,
+        );
+        this.background.depth = 50;
+        this.background.visible = false;
 
         return this;
     }
