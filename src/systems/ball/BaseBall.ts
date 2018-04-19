@@ -87,4 +87,10 @@ export class BaseBall implements Ball {
 
         return this;
     }
+
+    public loseLife(): this {
+        this.updateHitpoints(this.hp - 1);
+
+        return this;
+    }
 }

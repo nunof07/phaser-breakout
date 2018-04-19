@@ -41,7 +41,7 @@ export class Referee implements System, GameEvents {
 
     public update(): this {
         if (this.isBallTouchingFloor()) {
-            this.entities.ball.updateHitpoints(this.entities.ball.hitpoints() - 1);
+            this.entities.ball.loseLife();
             this.stopPlay();
         }
 

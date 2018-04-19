@@ -11,4 +11,5 @@ export interface Ball extends GraphicSprite {
     hitpoints(): number;
     updateHitpoints(hitpoints: number): this;
     resetHitpoints(): this;
+    loseLife(): this;
 }
