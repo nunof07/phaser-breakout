@@ -35,6 +35,7 @@ export class Referee implements System, GameEvents {
             this.resumePlay();
         });
         this.lowerBricksTimer = scene.time.addEvent(this.lowerBrickEvent(scene));
+        this.lowerBricksTimer.paused = true;
 
         return this;
     }
