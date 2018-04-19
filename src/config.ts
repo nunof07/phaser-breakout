@@ -22,7 +22,7 @@ const text = {
 const paddle = {
     position: {
         x: game.width / 2,
-        y: game.height - 8 - graphics.width,
+        y: game.height - 10 - graphics.width,
     },
     size: {
         width: 140,
@@ -33,7 +33,7 @@ const paddle = {
 const ball = {
     position: {
         x: game.width / 2,
-        y: paddle.position.y - paddle.size.height - graphics.width * 2,
+        y: paddle.position.y - paddle.size.height / 2 - 10 - graphics.width * 2,
     },
     size: {
         width: 20,
