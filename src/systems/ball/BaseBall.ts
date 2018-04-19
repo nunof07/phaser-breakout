@@ -89,7 +89,8 @@ export class BaseBall implements Ball {
     }
 
     public loseLife(): this {
-        this.updateHitpoints(this.hp - 1);
+        const dec: number = Math.max(1, Math.round(this.config.loseLifePercentage * this.hp));
+        this.updateHitpoints(this.hp - dec);
 
         return this;
     }
