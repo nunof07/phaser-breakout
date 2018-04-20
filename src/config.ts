@@ -131,8 +131,17 @@ const scoreboard = {
 const audio = {
     music: {
         key: 'music',
-        urls: 'audio/fig-leaf-rag.mp3',
+        urls: ['audio/fig-leaf-rag.ogg', 'audio/fig-leaf-rag.mp3'],
         volume: 0.6,
+    },
+    fx: {
+        ballCollide: { key: 'ballCollide', urls: ['audio/hit.ogg', 'audio/hit.mp3'] },
+        brickDestroy: { key: 'brickDestroy', urls: ['audio/brick.ogg', 'audio/brick.mp3'] },
+        powerup: { key: 'powerup', urls: ['audio/life.ogg', 'audio/life.mp3'] },
+        loseLife: { key: 'loseLife', urls: ['audio/floor.ogg', 'audio/floor.mp3'] },
+        gameOver: { key: 'gameOver', urls: ['audio/game_over.ogg', 'audio/game_over.mp3'] },
+        countdownTick: { key: 'countdownTick', urls: ['audio/countdown.ogg', 'audio/countdown.mp3'] },
+        bricksWave: { key: 'bricksWave', urls: ['audio/wave.ogg', 'audio/wave.mp3'] },
     },
 };
 const progressBar = {
