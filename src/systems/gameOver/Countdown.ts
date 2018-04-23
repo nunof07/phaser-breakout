@@ -5,4 +5,5 @@ import { System } from '@systems/System';
  */
 export interface Countdown extends System {
     start(done: () => void): this;
+    onTick(callback: (count: number) => void): this;
 }

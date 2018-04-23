@@ -14,6 +14,7 @@ export class BaseGameOver implements GameOver, System {
     private readonly config: GameOverConfig;
     private readonly countdown: Countdown;
     private readonly scoreboard: Scoreboard;
+    private readonly emitter: Phaser.EventEmitter;
     private text: Phaser.GameObjects.Text;
     private active: boolean;
     private hideInProgressImp: boolean;
@@ -25,6 +26,7 @@ export class BaseGameOver implements GameOver, System {
         this.countdown = countdown;
         this.hideInProgressImp = false;
         this.scoreboard = scoreboard;
+        this.emitter = new Phaser.EventEmitter();
     }
 
     public isActive(): boolean {
@@ -37,6 +39,7 @@ export class BaseGameOver implements GameOver, System {
             this.background.visible = true;
             this.text.visible = true;
             this.scoreboard.show();
+            this.emitter.emit('show');
         }
 
         return this;
@@ -91,6 +94,18 @@ export class BaseGameOver implements GameOver, System {
 
     public update(): this {
         this.countdown.update();
+
+        return this;
+    }
+
+    public onShow(callback: () => void): this {
+        this.emitter.on('show', callback);
+
+        return this;
+    }
+
+    public onCountdown(callback: (count: number) => void): this {
+        this.countdown.onTick(callback);
 
         return this;
     }

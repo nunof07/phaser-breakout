@@ -8,6 +8,7 @@ import Phaser from 'phaser';
  */
 export class BaseCountdown implements Countdown {
     private readonly gameOverConfig: GameOverConfig;
+    private readonly emitter: Phaser.EventEmitter;
     private text: Phaser.GameObjects.Text;
     private countdownTimer: Phaser.Time.TimerEvent;
     private count: number;
@@ -18,6 +19,7 @@ export class BaseCountdown implements Countdown {
         this.gameOverConfig = config;
         this.count = config.countdown;
         this.inProgress = false;
+        this.emitter = new Phaser.EventEmitter();
     }
 
     public start(done: () => void): this {
@@ -28,6 +30,7 @@ export class BaseCountdown implements Countdown {
             this.done = done;
             this.countdownTimer.reset(this.config());
             this.countdownTimer.paused = false;
+            this.emitter.emit('tick', this.count);
         }
 
         return this;
@@ -55,6 +58,12 @@ export class BaseCountdown implements Countdown {
         return this;
     }
 
+    public onTick(callback: (count: number) => void): this {
+        this.emitter.on('tick', callback);
+
+        return this;
+    }
+
     private config(): object {
         return {
             delay: 1000,
@@ -70,9 +79,9 @@ export class BaseCountdown implements Countdown {
         if (this.count <= 1) {
             this.stop();
             this.done();
-        } else {
-            this.updateCount(this.count - 1);
         }
+        this.updateCount(this.count - 1);
+        this.emitter.emit('tick', this.count);
     }
 
     private updateCount(count: number): this {

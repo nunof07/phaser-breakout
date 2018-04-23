@@ -12,6 +12,7 @@ import { ReadonlyComposite } from '@systems/ReadonlyComposite';
 import { Referee } from '@systems/referee/Referee';
 import { BaseScoreboard } from '@systems/score/BaseScoreboard';
 import { BaseStats } from '@systems/score/BaseStats';
+import { Sound } from '@systems/Sound';
 import { System } from '@systems/System';
 import Phaser from 'phaser';
 
@@ -48,6 +49,7 @@ export class Breakout extends Phaser.Scene {
             stats,
             scoreboard,
             new Music(config.audio, referee),
+            new Sound(config.audio, entities, gameOver, physics),
         ]);
         this.systems.setup(this);
     }

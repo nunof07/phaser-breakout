@@ -27573,6 +27573,8 @@ declare namespace Phaser {
                  */
                 blendMode: integer | string;
 
+                body: Phaser.Physics.Arcade.Body;
+
                 /**
                  * Sets the Blend Mode being used by this Game Object.
                  * 
@@ -30074,7 +30076,402 @@ declare namespace Phaser {
 
             }
 
-            type World = any;
+            class World extends Phaser.EventEmitter {
+                /**
+                 * 
+                 * @param scene [description]
+                 * @param config [description]
+                 */
+                constructor(scene: Phaser.Scene, config: ArcadeWorldConfig);
+
+                /**
+                 * [description]
+                 */
+                scene: Phaser.Scene;
+
+                /**
+                 * Dynamic Bodies
+                 */
+                bodies: Phaser.Structs.Set<Phaser.Physics.Arcade.Body>;
+
+                /**
+                 * Static Bodies
+                 */
+                staticBodies: Phaser.Structs.Set<Phaser.Physics.Arcade.StaticBody>;
+
+                /**
+                 * Static Bodies
+                 */
+                pendingDestroy: Phaser.Structs.Set<(Phaser.Physics.Arcade.Body|Phaser.Physics.Arcade.StaticBody)>;
+
+                /**
+                 * [description]
+                 */
+                colliders: Phaser.Structs.ProcessQueue<Phaser.Physics.Arcade.Collider>;
+
+                /**
+                 * [description]
+                 */
+                gravity: Phaser.Math.Vector2;
+
+                /**
+                 * [description]
+                 */
+                bounds: Phaser.Geom.Rectangle;
+
+                /**
+                 * [description]
+                 */
+                checkCollision: CheckCollisionObject;
+
+                /**
+                 * [description]
+                 */
+                OVERLAP_BIAS: number;
+
+                /**
+                 * [description]
+                 */
+                TILE_BIAS: number;
+
+                /**
+                 * [description]
+                 */
+                forceX: boolean;
+
+                /**
+                 * [description]
+                 */
+                isPaused: boolean;
+
+                /**
+                 * [description]
+                 */
+                drawDebug: boolean;
+
+                /**
+                 * [description]
+                 */
+                debugGraphic: Phaser.GameObjects.Graphics;
+
+                /**
+                 * [description]
+                 */
+                defaults: ArcadeWorldDefaults;
+
+                /**
+                 * [description]
+                 */
+                maxEntries: integer;
+
+                /**
+                 * [description]
+                 */
+                tree: Phaser.Structs.RTree;
+
+                /**
+                 * [description]
+                 */
+                staticTree: Phaser.Structs.RTree;
+
+                /**
+                 * [description]
+                 */
+                treeMinMax: ArcadeWorldTreeMinMax;
+
+                /**
+                 * [description]
+                 * @param object [description]
+                 * @param bodyType The type of Body to create. Either `DYNAMIC_BODY` or `STATIC_BODY`.
+                 */
+                enable(object: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[], bodyType?: integer): void;
+
+                /**
+                 * [description]
+                 * @param object [description]
+                 * @param bodyType The type of Body to create. Either `DYNAMIC_BODY` or `STATIC_BODY`.
+                 */
+                enableBody(object: Phaser.GameObjects.GameObject, bodyType?: integer): Phaser.GameObjects.GameObject;
+
+                /**
+                 * [description]
+                 * @param object [description]
+                 */
+                remove(object: Phaser.Physics.Arcade.Body): void;
+
+                /**
+                 * [description]
+                 * @param object [description]
+                 */
+                disable(object: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[]): void;
+
+                /**
+                 * [description]
+                 * @param object [description]
+                 */
+                disableGameObjectBody(object: Phaser.GameObjects.GameObject): Phaser.GameObjects.GameObject;
+
+                /**
+                 * [description]
+                 * @param body [description]
+                 */
+                disableBody(body: Phaser.Physics.Arcade.Body): void;
+
+                /**
+                 * [description]
+                 */
+                createDebugGraphic(): Phaser.GameObjects.Graphics;
+
+                /**
+                 * [description]
+                 * @param x [description]
+                 * @param y [description]
+                 * @param width [description]
+                 * @param height [description]
+                 * @param checkLeft [description]
+                 * @param checkRight [description]
+                 * @param checkUp [description]
+                 * @param checkDown [description]
+                 */
+                setBounds(x: number, y: number, width: number, height: number, checkLeft?: boolean, checkRight?: boolean, checkUp?: boolean, checkDown?: boolean): Phaser.Physics.Arcade.World;
+
+                /**
+                 * [description]
+                 * @param left [description] Default true.
+                 * @param right [description] Default true.
+                 * @param up [description] Default true.
+                 * @param down [description] Default true.
+                 */
+                setBoundsCollision(left?: boolean, right?: boolean, up?: boolean, down?: boolean): Phaser.Physics.Arcade.World;
+
+                /**
+                 * [description]
+                 */
+                pause(): Phaser.Physics.Arcade.World;
+
+                /**
+                 * [description]
+                 */
+                resume(): Phaser.Physics.Arcade.World;
+
+                /**
+                 * [description]
+                 * @param object1 The first object to check for collision.
+                 * @param object2 The second object to check for collision.
+                 * @param collideCallback The callback to invoke when the two objects collide.
+                 * @param processCallback The callback to invoke when the two objects collide. Must return a boolean.
+                 * @param callbackContext The scope in which to call the callbacks.
+                 */
+                addCollider(object1: Phaser.Physics.Arcade.Body, object2: Phaser.Physics.Arcade.Body, collideCallback?: ArcadePhysicsCallback, processCallback?: ArcadePhysicsCallback, callbackContext?: any): Phaser.Physics.Arcade.Collider;
+
+                /**
+                 * [description]
+                 * @param object1 The first object to check for overlap.
+                 * @param object2 The second object to check for overlap.
+                 * @param collideCallback The callback to invoke when the two objects overlap.
+                 * @param processCallback The callback to invoke when the two objects overlap. Must return a boolean.
+                 * @param callbackContext The scope in which to call the callbacks.
+                 */
+                addOverlap(object1: Phaser.Physics.Arcade.Body, object2: Phaser.Physics.Arcade.Body, collideCallback?: ArcadePhysicsCallback, processCallback?: ArcadePhysicsCallback, callbackContext?: any): Phaser.Physics.Arcade.Collider;
+
+                /**
+                 * [description]
+                 * @param collider [description]
+                 */
+                removeCollider(collider: Phaser.Physics.Arcade.Collider): Phaser.Physics.Arcade.World;
+
+                /**
+                 * [description]
+                 * @param time [description]
+                 * @param delta [description]
+                 */
+                update(time: number, delta: number): void;
+
+                /**
+                 * [description]
+                 */
+                postUpdate(): void;
+
+                /**
+                 * [description]
+                 * @param body [description]
+                 */
+                updateMotion(body: Phaser.Physics.Arcade.Body): void;
+
+                /**
+                 * [description]
+                 * @param axis [description]
+                 * @param body [description]
+                 * @param velocity [description]
+                 * @param acceleration [description]
+                 * @param drag [description]
+                 * @param max [description]
+                 */
+                computeVelocity(axis: integer, body: Phaser.Physics.Arcade.Body, velocity: number, acceleration: number, drag: number, max: number): number;
+
+                /**
+                 * [description]
+                 * @param body1 [description]
+                 * @param body2 [description]
+                 * @param processCallback [description]
+                 * @param callbackContext [description]
+                 * @param overlapOnly [description]
+                 */
+                separate(body1: Phaser.Physics.Arcade.Body, body2: Phaser.Physics.Arcade.Body, processCallback?: ArcadePhysicsCallback, callbackContext?: any, overlapOnly?: boolean): boolean;
+
+                /**
+                 * [description]
+                 * @param body1 [description]
+                 * @param body2 [description]
+                 * @param overlapOnly [description]
+                 * @param bias [description]
+                 */
+                separateCircle(body1: Phaser.Physics.Arcade.Body, body2: Phaser.Physics.Arcade.Body, overlapOnly: boolean, bias: number): boolean;
+
+                /**
+                 * [description]
+                 * @param body1 [description]
+                 * @param body2 [description]
+                 */
+                intersects(body1: Phaser.Physics.Arcade.Body, body2: Phaser.Physics.Arcade.Body): boolean;
+
+                /**
+                 * [description]
+                 * @param circle [description]
+                 * @param body [description]
+                 */
+                circleBodyIntersects(circle: Phaser.Physics.Arcade.Body, body: Phaser.Physics.Arcade.Body): boolean;
+
+                /**
+                 * [description]
+                 * @param object1 [description]
+                 * @param object2 [description]
+                 * @param overlapCallback [description]
+                 * @param processCallback [description]
+                 * @param callbackContext [description]
+                 */
+                overlap(object1: Phaser.GameObjects.GameObject, object2: Phaser.GameObjects.GameObject, overlapCallback?: ArcadePhysicsCallback, processCallback?: ArcadePhysicsCallback, callbackContext?: any): boolean;
+
+                /**
+                 * [description]
+                 * @param object1 [description]
+                 * @param object2 [description]
+                 * @param collideCallback [description]
+                 * @param processCallback [description]
+                 * @param callbackContext [description]
+                 */
+                collide(object1: Phaser.GameObjects.GameObject, object2: Phaser.GameObjects.GameObject, collideCallback?: ArcadePhysicsCallback, processCallback?: ArcadePhysicsCallback, callbackContext?: any): boolean;
+
+                /**
+                 * [description]
+                 * @param object1 [description]
+                 * @param object2 [description]
+                 * @param collideCallback [description]
+                 * @param processCallback [description]
+                 * @param callbackContext [description]
+                 * @param overlapOnly [description]
+                 */
+                collideObjects(object1: Phaser.GameObjects.GameObject, object2: Phaser.GameObjects.GameObject, collideCallback: ArcadePhysicsCallback, processCallback: ArcadePhysicsCallback, callbackContext: any, overlapOnly: boolean): boolean;
+
+                /**
+                 * [description]
+                 * @param object1 [description]
+                 * @param object2 [description]
+                 * @param collideCallback [description]
+                 * @param processCallback [description]
+                 * @param callbackContext [description]
+                 * @param overlapOnly [description]
+                 */
+                collideHandler(object1: Phaser.GameObjects.GameObject, object2: Phaser.GameObjects.GameObject, collideCallback: ArcadePhysicsCallback, processCallback: ArcadePhysicsCallback, callbackContext: any, overlapOnly: boolean): boolean;
+
+                /**
+                 * [description]
+                 * @param sprite1 [description]
+                 * @param sprite2 [description]
+                 * @param collideCallback [description]
+                 * @param processCallback [description]
+                 * @param callbackContext [description]
+                 * @param overlapOnly [description]
+                 */
+                collideSpriteVsSprite(sprite1: Phaser.GameObjects.GameObject, sprite2: Phaser.GameObjects.GameObject, collideCallback: ArcadePhysicsCallback, processCallback: ArcadePhysicsCallback, callbackContext: any, overlapOnly: boolean): boolean;
+
+                /**
+                 * [description]
+                 * @param sprite [description]
+                 * @param group [description]
+                 * @param collideCallback [description]
+                 * @param processCallback [description]
+                 * @param callbackContext [description]
+                 * @param overlapOnly [description]
+                 */
+                collideSpriteVsGroup(sprite: Phaser.GameObjects.GameObject, group: Phaser.GameObjects.Group, collideCallback: ArcadePhysicsCallback, processCallback: ArcadePhysicsCallback, callbackContext: any, overlapOnly: boolean): boolean;
+
+                /**
+                 * [description]
+                 * @param group [description]
+                 * @param tilemapLayer [description]
+                 * @param collideCallback [description]
+                 * @param processCallback [description]
+                 * @param callbackContext [description]
+                 * @param overlapOnly [description]
+                 */
+                collideGroupVsTilemapLayer(group: Phaser.GameObjects.Group, tilemapLayer: Phaser.Tilemaps.DynamicTilemapLayer | Phaser.Tilemaps.StaticTilemapLayer, collideCallback: ArcadePhysicsCallback, processCallback: ArcadePhysicsCallback, callbackContext: any, overlapOnly: boolean): boolean;
+
+                /**
+                 * [description]
+                 * @param sprite [description]
+                 * @param tilemapLayer [description]
+                 * @param collideCallback [description]
+                 * @param processCallback [description]
+                 * @param callbackContext [description]
+                 * @param overlapOnly [description]
+                 */
+                collideSpriteVsTilemapLayer(sprite: Phaser.GameObjects.GameObject, tilemapLayer: Phaser.Tilemaps.DynamicTilemapLayer | Phaser.Tilemaps.StaticTilemapLayer, collideCallback: ArcadePhysicsCallback, processCallback: ArcadePhysicsCallback, callbackContext: any, overlapOnly: boolean): boolean;
+
+                /**
+                 * TODO!
+                 * @param group1 [description]
+                 * @param group2 [description]
+                 * @param collideCallback [description]
+                 * @param processCallback [description]
+                 * @param callbackContext [description]
+                 * @param overlapOnly [description]
+                 */
+                collideGroupVsGroup(group1: Phaser.GameObjects.Group, group2: Phaser.GameObjects.Group, collideCallback: ArcadePhysicsCallback, processCallback: ArcadePhysicsCallback, callbackContext: any, overlapOnly: boolean): boolean;
+
+                /**
+                 * Wrap an object's coordinates (or several objects' coordinates) within {@link Phaser.Physics.Arcade.World#bounds}.
+                 * 
+                 * If the object is outside any boundary edge (left, top, right, bottom), it will be moved to the same offset from the opposite edge (the interior).
+                 * @param object A Game Object, a Group, an object with `x` and `y` coordinates, or an array of such objects.
+                 * @param padding An amount added to each boundary edge during the operation. Default 0.
+                 */
+                wrap(object: any, padding?: number): void;
+
+                /**
+                 * Wrap each object's coordinates within {@link Phaser.Physics.Arcade.World#bounds}.
+                 * @param padding An amount added to the boundary. Default 0.
+                 */
+                wrapArray(arr: any[], padding?: number): void;
+
+                /**
+                 * Wrap an object's coordinates within {@link Phaser.Physics.Arcade.World#bounds}.
+                 * @param object A Game Object, a Physics Body, or any object with `x` and `y` coordinates
+                 * @param padding An amount added to the boundary. Default 0.
+                 */
+                wrapObject(object: any, padding?: number): void;
+
+                /**
+                 * [description]
+                 */
+                shutdown(): void;
+
+                /**
+                 * [description]
+                 */
+                destroy(): void;
+
+            }
 
         }
 
@@ -49571,7 +49968,7 @@ declare namespace Phaser {
          * Calls each of the listeners registered for a given event.
          * @param event The event name.
          */
-        emit(event: string | symbol): Boolean;
+        emit(event: string | symbol, ...args: any[]): boolean;
     
         /**
          * Add a listener for a given event.

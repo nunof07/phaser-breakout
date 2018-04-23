@@ -18,6 +18,7 @@ export class BaseBricks implements Bricks {
     private readonly bricks: MutableComposite<Brick>;
     private readonly config: BrickConfig;
     private readonly stats: Stats;
+    private readonly emitter: Phaser.EventEmitter;
     private iteration: number;
 
     constructor(config: BrickConfig, bricks: MutableComposite<Brick>, stats: Stats) {
@@ -25,6 +26,7 @@ export class BaseBricks implements Bricks {
         this.bricks = bricks;
         this.iteration = 1;
         this.stats = stats;
+        this.emitter = new Phaser.EventEmitter();
     }
 
     public group(): ReadonlyArray<Brick> {
@@ -51,6 +53,7 @@ export class BaseBricks implements Bricks {
             this.bricks.remove(brick);
             this.stats.addBrick(brick);
         }
+        this.emitter.emit('hit', ball, brick);
 
         return this;
     }
@@ -58,6 +61,7 @@ export class BaseBricks implements Bricks {
     public lower(scene: Phaser.Scene): this {
         const lower: (brick: Brick) => void = curry(lowerBrick)(scene.tweens, this.config.bricks.lower);
         this.bricks.systems().forEach(lower);
+        this.emitter.emit('lower');
 
         return this;
     }
@@ -84,6 +88,18 @@ export class BaseBricks implements Bricks {
             brick.destroy();
         });
         this.iteration = 0;
+
+        return this;
+    }
+
+    public onLower(callback: () => void): this {
+        this.emitter.on('lower', callback);
+
+        return this;
+    }
+
+    public onHit(callback: (ball: Ball, brick: Brick) => void): this {
+        this.emitter.on('hit', callback);
 
         return this;
     }
