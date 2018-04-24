@@ -1,4 +1,5 @@
 import { PhysicsConfig } from '@config/PhysicsConfig';
+import { GraphicSprite } from '@display/GraphicSprite';
 import { addCollider } from '@physics/addCollider';
 import { setBoundsCollision } from '@physics/setBoundsCollision';
 import { Ball } from '@systems/ball/Ball';
@@ -57,7 +58,7 @@ export class BasePhysics implements Physics {
 
     public collide(ball: Phaser.Physics.Arcade.Sprite, paddle: Phaser.Physics.Arcade.Sprite): this {
         ball.setVelocityX((ball.x - paddle.x) * this.congfigObj.collideVelocity);
-        this.emitter.emit('ballHitPaddle', ball, paddle);
+        this.emitter.emit('ballHitPaddle', this.entities.ball, this.entities.paddle);
 
         return this;
     }
@@ -66,7 +67,7 @@ export class BasePhysics implements Physics {
         return this;
     }
 
-    public onBallHitPaddle(callback: (ball: Phaser.Physics.Arcade.Sprite, paddle: Phaser.Physics.Arcade.Sprite) => void): this {
+    public onBallHitPaddle(callback: (ball: Ball, paddle: GraphicSprite) => void): this {
         this.emitter.on('ballHitPaddle', callback);
 
         return this;

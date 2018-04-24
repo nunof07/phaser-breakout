@@ -1,4 +1,5 @@
 import { AudioConfig } from '@config/AudioConfig';
+import { Fx } from '@config/Fx';
 import { Ball } from '@systems/ball/Ball';
 import { Brick } from '@systems/bricks/Brick';
 import { GameEntities } from '@systems/GameEntities';
@@ -24,13 +25,38 @@ export class Sound implements System {
     }
 
     public setup(scene: Phaser.Scene): this {
+        const callbacks: ReadonlyArray<(callback: () => void) => void> = [
+            (callback: () => void): void => {
+                this.gameOver.onShow(callback);
+            },
+            (callback: () => void): void => {
+                this.entities.bricks.onLower(callback);
+            },
+            (callback: () => void): void => {
+                this.physics.onBallHitPaddle(callback);
+            },
+            (callback: () => void): void => {
+                this.physics.onBallHitBounds(callback);
+            },
+            (callback: () => void): void => {
+                this.entities.ball.onLoseLife(callback);
+            },
+        ];
+        const fx: ReadonlyArray<Fx> = [
+            this.config.fx.gameOver,
+            this.config.fx.bricksWave,
+            this.config.fx.ballCollide,
+            this.config.fx.ballCollide,
+            this.config.fx.loseLife,
+        ];
+        callbacks.forEach((callback: (callback: () => void) => void, index: number) => {
+            callback(() => scene.sound.play(fx[index].key));
+        });
         this.gameOver.onCountdown((count: number) => {
             if (count > 0) {
                 scene.sound.play(this.config.fx.countdownTick.key);
             }
         });
-        this.gameOver.onShow(() => scene.sound.play(this.config.fx.gameOver.key));
-        this.entities.bricks.onLower(() => scene.sound.play(this.config.fx.bricksWave.key));
         this.entities.bricks.onHit((_ball: Ball, brick: Brick) => {
             const key: string = (
                     brick.isPowerup()
@@ -39,11 +65,6 @@ export class Sound implements System {
             );
             scene.sound.play(key);
         });
-        this.physics.onBallHitPaddle(() => scene.sound.play(this.config.fx.ballCollide.key));
-        this.physics.onBallHitBounds((_ball: Ball, _up: boolean, _down: boolean, _left: boolean, _right: boolean) => {
-            scene.sound.play(this.config.fx.ballCollide.key);
-        });
-        this.entities.ball.onLoseLife(() => scene.sound.play(this.config.fx.loseLife.key));
 
         return this;
     }

@@ -1,4 +1,4 @@
-type Fx = { readonly key: string; readonly urls: ReadonlyArray<string> };
+import { Fx } from '@config/Fx';
 
 /**
  * Audio config.
