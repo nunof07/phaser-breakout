@@ -6,4 +6,6 @@ export interface GameOver {
     show(): this;
     hide(done: () => void): this;
     hideInProgress(): boolean;
+    onShow(callback: () => void): this;
+    onCountdown(callback: (count: number) => void): this;
 }

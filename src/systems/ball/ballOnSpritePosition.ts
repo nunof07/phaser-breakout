@@ -10,6 +10,6 @@ import { startY } from '@display/startY';
 export function ballOnSpritePosition(ball: GraphicSprite, paddle: GraphicSprite): Coordinates {
     return {
         x: paddle.sprite().x,
-        y: startY(paddle.sprite()) - ball.sprite().displayHeight - paddle.borderWidth(),
+        y: startY(paddle.sprite()) - ball.sprite().displayHeight - paddle.borderWidth() * 2,
     };
 }

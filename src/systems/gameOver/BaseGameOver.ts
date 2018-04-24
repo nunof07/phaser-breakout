@@ -14,9 +14,11 @@ export class BaseGameOver implements GameOver, System {
     private readonly config: GameOverConfig;
     private readonly countdown: Countdown;
     private readonly scoreboard: Scoreboard;
+    private readonly emitter: Phaser.EventEmitter;
     private text: Phaser.GameObjects.Text;
     private active: boolean;
     private hideInProgressImp: boolean;
+    private background: Phaser.GameObjects.Graphics;
 
     constructor(config: GameOverConfig, scoreboard: Scoreboard, countdown: Countdown = new BaseCountdown(config)) {
         this.config = config;
@@ -24,6 +26,7 @@ export class BaseGameOver implements GameOver, System {
         this.countdown = countdown;
         this.hideInProgressImp = false;
         this.scoreboard = scoreboard;
+        this.emitter = new Phaser.EventEmitter();
     }
 
     public isActive(): boolean {
@@ -33,8 +36,10 @@ export class BaseGameOver implements GameOver, System {
     public show(): this {
         if (!this.active) {
             this.active = true;
+            this.background.visible = true;
             this.text.visible = true;
             this.scoreboard.show();
+            this.emitter.emit('show');
         }
 
         return this;
@@ -45,6 +50,7 @@ export class BaseGameOver implements GameOver, System {
             this.text.visible = false;
             this.hideInProgressImp = true;
             this.scoreboard.hide();
+            this.background.visible = false;
             this.countdown.start(() => {
                 this.active = false;
                 this.hideInProgressImp = false;
@@ -72,12 +78,34 @@ export class BaseGameOver implements GameOver, System {
             },
         );
         this.countdown.setup(scene);
+        this.background = scene.add.graphics({});
+        this.background.fillStyle(this.config.background.color);
+        this.background.fillRect(
+            this.config.background.position.x,
+            this.config.background.position.y,
+            this.config.background.size.width,
+            this.config.background.size.height,
+        );
+        this.background.depth = 50;
+        this.background.visible = false;
 
         return this;
     }
 
     public update(): this {
         this.countdown.update();
+
+        return this;
+    }
+
+    public onShow(callback: () => void): this {
+        this.emitter.on('show', callback);
+
+        return this;
+    }
+
+    public onCountdown(callback: (count: number) => void): this {
+        this.countdown.onTick(callback);
 
         return this;
     }
