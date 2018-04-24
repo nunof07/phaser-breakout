@@ -1,3 +1,20 @@
+<a name="0.12.0"></a>
+# [0.12.0](https://github.com/nunof07/phaser-breakout/compare/v0.11.0...v0.12.0) (2018-04-24)
+
+
+### Bug Fixes
+
+* **ball:** decrease a percentage of hitpoints when losing a life ([57e817f](https://github.com/nunof07/phaser-breakout/commit/57e817f))
+* **ball:** set reset position a bit higher ([e6f50b2](https://github.com/nunof07/phaser-breakout/commit/e6f50b2))
+* **bricks:** only start wave timer after first launch ([8ab39db](https://github.com/nunof07/phaser-breakout/commit/8ab39db))
+* **gameover:** show background behind gameover info ([3e8cb60](https://github.com/nunof07/phaser-breakout/commit/3e8cb60))
+* **physics:** update display size and gameplay config ([b50ab90](https://github.com/nunof07/phaser-breakout/commit/b50ab90))
+
+
+### Features
+
+* **sound:** add sound effects ([9e38c58](https://github.com/nunof07/phaser-breakout/commit/9e38c58))
+
 <a name="0.11.0"></a>
 # [0.11.0](https://github.com/nunof07/phaser-breakout/compare/v0.10.1...v0.11.0) (2018-04-17)
 
