@@ -25,30 +25,9 @@ export class Sound implements System {
     }
 
     public setup(scene: Phaser.Scene): this {
-        const callbacks: ReadonlyArray<(callback: () => void) => void> = [
-            (callback: () => void): void => {
-                this.gameOver.onShow(callback);
-            },
-            (callback: () => void): void => {
-                this.entities.bricks.onLower(callback);
-            },
-            (callback: () => void): void => {
-                this.physics.onBallHitPaddle(callback);
-            },
-            (callback: () => void): void => {
-                this.physics.onBallHitBounds(callback);
-            },
-            (callback: () => void): void => {
-                this.entities.ball.onLoseLife(callback);
-            },
-        ];
-        const fx: ReadonlyArray<Fx> = [
-            this.config.fx.gameOver,
-            this.config.fx.bricksWave,
-            this.config.fx.ballCollide,
-            this.config.fx.ballCollide,
-            this.config.fx.loseLife,
-        ];
+        const callbacks: ReadonlyArray<(callback: () => void) => void> = this.callbacks();
+        const fx: ReadonlyArray<Fx> = this.fx();
+
         callbacks.forEach((callback: (callback: () => void) => void, index: number) => {
             callback(() => scene.sound.play(fx[index].key));
         });
@@ -71,5 +50,35 @@ export class Sound implements System {
 
     public update(): this {
         return this;
+    }
+
+    private callbacks(): ReadonlyArray<(callback: () => void) => void> {
+        return [
+            (callback: () => void): void => {
+                this.gameOver.onShow(callback);
+            },
+            (callback: () => void): void => {
+                this.entities.bricks.onLower(callback);
+            },
+            (callback: () => void): void => {
+                this.physics.onBallHitPaddle(callback);
+            },
+            (callback: () => void): void => {
+                this.physics.onBallHitBounds(callback);
+            },
+            (callback: () => void): void => {
+                this.entities.ball.onLoseLife(callback);
+            },
+        ];
+    }
+
+    private fx(): ReadonlyArray<Fx> {
+        return [
+            this.config.fx.gameOver,
+            this.config.fx.bricksWave,
+            this.config.fx.ballCollide,
+            this.config.fx.ballCollide,
+            this.config.fx.loseLife,
+        ];
     }
 }
