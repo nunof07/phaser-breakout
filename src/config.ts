@@ -9,7 +9,7 @@ const game = {
     debug: false,
 };
 const graphics = {
-    width: 2,
+    width: 4,
     texture: {
         key: 'pixel',
         url: 'images/transparent_pixel.png',
