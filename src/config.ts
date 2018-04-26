@@ -150,6 +150,12 @@ const progressBar = {
     borderWidth: 2,
     color: 0xFFFFFF,
 };
+const camera = {
+    lowerBricksShake: {
+        duration: 350,
+        intensity: 0.0025,
+    },
+};
 export const config = {
     game,
     graphics,
@@ -163,4 +169,5 @@ export const config = {
     scoreboard,
     audio,
     progressBar,
+    camera,
 };

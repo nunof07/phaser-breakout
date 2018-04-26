@@ -3,6 +3,7 @@ import { config } from '@src/config';
 import { createBall } from '@systems/ball/createBall';
 import { Boot } from '@systems/Boot';
 import { createBricks } from '@systems/bricks/createBricks';
+import { Camera } from '@systems/Camera';
 import { GameEntities } from '@systems/GameEntities';
 import { BaseGameOver } from '@systems/gameOver/BaseGameOver';
 import { Music } from '@systems/Music';
@@ -50,6 +51,7 @@ export class Breakout extends Phaser.Scene {
             scoreboard,
             new Music(config.audio, referee),
             new Sound(config.audio, entities, gameOver, physics),
+            new Camera(config.camera, entities),
         ]);
         this.systems.setup(this);
     }
