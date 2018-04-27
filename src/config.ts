@@ -151,15 +151,19 @@ const progressBar = {
     color: 0xFFFFFF,
 };
 const camera = {
-    lowerBricksShake: {
+    lowerBricks: {
         duration: 350,
         intensity: 0.0025,
     },
-    powerupFlash: {
-        duration: 300,
+    powerup: {
+        duration: 350,
         red: 0,
         green: 0.075,
         blue: 0,
+    },
+    gameOver: {
+        duration: 500,
+        intensity: 0.1,
     },
 };
 export const config = {

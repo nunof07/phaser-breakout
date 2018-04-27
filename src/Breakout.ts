@@ -51,7 +51,7 @@ export class Breakout extends Phaser.Scene {
             scoreboard,
             new Music(config.audio, referee),
             new Sound(config.audio, entities, gameOver, physics),
-            new Camera(config.camera, entities),
+            new Camera(config.camera, entities, gameOver),
         ]);
         this.systems.setup(this);
     }
