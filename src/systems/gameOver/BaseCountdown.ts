@@ -14,6 +14,7 @@ export class BaseCountdown implements Countdown {
     private count: number;
     private inProgress: boolean;
     private done: () => void;
+    private zoomOut: Phaser.Tweens.Tween;
 
     constructor(config: GameOverConfig) {
         this.gameOverConfig = config;
@@ -47,9 +48,24 @@ export class BaseCountdown implements Countdown {
                 visible: false,
                 depth: 100,
                 text: this.gameOverConfig.countdown.toString(),
-                config: this.gameOverConfig.text,
+                config: this.gameOverConfig.countdownText,
             },
         );
+        this.zoomOut = scene.tweens.add({
+            targets: this.text,
+            scaleX: 0,
+            scaleY: 0,
+            alpha: 0,
+            ease: 'Cubic.easeIn',
+            delay: 300,
+            duration: 700,
+            onStart: (): void => {
+                this.text.scaleX = 1;
+                this.text.scaleY = 1;
+                this.text.alpha = 1;
+            },
+            paused: true,
+        });
 
         return this;
     }
@@ -87,6 +103,7 @@ export class BaseCountdown implements Countdown {
     private updateCount(count: number): this {
         this.count = count;
         this.text.setText(count.toString());
+        this.zoomOut.restart();
 
         return this;
     }

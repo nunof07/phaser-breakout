@@ -96,6 +96,11 @@ const gameOver = {
         fontSize: 36,
         color: '#ffffff',
     },
+    countdownText: {
+        fontFamily: text.fontFamily,
+        fontSize: 108,
+        color: '#ffffff',
+    },
     countdown: 3,
     position: { x: game.width * 0.5, y: game.height * 0.4 },
     background: {

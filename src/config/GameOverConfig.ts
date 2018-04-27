@@ -9,6 +9,7 @@ export interface GameOverConfig {
     readonly title: string;
     readonly text: TextConfig;
     readonly countdown: number;
+    readonly countdownText: TextConfig;
     readonly position: Coordinates;
     readonly background: {
         readonly color: number;
