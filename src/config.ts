@@ -155,6 +155,12 @@ const camera = {
         duration: 350,
         intensity: 0.0025,
     },
+    powerupFlash: {
+        duration: 300,
+        red: 0,
+        green: 0.075,
+        blue: 0,
+    },
 };
 export const config = {
     game,
