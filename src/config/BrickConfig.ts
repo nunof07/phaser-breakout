@@ -14,4 +14,5 @@ export interface BrickConfig {
     readonly row?: number;
     readonly column?: number;
     readonly powerupColor: number;
+    readonly powerupBorder: number;
 }

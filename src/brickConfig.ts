@@ -10,7 +10,8 @@ export function brickConfig(): BrickConfig {
         bricks: config.bricks,
         sprite: config.brick,
         graphics: config.graphics,
-        text: textConfig(config.text, config.brick.color),
+        text: textConfig(config.text, config.brick.border),
         powerupColor: config.brick.powerupColor,
+        powerupBorder: config.brick.powerupBorder,
     };
 }

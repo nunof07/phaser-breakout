@@ -33,6 +33,7 @@ export function nextWaveBricks(
         graphics: config.graphics,
         text: config.text,
         powerupColor: config.powerupColor,
+        powerupBorder: config.powerupBorder,
     };
 
     return times(

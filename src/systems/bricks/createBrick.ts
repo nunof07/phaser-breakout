@@ -14,6 +14,7 @@ export function createBrick(brick: BrickConfig, hitpoints?: number, isPowerup: b
     const column: number = typeof brick.column === 'number' ? brick.column : 0;
     const row: number = typeof brick.row === 'number' ? brick.row : 0;
     const color: number = isPowerup ? brick.powerupColor : brick.sprite.color;
+    const border: number = isPowerup ? brick.powerupBorder : brick.sprite.border;
 
     return new BaseBrick(
         new TextGraphicSprite(
@@ -25,10 +26,11 @@ export function createBrick(brick: BrickConfig, hitpoints?: number, isPowerup: b
                     },
                     color,
                     size: brick.sprite.size,
+                    border,
                 },
                 brick.graphics,
             ),
-            textConfig(brick.text, color),
+            textConfig(brick.text, border),
         ),
         hitpoints,
         isPowerup,

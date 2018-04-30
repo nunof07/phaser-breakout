@@ -29,6 +29,7 @@ const paddle = {
         height: 20,
     },
     color: 0xAAAAAA,
+    border: 0xAAAAAA,
 };
 const ball = {
     position: {
@@ -39,7 +40,8 @@ const ball = {
         width: 20,
         height: 20,
     },
-    color: 0xAAAA00,
+    color: 0x000000,
+    border: 0xAAAA00,
     bounce: 1,
     startHitpoints: 1,
     loseLifePercentage: 0.25,
@@ -58,7 +60,9 @@ const brick = {
         height: 20,
     },
     color: 0xAA0000,
+    border: 0x220000,
     powerupColor: 0x00AA00,
+    powerupBorder: 0x002200,
 };
 const bricks = {
     startX: brick.size.width * 0.5,
@@ -154,6 +158,7 @@ const progressBar = {
     height: 20,
     borderWidth: 2,
     color: 0xFFFFFF,
+    border: 0xFFFFFF,
 };
 const camera = {
     lowerBricks: {

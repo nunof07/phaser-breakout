@@ -31,7 +31,7 @@ export class BaseGraphicSprite implements GraphicSprite {
         if (this.isSetup) {
             return this;
         }
-        this.graphicsObj = createGraphics(scene.add, this.config.color, this.graphics.width);
+        this.graphicsObj = createGraphics(scene.add, this.config.color, this.config.border, this.graphics.width);
         this.spriteObj = createSprite(scene.physics.add, this.config.position, this.config.size, this.graphics.texture.key);
         this.isSetup = true;
 

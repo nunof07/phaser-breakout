@@ -14,7 +14,7 @@ export function createBall(ball: BallConfig, graphics: GraphicsConfig): Ball {
         ball,
         new TextGraphicSprite(
             new BaseGraphicSprite(ball, graphics),
-            textConfig(ball.text, ball.color),
+            textConfig(ball.text, ball.border),
         ),
     );
 }

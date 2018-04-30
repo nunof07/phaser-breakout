@@ -19,7 +19,7 @@ export class ProgressBar implements System {
     public setup(scene: Phaser.Scene): this {
         scene.load.on('fileprogress', this.onProgress, this);
         scene.load.on('complete', this.onComplete, this);
-        this.graphics = createGraphics(scene.add, this.config.color, this.config.borderWidth);
+        this.graphics = createGraphics(scene.add, this.config.color, this.config.border, this.config.borderWidth);
         this.complete = new Phaser.Geom.Rectangle(0, 0, this.config.width, this.config.height);
         Phaser.Geom.Rectangle.CenterOn(this.complete, scene.cameras.main.width / 2, scene.cameras.main.height / 2);
         this.bar = Phaser.Geom.Rectangle.Clone(this.complete);
