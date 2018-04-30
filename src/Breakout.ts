@@ -1,9 +1,11 @@
+import { BrickConfig } from '@config/BrickConfig';
 import { brickConfig } from '@src/brickConfig';
 import { config } from '@src/config';
 import { createBall } from '@systems/ball/createBall';
 import { Boot } from '@systems/Boot';
 import { createBricks } from '@systems/bricks/createBricks';
 import { Camera } from '@systems/Camera';
+import { Effects } from '@systems/Effects';
 import { GameEntities } from '@systems/GameEntities';
 import { BaseGameOver } from '@systems/gameOver/BaseGameOver';
 import { Music } from '@systems/Music';
@@ -29,11 +31,12 @@ export class Breakout extends Phaser.Scene {
     }
 
     public create(): void {
+        const brick: BrickConfig = brickConfig();
         const stats: BaseStats = new BaseStats();
         const entities: GameEntities = {
             ball: createBall(config.ball, config.graphics),
             paddle: createPaddle(config.paddle, config.graphics),
-            bricks: createBricks(config.physics.bricksWave, brickConfig(), stats),
+            bricks: createBricks(config.physics.bricksWave, brick, stats),
             stats,
         };
         const physics: BasePhysics = new BasePhysics(config.physics, entities, this);
@@ -52,6 +55,7 @@ export class Breakout extends Phaser.Scene {
             new Music(config.audio, referee),
             new Sound(config.audio, entities, gameOver, physics),
             new Camera(config.camera, entities, gameOver),
+            new Effects({ brick, flyDown: config.effects.flyDown }, entities),
         ]);
         this.systems.setup(this);
     }

@@ -1,4 +1,5 @@
 import { TextConfig } from '@config/TextConfig';
+import { textColor } from '@display/textColor';
 import { assoc } from 'ramda';
 
 /**
@@ -7,11 +8,5 @@ import { assoc } from 'ramda';
  * @param color Color.
  */
 export function textConfig(text: { fontSize: number; fontFamily: string }, color: number): TextConfig {
-    let colorStr: string = color.toString(16);
-
-    while (colorStr.length < 6) {
-        colorStr = `0${colorStr}`;
-    }
-
-    return assoc('color', `#${colorStr}`, text);
+    return assoc('color', textColor(color), text);
 }

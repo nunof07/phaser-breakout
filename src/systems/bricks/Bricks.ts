@@ -13,5 +13,5 @@ export interface Bricks extends System {
     hit(ball: Ball, brick: Brick): this;
     reset(): this;
     onLower(callback: () => void): this;
-    onHit(callback: (ball: Ball, brick: Brick) => void): this;
+    onHit(callback: (ball: Ball, brick: Brick, points: number) => void): this;
 }

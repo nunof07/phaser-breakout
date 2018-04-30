@@ -46,14 +46,15 @@ export class BaseBricks implements Bricks {
     }
 
     public hit(ball: Ball, brick: Brick): this {
-        this.stats.addPoints(brick, brick.hit(ball));
+        const points: number = brick.hit(ball);
+        this.stats.addPoints(brick, points);
         this.stats.addHit(brick);
 
         if (brick.hitpoints() <= 0) {
             this.bricks.remove(brick);
             this.stats.addBrick(brick);
         }
-        this.emitter.emit('hit', ball, brick);
+        this.emitter.emit('hit', ball, brick, points);
 
         return this;
     }
@@ -98,7 +99,7 @@ export class BaseBricks implements Bricks {
         return this;
     }
 
-    public onHit(callback: (ball: Ball, brick: Brick) => void): this {
+    public onHit(callback: (ball: Ball, brick: Brick, points: number) => void): this {
         this.emitter.on('hit', callback);
 
         return this;

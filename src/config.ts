@@ -176,6 +176,13 @@ const camera = {
         intensity: 0.1,
     },
 };
+const effects = {
+    flyDown: {
+        ease: 'linear',
+        duration: 500,
+        distance: brick.size.height * 4,
+    },
+};
 export const config = {
     game,
     graphics,
@@ -190,4 +197,5 @@ export const config = {
     audio,
     progressBar,
     camera,
+    effects,
 };
