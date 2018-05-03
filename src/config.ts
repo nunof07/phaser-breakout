@@ -182,6 +182,21 @@ const effects = {
         duration: 500,
         distance: brick.size.height * 4,
     },
+    explode: {
+        fillColor: 0x660000,
+        borderColor: 0x660000,
+        quantity: 8,
+        size: {
+            width: 8,
+            height: 4,
+        },
+        speed: {
+            min: -200,
+            max: 200,
+        },
+        lifespan: 500,
+        gravity: 500,
+    },
 };
 export const config = {
     game,

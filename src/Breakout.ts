@@ -1,22 +1,23 @@
 import { BrickConfig } from '@config/BrickConfig';
 import { brickConfig } from '@src/brickConfig';
 import { config } from '@src/config';
+import { effectsConfig } from '@src/effectsConfig';
+import { Music } from '@systems/audio/Music';
+import { Sound } from '@systems/audio/Sound';
 import { createBall } from '@systems/ball/createBall';
 import { Boot } from '@systems/Boot';
 import { createBricks } from '@systems/bricks/createBricks';
 import { Camera } from '@systems/Camera';
-import { Effects } from '@systems/Effects';
 import { GameEntities } from '@systems/GameEntities';
 import { BaseGameOver } from '@systems/gameOver/BaseGameOver';
-import { Music } from '@systems/Music';
 import { createPaddle } from '@systems/paddle/createPaddle';
 import { BasePhysics } from '@systems/physics/BasePhysics';
 import { ReadonlyComposite } from '@systems/ReadonlyComposite';
 import { Referee } from '@systems/referee/Referee';
 import { BaseScoreboard } from '@systems/score/BaseScoreboard';
 import { BaseStats } from '@systems/score/BaseStats';
-import { Sound } from '@systems/Sound';
 import { System } from '@systems/System';
+import { Effects } from '@systems/visual/Effects';
 import Phaser from 'phaser';
 
 /**
@@ -55,7 +56,7 @@ export class Breakout extends Phaser.Scene {
             new Music(config.audio, referee),
             new Sound(config.audio, entities, gameOver, physics),
             new Camera(config.camera, entities, gameOver),
-            new Effects({ brick, flyDown: config.effects.flyDown }, entities),
+            new Effects(effectsConfig(brick), config.graphics, entities),
         ]);
         this.systems.setup(this);
     }

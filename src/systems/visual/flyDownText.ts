@@ -1,6 +1,6 @@
 import { EffectsConfig } from '@config/EffectsConfig';
 import { Brick } from '@systems/bricks/Brick';
-import { createFlyDownText } from '@systems/createFlyDownText';
+import { createFlyDownText } from '@systems/visual/createFlyDownText';
 import Phaser from 'phaser';
 
 /**
