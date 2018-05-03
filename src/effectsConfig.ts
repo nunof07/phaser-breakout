@@ -10,5 +10,6 @@ export function effectsConfig(brick: BrickConfig): EffectsConfig {
         brick,
         flyDown: config.effects.flyDown,
         explode: config.effects.explode,
+        hit: config.effects.hit,
     };
 }

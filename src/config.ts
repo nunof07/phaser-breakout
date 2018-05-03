@@ -182,9 +182,26 @@ const effects = {
         duration: 500,
         distance: brick.size.height * 4,
     },
+    hit: {
+        fillColor: 0x660000,
+        borderColor: 0x660000,
+        borderWidth: 0,
+        quantity: 4,
+        size: {
+            width: 2,
+            height: 2,
+        },
+        speed: {
+            min: -200,
+            max: 200,
+        },
+        lifespan: 500,
+        gravity: 500,
+    },
     explode: {
         fillColor: 0x660000,
         borderColor: 0x660000,
+        borderWidth: graphics.width,
         quantity: 8,
         size: {
             width: 8,

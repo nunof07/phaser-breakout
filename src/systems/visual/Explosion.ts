@@ -1,4 +1,4 @@
-import { EffectsConfig } from '@config/EffectsConfig';
+import { ExplosionConfig } from '@config/ExplosionConfig';
 import { GraphicsConfig } from '@config/GraphicsConfig';
 import { createGraphics } from '@display/createGraphics';
 import { Brick } from '@systems/bricks/Brick';
@@ -11,13 +11,13 @@ import Phaser from 'phaser';
  * Explosion visual effect.
  */
 export class Explosion implements System {
-    private readonly config: EffectsConfig;
+    private readonly config: ExplosionConfig;
     private readonly graphics: GraphicsConfig;
     private particles: Phaser.GameObjects.Particles.ParticleEmitterManager;
     private explosionsGraphics: Phaser.GameObjects.Graphics;
     private explosion: Phaser.GameObjects.Particles.ParticleEmitter;
 
-    constructor(config: EffectsConfig, graphics: GraphicsConfig) {
+    constructor(config: ExplosionConfig, graphics: GraphicsConfig) {
         this.config = config;
         this.graphics = graphics;
     }
@@ -25,9 +25,9 @@ export class Explosion implements System {
     public setup(scene: Phaser.Scene): this {
         this.explosionsGraphics = createGraphics(
             scene.add,
-            this.config.explode.fillColor,
-            this.config.explode.borderColor,
-            this.graphics.width,
+            this.config.fillColor,
+            this.config.borderColor,
+            this.config.borderWidth,
         );
         this.particles = scene.add.particles(this.graphics.texture.key);
         this.explosion = createExplosion(this.particles, this.config);
@@ -36,7 +36,7 @@ export class Explosion implements System {
     }
 
     public explode(brick: Brick): this {
-        this.explosion.explode(this.config.explode.quantity, brick.sprite().x, brick.sprite().y);
+        this.explosion.explode(this.config.quantity, brick.sprite().x, brick.sprite().y);
 
         return this;
     }
@@ -45,7 +45,7 @@ export class Explosion implements System {
         this.explosionsGraphics.clear();
         this.explosion.forEachAlive(
             (particle: Phaser.GameObjects.Particles.Particle) => {
-                drawExplodeParticle(this.explosionsGraphics, particle, this.config.explode.size);
+                drawExplodeParticle(this.explosionsGraphics, particle, this.config.size);
             },
             this,
         );

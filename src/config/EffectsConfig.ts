@@ -1,5 +1,5 @@
 import { BrickConfig } from '@config/BrickConfig';
-import { Size } from '@display/Size';
+import { ExplosionConfig } from '@config/ExplosionConfig';
 
 /**
  * Config for visual effects.
@@ -11,16 +11,6 @@ export interface EffectsConfig {
         readonly duration: number;
         readonly distance: number;
     };
-    readonly explode: {
-        readonly fillColor: number;
-        readonly borderColor: number;
-        readonly quantity: number;
-        readonly size: Size;
-        readonly speed: {
-            readonly min: number;
-            readonly max: number;
-        };
-        readonly lifespan: number;
-        readonly gravity: number;
-    };
+    readonly explode: ExplosionConfig;
+    readonly hit: ExplosionConfig;
 }

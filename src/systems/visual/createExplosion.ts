@@ -1,4 +1,4 @@
-import { EffectsConfig } from '@config/EffectsConfig';
+import { ExplosionConfig } from '@config/ExplosionConfig';
 import Phaser from 'phaser';
 
 /**
@@ -9,12 +9,12 @@ import Phaser from 'phaser';
  */
 export function createExplosion(
     particles: Phaser.GameObjects.Particles.ParticleEmitterManager,
-    config: EffectsConfig,
+    config: ExplosionConfig,
 ): Phaser.GameObjects.Particles.ParticleEmitter {
     return particles.createEmitter({
-        speed: config.explode.speed,
-        lifespan: config.explode.lifespan,
-        gravityY: config.explode.gravity,
+        speed: config.speed,
+        lifespan: config.lifespan,
+        gravityY: config.gravity,
         frequency: -1,
     });
 }
