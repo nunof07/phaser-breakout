@@ -181,6 +181,11 @@ const effects = {
         ease: 'linear',
         duration: 500,
         distance: brick.size.height * 4,
+        text: {
+            color: '#aaaaaa',
+            fontSize: text.fontSize * 1.5,
+            fontFamily: text.fontFamily,
+        },
     },
     hit: {
         fillColor: 0x660000,

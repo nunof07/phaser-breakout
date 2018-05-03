@@ -11,7 +11,7 @@ import Phaser from 'phaser';
  * @param points Points.
  */
 export function flyDownText(scene: Phaser.Scene, config: EffectsConfig, brick: Brick, points: number): void {
-    const text: Phaser.GameObjects.Text = createFlyDownText(scene, config.brick, brick, points);
+    const text: Phaser.GameObjects.Text = createFlyDownText(scene, config, brick, points);
     scene.tweens.add({
         targets: text,
         y: brick.sprite().y + config.flyDown.distance,
