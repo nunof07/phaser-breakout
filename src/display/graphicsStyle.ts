@@ -1,13 +1,11 @@
-import { GraphicsConfig } from '@config/GraphicsConfig';
 import { GraphicsStyle } from '@config/GraphicsStyle';
-import { SpriteConfig } from '@config/SpriteConfig';
 
 /**
  * Graphics style from sprite and graphics config.
  * @param sprite Sprite config.
  * @param graphics Graphics config.
  */
-export function graphicsStyle(sprite: SpriteConfig, graphics: GraphicsConfig): GraphicsStyle {
+export function graphicsStyle(sprite: { color: number, border: number }, graphics: { width: number }): GraphicsStyle {
     return {
         fill: {
             color: sprite.color,
