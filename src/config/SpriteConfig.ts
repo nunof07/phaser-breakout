@@ -8,4 +8,5 @@ export interface SpriteConfig {
     readonly position: Coordinates;
     readonly size: Size;
     readonly color: number;
+    readonly border: number;
 }

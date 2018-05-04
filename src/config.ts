@@ -9,7 +9,7 @@ const game = {
     debug: false,
 };
 const graphics = {
-    width: 2,
+    width: 4,
     texture: {
         key: 'pixel',
         url: 'images/transparent_pixel.png',
@@ -29,6 +29,7 @@ const paddle = {
         height: 20,
     },
     color: 0xAAAAAA,
+    border: 0xAAAAAA,
 };
 const ball = {
     position: {
@@ -39,7 +40,8 @@ const ball = {
         width: 20,
         height: 20,
     },
-    color: 0xAAAA00,
+    color: 0x000000,
+    border: 0xAAAA00,
     bounce: 1,
     startHitpoints: 1,
     loseLifePercentage: 0.25,
@@ -58,7 +60,9 @@ const brick = {
         height: 20,
     },
     color: 0xAA0000,
+    border: 0x220000,
     powerupColor: 0x00AA00,
+    powerupBorder: 0x002200,
 };
 const bricks = {
     startX: brick.size.width * 0.5,
@@ -94,6 +98,11 @@ const gameOver = {
     text: {
         fontFamily: text.fontFamily,
         fontSize: 36,
+        color: '#ffffff',
+    },
+    countdownText: {
+        fontFamily: text.fontFamily,
+        fontSize: 108,
         color: '#ffffff',
     },
     countdown: 3,
@@ -149,6 +158,67 @@ const progressBar = {
     height: 20,
     borderWidth: 2,
     color: 0xFFFFFF,
+    border: 0xFFFFFF,
+};
+const camera = {
+    lowerBricks: {
+        duration: 350,
+        intensity: 0.0025,
+    },
+    powerup: {
+        duration: 350,
+        red: 0,
+        green: 0.075,
+        blue: 0,
+    },
+    gameOver: {
+        duration: 500,
+        intensity: 0.1,
+    },
+};
+const effects = {
+    flyDown: {
+        ease: 'linear',
+        duration: 500,
+        distance: brick.size.height * 4,
+        text: {
+            color: '#aaaaaa',
+            fontSize: text.fontSize * 1.5,
+            fontFamily: text.fontFamily,
+        },
+    },
+    hit: {
+        fillColor: 0x660000,
+        borderColor: 0x660000,
+        borderWidth: 0,
+        quantity: 4,
+        size: {
+            width: 2,
+            height: 2,
+        },
+        speed: {
+            min: -200,
+            max: 200,
+        },
+        lifespan: 500,
+        gravity: 500,
+    },
+    explode: {
+        fillColor: 0x660000,
+        borderColor: 0x660000,
+        borderWidth: graphics.width,
+        quantity: 8,
+        size: {
+            width: 8,
+            height: 4,
+        },
+        speed: {
+            min: -200,
+            max: 200,
+        },
+        lifespan: 500,
+        gravity: 500,
+    },
 };
 export const config = {
     game,
@@ -163,4 +233,6 @@ export const config = {
     scoreboard,
     audio,
     progressBar,
+    camera,
+    effects,
 };

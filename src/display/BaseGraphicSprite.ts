@@ -4,6 +4,7 @@ import { Coordinates } from '@display/Coordinates';
 import { createGraphics } from '@display/createGraphics';
 import { createSprite } from '@display/createSprite';
 import { GraphicSprite } from '@display/GraphicSprite';
+import { graphicsStyle } from '@display/graphicsStyle';
 import { positionEqual } from '@display/positionEqual';
 import { redrawSprite } from '@display/redrawSprite';
 import { spritePosition } from '@display/spritePosition';
@@ -31,7 +32,7 @@ export class BaseGraphicSprite implements GraphicSprite {
         if (this.isSetup) {
             return this;
         }
-        this.graphicsObj = createGraphics(scene.add, this.config.color, this.graphics.width);
+        this.graphicsObj = createGraphics(scene.add, graphicsStyle(this.config, this.graphics));
         this.spriteObj = createSprite(scene.physics.add, this.config.position, this.config.size, this.graphics.texture.key);
         this.isSetup = true;
 

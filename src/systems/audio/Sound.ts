@@ -44,6 +44,11 @@ export class Sound implements System {
             );
             scene.sound.play(key);
         });
+        this.entities.ball.onLoseLife(() => {
+            if (this.entities.ball.hitpoints() > 0) {
+                scene.sound.play(this.config.fx.loseLife.key);
+            }
+        });
 
         return this;
     }
@@ -66,9 +71,6 @@ export class Sound implements System {
             (callback: () => void): void => {
                 this.physics.onBallHitBounds(callback);
             },
-            (callback: () => void): void => {
-                this.entities.ball.onLoseLife(callback);
-            },
         ];
     }
 
@@ -78,7 +80,6 @@ export class Sound implements System {
             this.config.fx.bricksWave,
             this.config.fx.ballCollide,
             this.config.fx.ballCollide,
-            this.config.fx.loseLife,
         ];
     }
 }
