@@ -34,12 +34,7 @@ export class Breakout extends Phaser.Scene {
     public create(): void {
         const brick: BrickConfig = brickConfig();
         const stats: BaseStats = new BaseStats();
-        const entities: GameEntities = {
-            ball: createBall(config.ball, config.graphics),
-            paddle: createPaddle(config.paddle, config.graphics),
-            bricks: createBricks(config.physics.bricksWave, brick, stats),
-            stats,
-        };
+        const entities: GameEntities = this.createEntities(brick, stats);
         const physics: BasePhysics = new BasePhysics(config.physics, entities, this);
         const scoreboard: BaseScoreboard = new BaseScoreboard(config.scoreboard, stats);
         const gameOver: BaseGameOver = new BaseGameOver(config.gameOver, scoreboard);
@@ -63,5 +58,14 @@ export class Breakout extends Phaser.Scene {
 
     public update(): void {
         this.systems.update();
+    }
+
+    private createEntities(brick: BrickConfig, stats: BaseStats): GameEntities {
+        return {
+            ball: createBall(config.ball, config.graphics),
+            paddle: createPaddle(config.paddle, config.graphics),
+            bricks: createBricks(config.physics.bricksWave, brick, stats),
+            stats,
+        };
     }
 }

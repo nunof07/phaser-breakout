@@ -1,3 +1,4 @@
+import { GraphicsStyle } from '@config/GraphicsStyle';
 import { ProgressBarConfig } from '@config/ProgressBarConfig';
 import { createGraphics } from '@display/createGraphics';
 import { System } from '@systems/System';
@@ -19,7 +20,7 @@ export class ProgressBar implements System {
     public setup(scene: Phaser.Scene): this {
         scene.load.on('fileprogress', this.onProgress, this);
         scene.load.on('complete', this.onComplete, this);
-        this.graphics = createGraphics(scene.add, this.config.color, this.config.border, this.config.borderWidth);
+        this.graphics = createGraphics(scene.add, this.graphicsStyle());
         this.complete = new Phaser.Geom.Rectangle(0, 0, this.config.width, this.config.height);
         Phaser.Geom.Rectangle.CenterOn(this.complete, scene.cameras.main.width / 2, scene.cameras.main.height / 2);
         this.bar = Phaser.Geom.Rectangle.Clone(this.complete);
@@ -46,5 +47,17 @@ export class ProgressBar implements System {
           .fillRectShape(this.complete);
 
         return this;
+    }
+
+    private graphicsStyle(): GraphicsStyle {
+        return {
+            fill: {
+                color: this.config.color,
+            },
+            border: {
+                color: this.config.border,
+                width: this.config.borderWidth,
+            },
+        };
     }
 }

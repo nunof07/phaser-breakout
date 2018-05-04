@@ -1,22 +1,18 @@
+import { GraphicsStyle } from '@config/GraphicsStyle';
 import Phaser from 'phaser';
 
 /**
  * Create graphics.
  * @param factory Object factory.
  */
-export function createGraphics(
-    factory: Phaser.GameObjects.GameObjectFactory,
-    fillColor: number,
-    borderColor: number,
-    borderWidth: number,
-): Phaser.GameObjects.Graphics {
+export function createGraphics(factory: Phaser.GameObjects.GameObjectFactory, style: GraphicsStyle): Phaser.GameObjects.Graphics {
     return factory.graphics({
         fillStyle: {
-            color: fillColor,
+            color: style.fill.color,
         },
         lineStyle: {
-            width: borderWidth,
-            color: borderColor,
+            width: style.border.width,
+            color: style.border.color,
         },
     });
 }

@@ -40,32 +40,8 @@ export class BaseCountdown implements Countdown {
     public setup(scene: Phaser.Scene): this {
         this.countdownTimer = scene.time.addEvent(this.config());
         this.countdownTimer.paused = true;
-        this.text = createText(
-            scene,
-            {
-                position: this.gameOverConfig.position,
-                center: true,
-                visible: false,
-                depth: 100,
-                text: this.gameOverConfig.countdown.toString(),
-                config: this.gameOverConfig.countdownText,
-            },
-        );
-        this.zoomOut = scene.tweens.add({
-            targets: this.text,
-            scaleX: 0,
-            scaleY: 0,
-            alpha: 0,
-            ease: 'Cubic.easeIn',
-            delay: 300,
-            duration: 700,
-            onStart: (): void => {
-                this.text.scaleX = 1;
-                this.text.scaleY = 1;
-                this.text.alpha = 1;
-            },
-            paused: true,
-        });
+        this.text = this.countdownText(scene);
+        this.zoomOut = this.zoomOutTween(scene);
 
         return this;
     }
@@ -114,5 +90,37 @@ export class BaseCountdown implements Countdown {
         this.inProgress = false;
 
         return this;
+    }
+
+    private countdownText(scene: Phaser.Scene): Phaser.GameObjects.Text {
+        return createText(
+            scene,
+            {
+                position: this.gameOverConfig.position,
+                center: true,
+                visible: false,
+                depth: 100,
+                text: this.gameOverConfig.countdown.toString(),
+                config: this.gameOverConfig.countdownText,
+            },
+        );
+    }
+
+    private zoomOutTween(scene: Phaser.Scene): Phaser.Tweens.Tween {
+        return scene.tweens.add({
+            targets: this.text,
+            scaleX: 0,
+            scaleY: 0,
+            alpha: 0,
+            ease: 'Cubic.easeIn',
+            delay: 300,
+            duration: 700,
+            onStart: (): void => {
+                this.text.scaleX = 1;
+                this.text.scaleY = 1;
+                this.text.alpha = 1;
+            },
+            paused: true,
+        });
     }
 }

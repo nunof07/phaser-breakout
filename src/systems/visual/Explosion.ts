@@ -1,5 +1,6 @@
 import { ExplosionConfig } from '@config/ExplosionConfig';
 import { GraphicsConfig } from '@config/GraphicsConfig';
+import { GraphicsStyle } from '@config/GraphicsStyle';
 import { createGraphics } from '@display/createGraphics';
 import { Brick } from '@systems/bricks/Brick';
 import { System } from '@systems/System';
@@ -23,12 +24,7 @@ export class Explosion implements System {
     }
 
     public setup(scene: Phaser.Scene): this {
-        this.explosionsGraphics = createGraphics(
-            scene.add,
-            this.config.fillColor,
-            this.config.borderColor,
-            this.config.borderWidth,
-        );
+        this.explosionsGraphics = createGraphics(scene.add, this.graphicsStyle());
         this.particles = scene.add.particles(this.graphics.texture.key);
         this.explosion = createExplosion(this.particles, this.config);
 
@@ -51,5 +47,17 @@ export class Explosion implements System {
         );
 
         return this;
+    }
+
+    private graphicsStyle(): GraphicsStyle {
+        return {
+            fill: {
+                color: this.config.fillColor,
+            },
+            border: {
+                color: this.config.borderColor,
+                width: this.config.borderWidth,
+            },
+        };
     }
 }
