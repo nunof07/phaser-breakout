@@ -5,7 +5,7 @@ import { GraphicsStyle } from '@config/GraphicsStyle';
  * @param sprite Sprite config.
  * @param graphics Graphics config.
  */
-export function graphicsStyle(sprite: { color: number, border: number }, graphics: { width: number }): GraphicsStyle {
+export function graphicsStyle(sprite: { color: number; border: number }, graphics: { width: number }): GraphicsStyle {
     return {
         fill: {
             color: sprite.color,
