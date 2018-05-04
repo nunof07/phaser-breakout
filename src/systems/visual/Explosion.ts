@@ -1,11 +1,11 @@
 import { ExplosionConfig } from '@config/ExplosionConfig';
 import { GraphicsConfig } from '@config/GraphicsConfig';
-import { GraphicsStyle } from '@config/GraphicsStyle';
 import { createGraphics } from '@display/createGraphics';
 import { Brick } from '@systems/bricks/Brick';
 import { System } from '@systems/System';
 import { createExplosion } from '@systems/visual/createExplosion';
 import { drawExplodeParticle } from '@systems/visual/drawExplodeParticle';
+import { explosionGraphicsStyle } from '@systems/visual/explosionGraphicsStyle';
 import Phaser from 'phaser';
 
 /**
@@ -24,7 +24,7 @@ export class Explosion implements System {
     }
 
     public setup(scene: Phaser.Scene): this {
-        this.explosionsGraphics = createGraphics(scene.add, this.graphicsStyle());
+        this.explosionsGraphics = createGraphics(scene.add, explosionGraphicsStyle(this.config));
         this.particles = scene.add.particles(this.graphics.texture.key);
         this.explosion = createExplosion(this.particles, this.config);
 
@@ -47,17 +47,5 @@ export class Explosion implements System {
         );
 
         return this;
-    }
-
-    private graphicsStyle(): GraphicsStyle {
-        return {
-            fill: {
-                color: this.config.fillColor,
-            },
-            border: {
-                color: this.config.borderColor,
-                width: this.config.borderWidth,
-            },
-        };
     }
 }
