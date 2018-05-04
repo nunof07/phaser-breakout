@@ -1,3 +1,26 @@
+<a name="0.13.0"></a>
+# [0.13.0](https://github.com/nunof07/phaser-breakout/compare/v0.12.0...v0.13.0) (2018-05-04)
+
+
+### Bug Fixes
+
+* **brick:** update flydown text color and size ([8857733](https://github.com/nunof07/phaser-breakout/commit/8857733))
+* **graphics:** add fill color ([a704eab](https://github.com/nunof07/phaser-breakout/commit/a704eab))
+* **graphics:** stronger border ([87e2855](https://github.com/nunof07/phaser-breakout/commit/87e2855))
+* **sound:** update game over sound ([e8070a7](https://github.com/nunof07/phaser-breakout/commit/e8070a7))
+
+
+### Features
+
+* **brick:** explosion visual effect ([52f3e8a](https://github.com/nunof07/phaser-breakout/commit/52f3e8a))
+* **brick:** fly down score effect when hitting brick ([506ba99](https://github.com/nunof07/phaser-breakout/commit/506ba99))
+* **brick:** hit visual effect ([ebd31e5](https://github.com/nunof07/phaser-breakout/commit/ebd31e5))
+* **camera:** flash camera on powerup ([58f82cf](https://github.com/nunof07/phaser-breakout/commit/58f82cf))
+* **camera:** game over shake effect ([a287c16](https://github.com/nunof07/phaser-breakout/commit/a287c16))
+* **camera:** shake effect when lowering bricks ([c6c5469](https://github.com/nunof07/phaser-breakout/commit/c6c5469))
+* **gameover:** visual effect on countdown ([7d12818](https://github.com/nunof07/phaser-breakout/commit/7d12818))
+* hide mouse cursor ([3adc9e1](https://github.com/nunof07/phaser-breakout/commit/3adc9e1))
+
 <a name="0.12.0"></a>
 # [0.12.0](https://github.com/nunof07/phaser-breakout/compare/v0.11.0...v0.12.0) (2018-04-24)
 
