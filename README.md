@@ -28,3 +28,7 @@ Endless breakout demo made with Phaser 3.
 - Run `npm install` in project folder.
 - Run `npm run info` to see all available scripts.
 - Run `npm start` to serve game and watch for changes.
+
+## Project stats
+
+- 83 hours to complete.
